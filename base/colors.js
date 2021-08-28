@@ -1,5 +1,4 @@
-﻿// colors map with rgb declarations
-const colors = {
+﻿const colors = {
     white: '237, 242, 244',
     lightgrey: '204, 204, 204',
     grey: '133, 133, 133',
@@ -11,7 +10,7 @@ const colors = {
     green: '69, 133, 53',
     yellow: '231, 113, 27'
 };
-// overlay alpha declaration
+
 const overlayAlpha = .72;
 
 let styleTag = document.createElement('style');
@@ -34,3 +33,4 @@ styleTag.textContent = `
     }
 
 `;
+document.head.appendChild(styleTag);
