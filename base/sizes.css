@@ -1,0 +1,11 @@
+﻿:root{
+    
+    font-size: clamp(16px, 15.065px + 0.259vw, 20px);
+    --trbs-size--xs: .75rem;
+    --trbs-size--s: .9rem;
+    --trbs-size--m: 1rem;
+    --trbs-size--l: 1.2rem;
+    --trbs-size--xl: 2rem;
+    --trbs-size--xxl: clamp(2rem, 1.7662rem + 1.0390vw, 3rem);
+
+}
