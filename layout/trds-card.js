@@ -1,4 +1,5 @@
 ﻿import '../base/layout.js';
+import '../base/theme.js';
 
 customElements.define('trds-card', class trdsCard extends HTMLElement{
 
@@ -10,36 +11,34 @@ customElements.define('trds-card', class trdsCard extends HTMLElement{
         this.shadowRoot.innerHTML = `
             <style>
                 :host{
-                    box-sizing: border-box;
-                    background-color: var(--trbs-children-bg-color);
+                    background-color: var(--trds-theme--secondary-bg);
                     display: flex;
                     flex-direction: column;
-                    box-shadow: 0 .25rem .5rem .1rem var(--trbs-children-bg-color);
+                    border: 1px solid var(--trds-theme--primary-bg);
                 }
 
-                ::slotted([slot=trbs-card__media]){
+                ::slotted([slot=trds-card__media]){
                     display: block;
-                    box-sizing: border-box;
                 }
             
-                ::slotted([slot=trbs-card__body]){
+                ::slotted([slot=trds-card__body]){
                     box-sizing: border-box;
                     display: flex;
                     flex-direction: column;
                     flex: 1;
-                    padding: var(--trbs-space--l);
+                    padding: var(--trds-space--l);
                 }
             
-                ::slotted([slot=trbs-card__footer]){
+                ::slotted([slot=trds-card__footer]){
                     box-sizing: border-box;
                     display: block;
-                    padding: var(--trbs-space--l);
+                    padding: var(--trds-space--l);
                     padding-top: 0;
                 }
             </style>
-            <slot name="trbs-card__media"></slot>
-            <slot name="trbs-card__body"></slot>
-            <slot name="trbs-card__footer"></slot>
+            <slot name="trds-card__media"></slot>
+            <slot name="trds-card__body"></slot>
+            <slot name="trds-card__footer"></slot>
         `
 
     }
