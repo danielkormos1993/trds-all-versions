@@ -21,12 +21,14 @@ customElements.define('trds-title', class trdsTitle extends HTMLElement{
             <style>
                 :host{
                     display: block;
-                    width: max-content;
                     max-width: var(--trds-element--max-width);
                     box-sizing: border-box;
                     
                 }
-                *{
+                :host > h1,
+                :host > h2,
+                :host > h3,
+                :host > h4{
                     -webkit-text-size-adjust: 100%;
                     margin: 0;
                     font-weight: bold;
