@@ -1,4 +1,7 @@
-﻿customElements.define('trds-link', class trdsLink extends HTMLElement{
+﻿// this is the base class for an anchor element
+// it copies the neccessary attributes and add rel noopener norefferer if needed
+
+export class trdsLink extends HTMLElement{
 
     constructor(){
         super();
@@ -6,25 +9,32 @@
         this.attachShadow({mode: 'open'});
 
         this.shadowRoot.innerHTML = `
-            <style>
-                :host{
-                    display: block;
-                }
-                ::slotted(a){
-                    display: block;
-                    text-decoration: none;
-                    color: inherit;
-                    transition: filter 0.25s ease-in-out;
-                }
-                ::slotted(a:hover),
-                ::slotted(a:active),
-                ::slotted(a:focus){
-                    filter: brightness(125%);
-                }
-            </style>
-            <slot></slot>
+            <a>
+                <slot></slot>
+            </a>
         `;
+
+        this.anchorTag = this.shadowRoot.querySelector('a');
 
     }
 
-});
+    connectedCallback(){
+
+        const desiredAttributes = ['download', 'href', 'target'];
+
+        [...this.attributes].forEach(attribute => {
+
+            if(desiredAttributes.includes(attribute.name)){
+
+                this.anchorTag.setAttribute(attribute.name, attribute.value);
+
+                if(attribute.name === 'href' && attribute.value.startsWith('http') && !attribute.value.includes(location.hostname))
+                    this.anchorTag.setAttribute('rel', 'noopener noreferrer');
+                    
+            }
+
+        });
+
+    }
+
+}

@@ -6,7 +6,8 @@
     <script src="typhography/trds-title.js" type="module"></script>
     <script src="typhography/trds-paragraph.js" type="module"></script>
     <script src="typhography/trds-text.js" type="module"></script>
-    <script src="elements/trds-link.js"></script>
+    <script src="typhography/trds-link-text.js" type="module"></script>
+    <script src="elements/trds-link-block.js" type="module"></script>
 </head>
 <body is="trds-body">
     <trds-main>
@@ -16,15 +17,15 @@
                     <div slot="trds-card__body">
                         <trds-title level="3">ez egy title</trds-title>
                         <trds-paragraph><b>This</b> is the body lement of a card, if this is loinger sadskalslé fjdkfa jdklj fkldsj fdskl fjkldsaf jkdsa fjkldsafj dslka fjkdsl jfdka</trds-paragraph>
-                        <trds-text>sdad sa dklsa é dklésa jkdskélj lkdsj kfldsa kjfkldsj fdklajks lfdkj ak lsk j</trds-text>
+                        <trds-text>sdad sa <trds-link-text href="anyad">bazmeg alahauzott</trds-link-text>dklsa é dklésa jkdskélj lkdsj kfldsa kjfkldsj fdklajks lfdkj ak lsk j</trds-text>
                     </div>
                     <div slot="trds-card__footer"> This is the footer lement of a card</div>
                 </trds-card>
                 <trds-card>
                     <div slot="trds-card__body">
-                        <trds-link>
-                            <a href="#">bazmeg</a>
-                        </trds-link>
+                        <trds-link-block href="https://facebookj.com" download baszod target="_blank">
+                           bazmeg
+                        </trds-link-block>
                     </div>
                     <div slot="trds-card__footer"> This is the footer lement of a card</div>
                 </trds-card>
