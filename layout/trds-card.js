@@ -1,4 +1,9 @@
-﻿import '../base/layout.js';
+﻿// USAGE: <trds-card>
+// <xxx slot="trds-card__media"> for media element of the card
+// <xxx slot="trds-card__body"> for body element of the card(it gets the height if available)
+// <xxx slot="trds-card__footer"> for footer element of the card(its gonna be pushed to the bottom of the card if it can)
+
+import '../base/layout.js';
 import '../base/theme.js';
 
 customElements.define('trds-card', class trdsCard extends HTMLElement{
