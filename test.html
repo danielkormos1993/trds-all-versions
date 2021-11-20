@@ -6,6 +6,7 @@
     <script src="typhography/trds-title.js" type="module"></script>
     <script src="typhography/trds-paragraph.js" type="module"></script>
     <script src="typhography/trds-text.js" type="module"></script>
+    <script src="elements/trds-link.js"></script>
 </head>
 <body is="trds-body">
     <trds-main>
@@ -20,7 +21,11 @@
                     <div slot="trds-card__footer"> This is the footer lement of a card</div>
                 </trds-card>
                 <trds-card>
-                    <div slot="trds-card__body"> This is the body lement of a card</div>
+                    <div slot="trds-card__body">
+                        <trds-link>
+                            <a href="#">bazmeg</a>
+                        </trds-link>
+                    </div>
                     <div slot="trds-card__footer"> This is the footer lement of a card</div>
                 </trds-card>
             </trds-grid>  

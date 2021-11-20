@@ -3,22 +3,28 @@
     constructor(){
         super();
 
+        this.attachShadow({mode: 'open'});
+
         this.shadowRoot.innerHTML = `
             <style>
                 :host{
-                    max-width: var(--trds-element--max-width);
+                    display: block;
                 }
-                :host > span{
-                    -webkit-text-size-adjust: 100%;
+                ::slotted(a){
+                    display: block;
+                    text-decoration: none;
                     color: inherit;
-                    font-size: inherit;
-                    line-height: inherit;
+                    transition: filter 0.25s ease-in-out;
+                }
+                ::slotted(a:hover),
+                ::slotted(a:active),
+                ::slotted(a:focus){
+                    filter: brightness(125%);
                 }
             </style>
-            <a href="${this.getAttribute('href')}">
-                <slot></slot>
-            </a>    
-        `
+            <slot></slot>
+        `;
+
     }
 
 });
