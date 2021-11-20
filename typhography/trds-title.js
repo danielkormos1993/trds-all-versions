@@ -1,4 +1,9 @@
-﻿import '../base/layout.js';
+﻿// USAGE: <trds-title level="required(1-4)">
+// add .variant--1 class to the host for prestyled titles
+// the element can inherit font size and line-height and color
+// its not compatible with javascript creation as we cant pass the level attribute to the constructor(we wont need it anyway).
+
+import '../base/layout.js';
 import '../base/sizes.js';
 import '../base/theme.js';
 
@@ -9,6 +14,9 @@ customElements.define('trds-title', class trdsTitle extends HTMLElement{
         super();
         this.attachShadow({mode: 'open'});
 
+        this.level = this.getAttribute('level');
+        if(!this.level) return console.error('trds-title must have a level attribute');
+
         this.shadowRoot.innerHTML = `
             <style>
                 :host{
@@ -18,7 +26,7 @@ customElements.define('trds-title', class trdsTitle extends HTMLElement{
                     box-sizing: border-box;
                     
                 }
-                ::slotted(*){
+                *{
                     -webkit-text-size-adjust: 100%;
                     margin: 0;
                     font-weight: bold;
@@ -52,28 +60,11 @@ customElements.define('trds-title', class trdsTitle extends HTMLElement{
                     color: var(--trds-theme--secondary-text);
                 }
             </style>
-            <slot></slot>
+            <h${this.level}>
+                <slot></slot>
+            </h${this.level}>    
         `
 
     }
-
-    connectedCallback(){
-
-        const level = this.getAttribute('level');
-        if(!level){
-            console.error(`trds-title must have a level attribute: ${this}`);
-            return console.log(this);
-        } 
-
-        const content = this.getAttribute('content');
-        if(!content){
-            console.error('trds-title must have a content attribute.');
-            return console.log(this);
-        } 
-
-        this.innerHTML = `<h${level}>${content}</h${level}>`;
-
-    }
-
 
 });
