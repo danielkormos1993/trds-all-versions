@@ -1,4 +1,11 @@
-﻿import '../base/layout.js';
+﻿// USAGE: <trds-grid>
+// this grid element will put the elements inside into a grid
+// if no class added, it will behave like a normal grid with bigger spacing
+// if addedd class .boxes-layout then the spacing will be narrower(nicer for boxed like elements)
+// if added class .auto-width-layout then the elements inside will take the most less space that they needed (eg for icons, etc.)
+// modify gap property of the host element(even modify row-gap column-gap style property) for the desired behaviour
+
+import '../base/layout.js';
 
 customElements.define('trds-grid', class trdsGrid extends HTMLElement{
 
