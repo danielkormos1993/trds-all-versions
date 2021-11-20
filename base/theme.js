@@ -41,6 +41,7 @@ styleTag.textContent = `
 
     html{
         font-family: 'Montserrat';
+        line-height: 1.5;
     }
 
 `;
