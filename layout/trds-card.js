@@ -2,6 +2,7 @@
 // <xxx slot="trds-card__media"> for media element of the card
 // <xxx slot="trds-card__body"> for body element of the card(it gets the height if available)
 // <xxx slot="trds-card__footer"> for footer element of the card(its gonna be pushed to the bottom of the card if it can)
+// added extra slot in case of loader needed
 
 import '../base/layout.js';
 import '../base/theme.js';
@@ -41,6 +42,7 @@ customElements.define('trds-card', class trdsCard extends HTMLElement{
                     padding-top: 0;
                 }
             </style>
+            <slot></slot>
             <slot name="trds-card__media"></slot>
             <slot name="trds-card__body"></slot>
             <slot name="trds-card__footer"></slot>

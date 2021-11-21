@@ -8,6 +8,8 @@ import '../libs/wc-polyfill.js';
 import '../base/layout.js';
 import '../base/theme.js';
 
+import '../elements/trds-loader.js';
+
 customElements.define('trds-body', class trdsBody extends HTMLBodyElement{
 
     constructor(){
@@ -29,7 +31,7 @@ customElements.define('trds-body', class trdsBody extends HTMLBodyElement{
             </style>
             <slot></slot>
         `
-
+        
     }
 
 },{extends: 'body'});
