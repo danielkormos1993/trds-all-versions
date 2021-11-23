@@ -65,10 +65,12 @@ customElements.define('trds-loader', class trdsLoader extends HTMLElement{
 
     enable = () => {
         this.setAttribute('active', true);
+        this.dispatchEvent( new Event('enabled'));
     }
     
     disable = () => {
         this.setAttribute('active', false);
+        this.dispatchEvent( new Event('disabled'));
     } 
 
 });

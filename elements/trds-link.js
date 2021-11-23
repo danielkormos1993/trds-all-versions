@@ -1,6 +1,8 @@
 ﻿// this is the base class for an anchor element
 // it copies the neccessary attributes and add rel noopener norefferer if needed
 
+import { copyAttributes } from '../libs/copyAttributes.js';
+
 export class trdsLink extends HTMLElement{
 
     constructor(){
@@ -20,20 +22,11 @@ export class trdsLink extends HTMLElement{
 
     connectedCallback(){
 
-        const desiredAttributes = ['download', 'href', 'target'];
+        copyAttributes(this, ['download', 'href', 'target'], this.anchorTag);
 
-        [...this.attributes].forEach(attribute => {
+        const href = this.getAttribute('href');
 
-            if(desiredAttributes.includes(attribute.name)){
-
-                this.anchorTag.setAttribute(attribute.name, attribute.value);
-
-                if(attribute.name === 'href' && attribute.value.startsWith('http') && !attribute.value.includes(location.hostname))
-                    this.anchorTag.setAttribute('rel', 'noopener noreferrer');
-                    
-            }
-
-        });
+        if(href && href.startsWith('http') && !href.includes(location.hostname)) this.anchorTag.setAttribute('rel', 'noopener noreferrer');
 
     }
 
