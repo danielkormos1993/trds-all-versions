@@ -42,7 +42,7 @@ customElements.define('trds-loader', class trdsLoader extends HTMLElement{
                 }
                 :host trds-icon{
                     animation: TrdsSpin 2s linear infinite;
-                    font-size: 2em;
+                    font-size: 1.5em;
                 }
                 @keyframes TrdsSpin {
                     0% { transform: rotate(0deg); }

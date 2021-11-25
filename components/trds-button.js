@@ -3,6 +3,8 @@ import { copyAttributes } from '../libs/copyAttributes.js';
 import '../elements/trds-loader.js';
 import '../elements/trds-icon.js';
 import '../typhography/trds-text.js';
+import '../base/theme.js';
+import '../base/layout.js';
 
 customElements.define('trds-button', class trdsButton extends HTMLElement{
 
@@ -13,12 +15,56 @@ customElements.define('trds-button', class trdsButton extends HTMLElement{
         this.attachShadow({mode: 'open'});
 
         this.shadowRoot.innerHTML = `
+            <style>
+
+                :host{
+                    display: block;
+                    box-sizing: border-box;
+                    border-radius: 5px;
+                    overflow: hidden;
+                    max-width: max-content;
+                    transition: transform 0.25s ease-in-out;
+                    background-color: var(--trds-theme--primary);
+                }
+                :host(:hover),
+                :host(:focus){
+                    filter: brightness(125%);
+                }
+                :host(:active){
+                    transform: scale(0.95);
+                }
+                :host([disabled]){
+                    filter: brightness(0.75);
+                    pointer-events: none;
+                }
+
+                trds-link,
+                button{
+                    all: unset;
+                    box-sizing: border-box;
+                    padding: var(--trds-space--s) var(--trds-space--m);
+                    display: flex;
+                    cursor: pointer;
+                    background-color: inherit;
+                }
+
+            </style>
             <slot></slot>
         `;
 
     }
 
     connectedCallback(){
+
+        if(this.classList.contains('call')){
+
+            if(!this.hasAttribute('number')) return console.error('Number attribute to call button must be given.');
+
+            this.setAttribute('href', `tel:${this.getAttribute('number')}`);
+            this.setAttribute('icon', 'solid/phone');
+            this.setAttribute('text', this.getAttribute('number'));
+
+        }
 
         let buttonElement = 
             this.hasAttribute('href') ? 
@@ -30,9 +76,9 @@ customElements.define('trds-button', class trdsButton extends HTMLElement{
 
         if(buttonElement.nodeName.toLowerCase() === 'button'){
             copyAttributes(this, ['type'], buttonElement);
-            let loader = this.appendChild(document.createElement('trbs-loader'));
-            loader.addEventListener('enabled', this.setAttribute('disabled', ''));
-            loader.addEventListener('disabled', this.removeAttribute('disabled'));
+            let loader = this.appendChild(document.createElement('trds-loader'));
+            loader.addEventListener('enabled', () => { this.setAttribute('disabled', '') });
+            loader.addEventListener('disabled', () => { this.removeAttribute('disabled') });
         }
 
         if(this.hasAttribute('icon')){
@@ -47,7 +93,7 @@ customElements.define('trds-button', class trdsButton extends HTMLElement{
             buttonElement.appendChild(textElement);
         }
 
-        this.appendChild(buttonElement);
+        this.shadowRoot.appendChild(buttonElement);
 
     }
 

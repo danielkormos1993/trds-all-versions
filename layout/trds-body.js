@@ -31,6 +31,8 @@ customElements.define('trds-body', class trdsBody extends HTMLBodyElement{
             </style>
             <slot></slot>
         `
+
+        this.appendChild(document.createElement('trds-loader')).enable();
         
     }
 
