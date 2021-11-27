@@ -1,4 +1,11 @@
-﻿import '../elements/trds-link.js';
+﻿// usage: trds-button [text] [icon] [disabled]
+// if added href attribute then its gonna behave as a link, it will automatically copy attributes what needed
+// if its a button(no href added) then it will have a loader element
+// classes: call, rounded, block, icon-on-right, outline
+// for call button there must be presented a number attribute
+
+
+import '../elements/trds-link.js';
 import { copyAttributes } from '../libs/copyAttributes.js';
 import '../elements/trds-loader.js';
 import '../elements/trds-icon.js';
@@ -25,6 +32,9 @@ customElements.define('trds-button', class trdsButton extends HTMLElement{
                     max-width: max-content;
                     transition: transform 0.25s ease-in-out;
                     background-color: var(--trds-theme--primary);
+                    font-weight: bold;
+                    text-transform: uppercase;
+                    font-size: var(--trds-size--xs);
                 }
                 :host(:hover),
                 :host(:focus){
@@ -37,15 +47,40 @@ customElements.define('trds-button', class trdsButton extends HTMLElement{
                     filter: brightness(0.75);
                     pointer-events: none;
                 }
+                :host(.rounded){
+                    border-radius: 50px;
+                }
+                :host(.block){
+                    max-width: var(--trds-element-max-width);
+                }
+                :host(.icon-on-right) trds-icon{
+                    order: 2;
+                }
+                :host(.call){
+                    background-color: var(--trds-theme--success);
+                    border-radius: 50px;
+                }
+                :host(.outline){
+                    box-shadow: inset 0 0 0 2px currentColor;
+                    background-color: transparent;
+                }
 
                 trds-link,
                 button{
                     all: unset;
+                    width: 100%;
                     box-sizing: border-box;
                     padding: var(--trds-space--s) var(--trds-space--m);
                     display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: var(--trds-space--s);
                     cursor: pointer;
                     background-color: inherit;
+                }
+
+                trds-icon{
+                    flex-shrink: 0;
                 }
 
             </style>

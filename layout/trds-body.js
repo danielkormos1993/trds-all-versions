@@ -4,7 +4,7 @@
 // that way the content is going be full page even if the content is not tall
 // TODO: loading phase
 
-// import '../libs/wc-polyfill.js';
+import '../libs/wc-polyfill.js';
 import '../base/layout.js';
 import '../base/theme.js';
 
