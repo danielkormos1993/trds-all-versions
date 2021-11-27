@@ -11,6 +11,7 @@
     <script src="elements/trds-icon.js" type="module"></script>
     <script src="elements/trds-loader.js" type="module"></script>
     <script src="components/trds-button.js" type="module"></script>
+    <script src="elements/trds-image.js" type="module"></script>
 </head>
 <body is="trds-body">
     <trds-main>
@@ -18,7 +19,9 @@
         <trds-section>
             <trds-grid class="auto-width-layout">
                 <trds-card>
-                    <trds-loader></trds-loader>
+                    <div slot="trds-card__media">
+                        <trds-image alt="fasz" src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg"></trds-image>
+                    </div>
                     <div slot="trds-card__body">
                         <trds-icon icon="solid/cog"></trds-icon>
                         <trds-title level="3">ez egy title</trds-title>

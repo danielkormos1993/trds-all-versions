@@ -23,6 +23,8 @@ customElements.define('trds-loader', class trdsLoader extends HTMLElement{
                     align-items: center;
                     justify-content: center;
                     visibility: hidden;
+                    top: 0;
+                    left: 0;
                 }
                 :host([active=true]){
                     visibility: visible;
