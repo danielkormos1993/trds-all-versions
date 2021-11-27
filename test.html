@@ -12,6 +12,7 @@
     <script src="elements/trds-loader.js" type="module"></script>
     <script src="components/trds-button.js" type="module"></script>
     <script src="elements/trds-image.js" type="module"></script>
+    <script src="elements/trds-video.js" type="module"></script>
 </head>
 <body is="trds-body">
     <trds-main>
@@ -31,6 +32,9 @@
                     <div slot="trds-card__footer"> This is the footer lement of a card</div>
                 </trds-card>
                 <trds-card>
+                    <div slot="trds-card__media">
+                        <trds-video src="https://toprepair.hu/cdn/works/pdr/technology.mp4" controls></trds-video>
+                    </div>
                     <div slot="trds-card__body">
                         <trds-link-block href="https://facebookj.com" download baszod target="_blank">
                            bazmeg
