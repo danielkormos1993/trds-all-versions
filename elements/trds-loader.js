@@ -1,5 +1,5 @@
 ﻿// add trds-loader to element which will have a loader property with enable and disable functions
-// can be used on nearly anything(except in elements with other than position:relative)
+// can be used on nearly anything(except in elements with other position property)
 
 import '../base/theme.js';
 import './trds-icon.js';
@@ -41,7 +41,7 @@ customElements.define('trds-loader', class trdsLoader extends HTMLElement{
                     }
                 }
                 :host trds-icon{
-                    animation: TrdsSpin 2s linear infinite;
+                    animation: TrdsSpin 1.5s linear infinite;
                     font-size: 1.5em;
                 }
                 @keyframes TrdsSpin {
@@ -56,16 +56,18 @@ customElements.define('trds-loader', class trdsLoader extends HTMLElement{
 
     connectedCallback(){
 
-        this.style.backgroundColor = findClosestBgColor(this);
-
         this.parentElement.style.position = 'relative';
         this.parentElement.loader = this;
 
     }
 
     enable = () => {
+
+        this.style.backgroundColor = findClosestBgColor(this);
+
         this.setAttribute('active', true);
         this.dispatchEvent( new Event('enabled'));
+
     }
     
     disable = () => {
