@@ -7,29 +7,6 @@ import '../base/theme.js';
 import '../base/layout.js';
 import { setCookie, getCookie } from '../libs/cookies.js';
 
-let TrbsCookiebarStyle = document.createElement('style');
-TrbsCookiebarStyle.id = 'trbs-cookiebar-style';
-TrbsCookiebarStyle.textContent = `
-    trbs-cookiebar{
-        display: block;
-        padding: var(--trbs-space--xl) var(--trbs-container-padding-x);
-        position: fixed;
-        width: 100%;
-        bottom: -100%;
-        left: 0;
-        background-color: var(--trbs-color--red);
-        z-index: 100;
-    }
-    .trbs-cookiebar--show{
-        animation: TrbsCookieBarAnimation 1s forwards ease-in-out;
-        animation-delay: 3s;
-    }
-    @keyframes TrbsCookieBarAnimation{
-        100%{bottom:0}
-    }
-`;
-document.head.appendChild(TrbsCookiebarStyle);
-
 customElements.define('trds-cookiebar', class TrdsCookiebar extends HTMLElement{
 
     constructor(){
