@@ -20,20 +20,20 @@ customElements.define('trds-footer', class trdsFooter extends HTMLElement{
                     background-color: var(--trds-theme--secondary-bg);
                     padding: var(--trds-space--xl) var(--trds-container--padding-x);
                 }
-                :host .top{
+                :host > trds-stack{
                     text-align: center; 
                     justify-items: center;
                 }
-                :host trds-text{
-                    color: var(--trbs-color--grey);
+                :host trds-text.copyright{
+                    color: var(--trds-theme--secondary-text);
                 }
-                .trbs-footer__items-stack{
-                    gap: var(--trbs-space--s);
+                :host trds-stack.items{
+                    gap: var(--trds-space--s);
                     justify-items: center;
                 }
             </style>
-            <trds-stack class="top">
-                <trds-text>${new Date().getFullYear()} © TOP REPAIR</trds-text>
+            <trds-stack>
+                <trds-text class="copyright">${new Date().getFullYear()} © TOP REPAIR</trds-text>
                 <trds-stack class="items">
                     <slot></slot>
                 </trds-stack>   
