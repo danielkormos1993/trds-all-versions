@@ -48,6 +48,7 @@ customElements.define('trds-main', class trdsMain extends HTMLElement{
                 :host{
                     display: flex;
                     flex-direction: column;
+                    padding-top: var(--trds-header-height, 0);
                 }
             </style>
             <slot></slot>
