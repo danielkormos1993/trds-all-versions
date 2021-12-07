@@ -15,6 +15,8 @@
     <script src="elements/trds-video.js" type="module"></script>
     <script src="components/trds-cookiebar.js" type="module"></script>
     <script src="components/trds-footer.js" type="module"></script>
+    <script src="components/trds-timeline.js" type="module"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body is="trds-body">
     <trds-main>
@@ -49,6 +51,31 @@
                     <div slot="trds-card__footer"> This is the footer lement of a card</div>
                 </trds-card>
             </trds-grid>  
+        </trds-section>
+        <trds-section>
+            <trds-stack style="gap:var(--trds-space--xxl)">
+                <trds-title level="2">Timeline component test</trds-title>
+                <trds-timeline>
+                    <trds-timeline__step number="1993">
+                        <trds-stack>
+                            <trds-title level="3">Step 1</trds-title>
+                            <trds-paragraph>Ez a step 1, nézzük hogy néz ki.</trds-paragraph>
+                        </trds-stack>
+                    </trds-timeline__step>
+                    <trds-timeline__step number="2">
+                        <trds-stack>
+                            <trds-title level="3">Step 2</trds-title>
+                            <trds-paragraph>Ez a step 2, nézzük hogy néz ki.</trds-paragraph>
+                        </trds-stack>
+                    </trds-timeline__step>
+                    <trds-timeline__step number="3">
+                        <trds-stack>
+                            <trds-title level="3">Step 3</trds-title>
+                            <trds-paragraph>Ez a step 3, nézzük hogy néz ki.</trds-paragraph>
+                        </trds-stack>
+                    </trds-timeline__step>
+                </trds-timeline>
+            </trds-stack>
         </trds-section>
     </trds-main>
     <trds-footer>
