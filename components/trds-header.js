@@ -1,4 +1,5 @@
-// todo: fix styling
+// usage: trds-header
+// put trds-link-block elements inside for menu items
 
 import '../base/layout.js';
 import '../base/theme.js';
@@ -17,9 +18,6 @@ customElements.define('trds-header', class TrdsHeader extends HTMLElement{
         this.attachShadow({mode: 'open'});
         this.shadowRoot.innerHTML = `
             <style>
-                :root{
-                    --trds-header-height: 5rem;
-                }
                 :host{
                     background-color: var(--trds-theme--secondary-bg);
                     height: var(--trds-header-height);
@@ -32,6 +30,7 @@ customElements.define('trds-header', class TrdsHeader extends HTMLElement{
                     z-index: 100;
                     color: var(--trds-theme--secondary-text);
                     padding: 0 var(--trds-container--padding-x);
+                    box-sizing: border-box;
                 }
                 :host([mobile]){
                     overflow: hidden;
@@ -83,7 +82,7 @@ customElements.define('trds-header', class TrdsHeader extends HTMLElement{
             </style>
             <trds-header__top-bar>
                 <trds-link-block href="/" id="trds-header__logo-anchor">
-                    <trds-image id="trds-header__logo" alt="logo" src="${getHostUrl(import.meta.url)}/assets/images/logo.png"></trds-image>
+                    <trds-image style="object-fit: contain" id="trds-header__logo" alt="logo" src="${getHostUrl(import.meta.url)}/assets/images/logo.png"></trds-image>
                 </trds-link-block>
                 <trds-hamburger onclick="this.getRootNode().host.toggleMenu()"></trds-hamburger>
             </trds-header__top-bar>
@@ -99,6 +98,8 @@ customElements.define('trds-header', class TrdsHeader extends HTMLElement{
     }
 
     connectedCallback(){
+
+        document.body.style.setProperty('--trds-header-height', '5rem');
 
         window.addEventListener("click", e => {
             this.contains(e.target) || this.removeAttribute('opened');

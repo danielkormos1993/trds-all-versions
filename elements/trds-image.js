@@ -28,7 +28,8 @@ customElements.define('trds-image', class TrdsImage extends HTMLElement{
                     position: relative;
                     overflow: hidden;
                     background-color: var(--trds-theme--secondary-bg);
-
+                    object-fit: cover;
+                    object-position: center center;
                     --trds-image-padding-bottom: 56.25%;
                 }
                 :host #aspect-ratio-box{
@@ -41,8 +42,8 @@ customElements.define('trds-image', class TrdsImage extends HTMLElement{
                     width: 100%;
                     height: 100%;
                     display: block;
-                    object-fit: cover;
-                    object-position: center center;
+                    object-fit: inherit;
+                    object-position: inherit;
                 }
             </style>
             <div id="aspect-ratio-box"></div>
@@ -79,7 +80,10 @@ customElements.define('trds-image', class TrdsImage extends HTMLElement{
     loadImage = () => {
 
         this.image.addEventListener('load', () => {
-            requestAnimationFrame(() => {requestAnimationFrame(() => { this.loader.disable() })});
+            requestAnimationFrame(() => {requestAnimationFrame(() => { 
+                this.loader.disable();
+                this.style.backgroundColor = 'transparent'; 
+            })});
         });
         
         this.image.src = this.getAttribute('src');
