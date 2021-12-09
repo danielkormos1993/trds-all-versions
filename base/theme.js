@@ -21,6 +21,8 @@ styleTag.textContent = `
         --trds-theme--warning: rgb(231, 113, 27);
         --trds-theme--error: rgb(204, 46, 40);
 
+        --trds-theme--overlay-opacity: .72;
+
     }
 
     @font-face {

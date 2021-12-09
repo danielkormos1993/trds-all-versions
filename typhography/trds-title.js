@@ -22,7 +22,6 @@ customElements.define('trds-title', class trdsTitle extends HTMLElement{
                 :host{
                     display: block;
                     max-width: var(--trds-element--max-width);
-                    
                 }
                 :host > h1,
                 :host > h2,

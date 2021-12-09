@@ -1,9 +1,10 @@
 // usage: trds-modal[showonfirsthit(optional - acts like a popup), title(recomennded)]
 // every elements inside will go to the modal body
+// setTitle func for setting title, setBody setter for body content
+// show func and close func
 
 import '../base/layout.js';
 import '../base/theme.js';
-// import '../utilities/trbs-size.js'; set the title with utility for correct line hiehgt
 import '../elements/trds-icon.js';
 import '../typhography/trds-title.js';
 
@@ -19,6 +20,7 @@ customElements.define('trds-modal', class TrdsModal extends HTMLElement{
                     width: 100vw;
                     height: 100vh;
                     padding: var(--trds-space--m) 0;
+                    box-sizing: border-box;
                     position: fixed;
                     top: 0;
                     left: 0;
@@ -29,6 +31,7 @@ customElements.define('trds-modal', class TrdsModal extends HTMLElement{
                     transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
                     align-items: center;
                     justify-content: center;
+                    z-index: 1000;
                 }
                 :host([show]){
                     opacity: 1;
@@ -44,28 +47,30 @@ customElements.define('trds-modal', class TrdsModal extends HTMLElement{
                     top: 0;
                     left: 0;
                     background-color: var(--trds-theme--secondary-bg);
-                    mix-blend-mode: overlay;
-                    z-index: 100;
+                    opacity: var(--trds-theme--overlay-opacity);
+                    z-index: 1000;
                 }
                 trds-modal__container{
                     display: block;
                     width: 90%;
-                    max-width: var(--trds-element-max-width);
+                    max-width: var(--trds-element--max-width);
                     max-height: 100%;
                     overflow: auto;
                     position: relative;
-                    z-index: 101;
+                    z-index: 1001;
                 }
                 trds-modal__header{
                     display: flex;
                     align-items: center;
                     padding: var(--trds-space--m);
+                    box-sizing: border-box;
                     background-color: var(--trds-theme--primary);
                     justify-content: space-between;
                 }
                 trds-modal__body{
                     display: block;
                     padding: var(--trds-space--l);
+                    box-sizing: border-box;
                     background-color: var(--trds-theme--secondary-bg);
                     overflow: auto;
                     max-height: 90vh;
@@ -74,6 +79,7 @@ customElements.define('trds-modal', class TrdsModal extends HTMLElement{
                     text-transform: uppercase;
                     margin-right: var(--trds-space--m);
                     letter-spacing: 2px;
+                    font-size: var(--trds-size--s);
                 }
                 trds-modal__header trds-icon{
                     cursor: pointer;
@@ -83,7 +89,7 @@ customElements.define('trds-modal', class TrdsModal extends HTMLElement{
             <trds-modal__overlay></trds-modal__overlay>
             <trds-modal__container>
                 <trds-modal__header>
-                    <trds-title level="3" style="font-size: --trds-size--s"></trds-title>
+                    <trds-title level="3"></trds-title>
                     <trds-icon icon="solid/times" onclick="this.getRootNode().host.close()"></trds-icon>
                 </trds-modal__header>
                 <trds-modal__body>
