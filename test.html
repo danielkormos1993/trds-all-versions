@@ -19,6 +19,7 @@
     <script src="components/trds-header.js" type="module"></script>
     <script src="components/trds-modal.js" type="module"></script>
     <script src="components/trds-showcase.js" type="module"></script>
+    <script src="utilities/trds-bg-image.js" type="module"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body is="trds-body">
@@ -64,7 +65,7 @@
                 </trds-card>
             </trds-grid>  
         </trds-section>
-        <trds-section>
+        <trds-section class="trds-bg-image trds-bg-image--lazy" style="--trds-bg-image-url: url('https://toprepair.hu/cdn/images/hero__bg1920.jpg')">
             <trds-stack style="gap:var(--trds-space--xxl)">
                 <trds-title level="2">Timeline component test</trds-title>
                 <trds-timeline>
