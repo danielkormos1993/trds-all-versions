@@ -31,6 +31,7 @@ customElements.define('trds-header', class TrdsHeader extends HTMLElement{
                     color: var(--trds-theme--secondary-text);
                     padding: 0 var(--trds-container--padding-x);
                     box-sizing: border-box;
+                    overflow: hidden;
                 }
                 :host([mobile]){
                     overflow: hidden;
@@ -102,38 +103,36 @@ customElements.define('trds-header', class TrdsHeader extends HTMLElement{
         document.body.style.setProperty('--trds-header-height', '5rem');
 
         window.addEventListener("click", e => {
-            this.contains(e.target) || this.removeAttribute('opened');
+            if(!this.contains(e.target)){
+                this.removeAttribute('opened');
+                this.scrollTop = 0;
+            }
         });
 
         [...this.querySelectorAll(':scope > *')].forEach( e => {
             e.addEventListener("focus", () => { this.setAttribute('opened', '') });
         });
 
-        let lastHeaderNavWidth = false;
-        let resizeTimer;
+        let lastHeaderNavWidth = null;
 
         const setHeaderNav = () => {
 
-            let headerNavWidth = 0;
-            [...this.querySelectorAll(':scope > *')].forEach(elem => headerNavWidth+= elem.clientWidth);
-
-            if(this.clientWidth - this.logoWrapper.clientWidth < (lastHeaderNavWidth || headerNavWidth)){
+            let headerComputedStyle = getComputedStyle(this);
+            let headerWidth = this.clientWidth - (parseFloat(headerComputedStyle.paddingLeft) + parseFloat(headerComputedStyle.paddingRight));
+            let headerNavWidth = this.nav.clientWidth;
+            
+            if(headerWidth - this.logoWrapper.clientWidth < (lastHeaderNavWidth || headerNavWidth)){
                 if(!lastHeaderNavWidth) lastHeaderNavWidth = headerNavWidth;
                 this.setAttribute('mobile', '');
             } else {
-                lastHeaderNavWidth = false;
+                lastHeaderNavWidth = null;
                 this.removeAttribute('mobile');
             }  
         };
 
         setHeaderNav();
      
-        window.addEventListener('resize', () => {
-
-            clearTimeout(resizeTimer);
-            resizeTimer = setTimeout(() => setHeaderNav(), 250);
-
-        });
+        window.addEventListener('resize', setHeaderNav);
 
     }
 
