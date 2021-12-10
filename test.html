@@ -18,6 +18,7 @@
     <script src="components/trds-timeline.js" type="module"></script>
     <script src="components/trds-header.js" type="module"></script>
     <script src="components/trds-modal.js" type="module"></script>
+    <script src="components/trds-showcase.js" type="module"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body is="trds-body">
@@ -45,7 +46,10 @@
                 </trds-card>
                 <trds-card>
                     <div slot="trds-card__media">
-                        <trds-video src="https://toprepair.hu/cdn/works/pdr/technology.mp4" controls></trds-video>
+                        <trds-showcase>
+                            <trds-image slot="before" src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg" alt="Előtte"></trds-image>
+                            <trds-image slot="after" src="https://static.remove.bg/remove-bg-web/54743c30904cc98f30bb79359718a5ffd69392cd/assets/start-1abfb4fe2980eabfbbaaa4365a0692539f7cd2725f324f904565a9a744f8e214.jpg" alt="After"></trds-image>
+                        </trds-showcase>
                     </div>
                     <div slot="trds-card__body">
                         <trds-link-block href="https://facebookj.com" download baszod target="_blank">
