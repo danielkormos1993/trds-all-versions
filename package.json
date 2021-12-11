@@ -3,10 +3,13 @@
   "version": "0.1",
   "description": "Design system for TOP REPAIR KFT Hungary.",
   "author": "Daniel Kormos",
+  "scripts": {
+    "start": "netlify dev",
+    "deploy": "git push origin master"
+  },
   "license": "ISC",
   "repository": {
     "type": "git",
     "url": "https://github.com/danielkormos1993/trds.git"
-  },
-  "url": "https://cdn.jsdelivr.net/gh/danielkormos1993/trds@master"
+  }
 }
