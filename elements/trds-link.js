@@ -11,7 +11,7 @@ export class trdsLink extends HTMLElement{
         this.attachShadow({mode: 'open'});
 
         this.shadowRoot.innerHTML = `
-            <a>
+            <a part="anchor">
                 <slot></slot>
             </a>
         `;

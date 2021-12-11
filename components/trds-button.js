@@ -65,7 +65,7 @@ customElements.define('trds-button', class trdsButton extends HTMLElement{
                     background-color: transparent;
                 }
 
-                trds-link-block,
+                trds-link-block::part(anchor),
                 button{
                     all: unset;
                     width: 100%;
