@@ -105,7 +105,7 @@ customElements.define('trds-button', class trdsButton extends HTMLElement{
             this.hasAttribute('href') ? 
             document.createElement('trds-link-block') : document.createElement('button');
 
-        if(buttonElement.nodeName.toLowerCase() === 'trds-link'){
+        if(buttonElement.nodeName.toLowerCase() === 'trds-link-block'){
             copyAttributes(this, ['download', 'href', 'target'], buttonElement);
         }
 
