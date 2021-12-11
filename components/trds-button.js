@@ -5,7 +5,7 @@
 // for call button there must be presented a number attribute
 
 
-import '../elements/trds-link.js';
+import '../elements/trds-link-block.js';
 import { copyAttributes } from '../libs/copyAttributes.js';
 import '../elements/trds-loader.js';
 import '../elements/trds-icon.js';
@@ -103,7 +103,7 @@ customElements.define('trds-button', class trdsButton extends HTMLElement{
 
         let buttonElement = 
             this.hasAttribute('href') ? 
-            document.createElement('trds-link') : document.createElement('button');
+            document.createElement('trds-link-block') : document.createElement('button');
 
         if(buttonElement.nodeName.toLowerCase() === 'trds-link'){
             copyAttributes(this, ['download', 'href', 'target'], buttonElement);
