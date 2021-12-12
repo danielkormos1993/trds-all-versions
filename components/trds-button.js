@@ -39,8 +39,7 @@ customElements.define('trds-button', class trdsButton extends HTMLElement{
                     font-size: var(--trds-size--xs);
                     transition: transform 0.25s ease-in-out;
                 }
-                :host(:hover),
-                :host(:focus){
+                :host(:hover){
                     filter: brightness(125%);
                 }
                 :host(:active){
