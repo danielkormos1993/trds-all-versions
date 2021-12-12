@@ -17,7 +17,7 @@ customElements.define('trds-stack', class trdsStack extends HTMLElement{
                 :host{
                     display: grid;
                     gap: var(--trds-space--m);
-                    /* align-content: start; */
+                    align-content: start;
                 }
             </style>
             <slot></slot>

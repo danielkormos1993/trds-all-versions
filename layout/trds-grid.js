@@ -29,6 +29,7 @@ customElements.define('trds-grid', class trdsGrid extends HTMLElement{
                 }
                 :host(.auto-width-layout){
                     gap: var(--trds-space--s);
+                    align-items: center;
                 }
                 :host(.auto-width-layout) ::slotted(*){
                     flex: 0 1 auto;
