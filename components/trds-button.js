@@ -37,6 +37,7 @@ customElements.define('trds-button', class trdsButton extends HTMLElement{
                     font-weight: bold;
                     text-transform: uppercase;
                     font-size: var(--trds-size--xs);
+                    transition: transform 0.25s ease-in-out;
                 }
                 :host(:active){
                     transform: scale(0.95);
@@ -66,7 +67,6 @@ customElements.define('trds-button', class trdsButton extends HTMLElement{
                 trds-link-block::part(anchor),
                 button{
                     all: unset;
-                    transition: transform 0.25s ease-in-out;
                     box-sizing: border-box;
                     padding: var(--trds-space--s) var(--trds-space--m);
                     display: flex;
