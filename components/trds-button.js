@@ -38,7 +38,9 @@ customElements.define('trds-button', class trdsButton extends HTMLElement{
                     text-transform: uppercase;
                     font-size: var(--trds-size--xs);
                 }
-
+                :host(:active){
+                    transform: scale(0.95);
+                }
                 :host([disabled]){
                     filter: brightness(0.75);
                     pointer-events: none;
@@ -79,10 +81,6 @@ customElements.define('trds-button', class trdsButton extends HTMLElement{
                 button:hover,
                 button:focus{
                     filter: brightness(125%);
-                }
-                trds-link-block::part(anchor):active,
-                button:active,{
-                    transform: scale(0.95);
                 }
 
                 trds-icon{
