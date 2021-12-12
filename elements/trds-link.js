@@ -8,7 +8,10 @@ export class trdsLink extends HTMLElement{
     constructor(){
         super();
 
-        this.attachShadow({mode: 'open'});
+        this.attachShadow({
+            mode: 'open',
+            delegatesFocus: true
+        });
 
         this.shadowRoot.innerHTML = `
             <a part="anchor">

@@ -19,7 +19,10 @@ customElements.define('trds-button', class trdsButton extends HTMLElement{
 
         super();
 
-        this.attachShadow({mode: 'open'});
+        this.attachShadow({
+            mode: 'open',
+            delegatesFocus: true
+        });
 
         this.shadowRoot.innerHTML = `
             <style>
@@ -30,19 +33,12 @@ customElements.define('trds-button', class trdsButton extends HTMLElement{
                     border-radius: 5px;
                     overflow: hidden;
                     max-width: max-content;
-                    transition: transform 0.25s ease-in-out;
                     background-color: var(--trds-theme--primary);
                     font-weight: bold;
                     text-transform: uppercase;
                     font-size: var(--trds-size--xs);
                 }
-                :host(:hover),
-                :host(:focus){
-                    filter: brightness(125%);
-                }
-                :host(:active){
-                    transform: scale(0.95);
-                }
+
                 :host([disabled]){
                     filter: brightness(0.75);
                     pointer-events: none;
@@ -51,7 +47,7 @@ customElements.define('trds-button', class trdsButton extends HTMLElement{
                     border-radius: 50px;
                 }
                 :host(.block){
-                    max-width: var(--trds-element-max-width);
+                    max-width: var(--trds-element--max-width);
                 }
                 :host(.icon-on-right) trds-icon{
                     order: 2;
@@ -68,7 +64,7 @@ customElements.define('trds-button', class trdsButton extends HTMLElement{
                 trds-link-block::part(anchor),
                 button{
                     all: unset;
-                    width: 100%;
+                    transition: transform 0.25s ease-in-out;
                     box-sizing: border-box;
                     padding: var(--trds-space--s) var(--trds-space--m);
                     display: flex;
@@ -76,7 +72,17 @@ customElements.define('trds-button', class trdsButton extends HTMLElement{
                     justify-content: center;
                     gap: var(--trds-space--s);
                     cursor: pointer;
-                    background-color: inherit;
+                }
+
+                trds-link-block::part(anchor):hover,
+                trds-link-block::part(anchor):focus,
+                button:hover,
+                button:focus{
+                    filter: brightness(125%);
+                }
+                trds-link-block::part(anchor):active,
+                button:active,{
+                    transform: scale(0.95);
                 }
 
                 trds-icon{
@@ -90,8 +96,6 @@ customElements.define('trds-button', class trdsButton extends HTMLElement{
     }
 
     connectedCallback(){
-
-        this.setAttribute('tabindex', '0');
 
         if(this.classList.contains('call')){
 
