@@ -15,6 +15,7 @@ customElements.define('trds-link-block', class trdsLinkBlock extends trdsLink{
 
             :host{
                 display: block;
+                max-width: max-content;
             }
             :host > a{
                 display: block;
