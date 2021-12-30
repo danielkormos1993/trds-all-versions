@@ -1,9 +1,21 @@
-// usage: trds-video
+// usage: video is trds-video
 // add lazy-src or lazy-poster for lazy resources
 // dont need to add preload none as it will be automatically added to if there is a poster
 
 import '../base/layout.js';
-import { copyAttributes } from '../libs/copyAttributes.js';
+
+let styleTag = document.createElement('style');
+styleTag.id = 'trds-video-style';
+styleTag.innerText = `
+    video[is=trds-video]{
+        display: block;
+        max-width: var(--trds-element--max-width);
+        width: 100%;
+        height: auto;
+        object-fit: contain;           
+    }
+`;
+document.head.appendChild(styleTag);
 
 const TrdsVideoSrcIntersectionHandler = new IntersectionObserver(function(entries){
     entries.forEach(function(entry) {
@@ -23,35 +35,16 @@ const TrdsVideoPosterIntersectionHandler = new IntersectionObserver(function(ent
     });
 }, {rootMargin: "0px 0px 100px 0px"});
 
-customElements.define('trds-video', class TrdsVideo extends HTMLElement{
+customElements.define('trds-video', class TrdsVideo extends HTMLVideoElement{
     
     constructor(){ 
         super();
-
-        this.attachShadow({mode: 'open'});
-        this.shadowRoot.innerHTML = `
-            <style>
-                :host{
-                    display: block;
-                    max-width: var(--trbs-element-max-width);              
-                }
-                :host video{
-                    width: 100%;
-                    height: auto;
-                    object-fit: contain;
-                }
-            </style>
-            <video></video>
-        `;
     }
 
-    connectedCallback(){
+    connectedCallback(){      
 
-        this.video = this.shadowRoot.querySelector('video');
-        copyAttributes(this, ['autoplay', 'muted', 'controls', 'loop', 'src', 'poster'], this.video);
-        
         if(this.hasAttribute('lazy-poster') || this.hasAttribute('poster'))
-            this.video.setAttribute('preload', 'none');
+            this.setAttribute('preload', 'none');
 
         if(this.hasAttribute('lazy-src')) 
             TrdsVideoSrcIntersectionHandler.observe(this)
@@ -61,7 +54,7 @@ customElements.define('trds-video', class TrdsVideo extends HTMLElement{
 
     }
 
-    loadPoster = () => this.video.poster = this.getAttribute('lazy-poster');
-    loadVideo = () => this.video.src = this.getAttribute('lazy-src');
+    loadPoster = () => this.poster = this.getAttribute('lazy-poster');
+    loadVideo = () => this.src = this.getAttribute('lazy-src');
 
-});
+}, {extends: 'video'});

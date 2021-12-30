@@ -40,7 +40,7 @@ customElements.define('trds-showcase', class TrdsShowcase extends HTMLElement{
                     text-transform: uppercase;
                     font-weight: bold;
                     background-color: var(--trds-theme--primary-bg);
-                    mix-blend-mode: overlay;
+                    mix-blend-mode: screen;
                     z-index: 1;
                 }
                 trds-showcase__after:before{

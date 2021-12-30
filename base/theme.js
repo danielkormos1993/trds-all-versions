@@ -17,7 +17,7 @@ styleTag.textContent = `
         --trds-theme--secondary-text: rgb(204, 204, 204);
         --trds-theme--tertiary-text: rgb(133, 133, 133);
 
-        --trds-theme--success: rgb(69, 133, 53);
+        --trds-theme--success: rgb(59, 123, 43);
         --trds-theme--warning: rgb(231, 113, 27);
         --trds-theme--error: rgb(204, 46, 40);
 

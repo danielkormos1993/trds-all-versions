@@ -20,7 +20,7 @@ customElements.define('trds-work', class TrdsWork extends HTMLElement{
         if(format === 'video')
 
             this.innerHTML = `
-                <trds-video src="${this.getAttribute('src')}" lazy-poster="${this.getAttribute('src')}.jpg" controls></trds-video>
+                <video is="trds-video" src="${this.getAttribute('src')}" lazy-poster="${this.getAttribute('src')}.jpg" controls></video>
             `;
 
         else if(format === 'image'){
