@@ -1,0 +1,4 @@
+- try out webpack for js bundling because dependency order is shit -> do it with gulp DONE 2022.01.15.
+- next elements:
+    - input DONE 2022.01.28
+    - toast DONE 2022.01.28

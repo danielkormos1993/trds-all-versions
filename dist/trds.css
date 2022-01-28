@@ -1,3 +1,14 @@
+input{
+    display: block;
+    max-width: var(--element--max-width);
+    background-color: var(--color--secondary-bg);
+    color: inherit;
+    font-size: inherit;
+    padding: var(--space--s);
+    border: none;
+    font-family: inherit;
+    margin: 0;
+}
 select{
     display: block;
     max-width: var(--element--max-width);
