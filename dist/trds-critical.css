@@ -48,7 +48,7 @@
     font-family: 'Montserrat';
     font-style: normal;
     font-display: block;
-    src: local('Montserrat Regular'), local('Montserrat-Regular'), url('/trds/assets/fonts/montserrat400.woff2') format('woff2');
+    src: local('Montserrat Regular'), local('Montserrat-Regular'), url('/assets/fonts/montserrat400.woff2') format('woff2');
     font-weight: 400;
 }
 
@@ -56,7 +56,7 @@
     font-family: 'Montserrat';
     font-style: normal;
     font-display: block;
-    src: local('Montserrat Bold'), local('Montserrat-Bold'), url('/trds/assets/fonts/montserrat700.woff2') format('woff2');
+    src: local('Montserrat Bold'), local('Montserrat-Bold'), url('/assets/fonts/montserrat700.woff2') format('woff2');
     font-weight: 700;
 }
 

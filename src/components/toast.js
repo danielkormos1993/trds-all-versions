@@ -27,10 +27,12 @@ class TrdsToast extends HTMLElement{
                     display: flex;
                     align-items: center;
                     width: 100%;
+                    box-sizing: border-box;
                     max-width: var(--element--max-width);
                     padding: var(--space--m);
                     background-color: var(--color--secondary-bg);
                     animation: TrdsToastAnimation .5s;
+                    gap: var(--space--m);
                 }
             
                 @keyframes TrdsToastAnimation{
@@ -53,7 +55,6 @@ class TrdsToast extends HTMLElement{
             
                 trds-toast__close-icon-container{
                     display: block;
-                    padding: var(--space--m);
                 }
             
             </style>
@@ -64,6 +65,14 @@ class TrdsToast extends HTMLElement{
                 <trds-icon icon="solid/times" onclick="this.getRootNode().host.remove()"></trds-icon>
             </trds-toast__close-icon-container>
         `;
+
+    }
+
+    connectedCallback(){
+
+        setTimeout(() => {
+            this.remove();
+        }, 10000);
 
     }
 

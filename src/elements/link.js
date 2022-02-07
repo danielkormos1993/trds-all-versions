@@ -10,6 +10,7 @@ TrdsLinkStyle.textContent = `
     a[is=trds-link]{
         transition: filter 0.25s ease-in-out;
         color: inherit;
+        cursor: pointer;
     }
 
     a[is=trds-link]:hover,

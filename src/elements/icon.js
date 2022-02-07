@@ -17,6 +17,7 @@ class TrdsIcon extends HTMLElement{
         this.attachShadow({mode: 'open'}).innerHTML = `
             <style>
                 :host{
+                    display: block;
                     width: 1em;
                     height: 1em;
                     background: currentColor;
@@ -54,8 +55,8 @@ class TrdsIcon extends HTMLElement{
 
         this.icon.textContent = `
             :host{
-                -webkit-mask-image: url("/trds/assets/icons/${iconName}.svg");
-                mask-image: url("/trds/assets/icons/${iconName}.svg");
+                -webkit-mask-image: url("/assets/icons/${iconName}.svg");
+                mask-image: url("/assets/icons/${iconName}.svg");
             }
         `;
 

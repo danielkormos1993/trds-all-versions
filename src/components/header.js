@@ -73,6 +73,12 @@ class TrdsHeader extends HTMLElement{
 
     }
 
+    disconnectedCallback(){
+
+        document.body.style.paddingTop = 0;
+
+    }
+
 }
 
 window.customElements.define('trds-header', TrdsHeader);
