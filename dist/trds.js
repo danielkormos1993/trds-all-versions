@@ -535,7 +535,13 @@ class TrdsTag extends HTMLElement{
                     font-size: var(--size--xs);
                     min-width: max-content;
                     max-width: max-content;
-                    display: inline-block;
+                    display: inline-flex;
+                    gap: var(--space--xs);
+                    align-items: center;
+                    font-weight: bold;
+                }
+                ::slotted(trds-icon){
+                    cursor: pointer;
                 }
             </style>
             <slot><slot>
