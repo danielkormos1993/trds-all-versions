@@ -540,6 +540,10 @@ class TrdsTag extends HTMLElement{
                     align-items: center;
                     font-weight: bold;
                 }
+                :host(.outline){
+                    box-shadow: inset 0 0 0 2px currentColor;
+                    background-color: transparent;
+                }
                 ::slotted(trds-icon){
                     cursor: pointer;
                 }
