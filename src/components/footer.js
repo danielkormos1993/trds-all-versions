@@ -1,4 +1,4 @@
-import './container.js';
+import '../layout/container.js';
 
 class TrdsFooter extends HTMLElement{
 
