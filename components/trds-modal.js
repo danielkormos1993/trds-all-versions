@@ -1,13 +1,63 @@
-// usage: trds-modal[showonfirsthit(optional - acts like a popup)]
-// slot name title for title
-// slot for modal body
-// show func and close func
-
-import '../typhography/trds-heading.js';
+import TrdsElement from '../trds-element.js';
+import '../typhography/trds-title.js';
 import '../elements/trds-icon.js';
 
-const TrdsModalStyle = document.createElement('style');
-TrdsModalStyle.textContent = `
+const TrdsModalTemplate = document.createElement('template');
+TrdsModalTemplate.innerHTML = `
+    <trds-modal_container>
+        <trds-modal_header>
+            <trds-heading level="2"></trds-heading>
+            <trds-icon icon="solid/times" onclick="this.closest('trds-modal').close()"></trds-icon>
+        </trds-modal_header>
+        <trds-modal_body>
+        </trds-modal_body>
+    </trds-modal_container>
+`;
+
+class TrdsModal extends TrdsElement{
+
+    constructor(){
+        super()
+
+        this.template = TrdsModalTemplate.content.cloneNode(true);
+
+    }
+
+    connectedCallback(){
+
+        super.connectedCallback();
+
+        if(this.hasAttribute('showonfirsthit') && sessionStorage.getItem('popup') != 'true'){
+            this.show();
+            sessionStorage.setItem('popup', 'true');
+        }
+        
+    }
+
+    render(){
+
+        this.template.querySelector('trds-modal_body').append(...this.children);
+        this.template.querySelector('trds-modal_header trds-title').textContent = this.getAttribute('title');
+
+        this.append(this.template);
+
+    }
+
+    show = () => {
+
+        let currentModal = document.querySelector('trds-modal.show');
+        if(currentModal) currentModal.close();
+        
+        this.classList.add('show');
+    }
+
+    close = () => this.classList.remove('show');
+    
+}
+
+customElements.define('trds-modal', TrdsModal);
+
+TrdsElement.addStyle(`
 
     trds-modal{
         width: 100vw;
@@ -67,63 +117,4 @@ TrdsModalStyle.textContent = `
         font-size: var(--size--s) !important;
     }
 
-`;
-document.head.appendChild(TrdsModalStyle);
-
-const TrdsModalTemplate = document.createElement('template');
-TrdsModalTemplate.innerHTML = `
-    <trds-modal_container>
-        <trds-modal_header>
-            <trds-heading level="2"></trds-heading>
-            <trds-icon icon="solid/times" onclick="this.closest('trds-modal').close()"></trds-icon>
-        </trds-modal_header>
-        <trds-modal_body>
-        </trds-modal_body>
-    </trds-modal_container>
-`;
-
-export default class TrdsModal extends HTMLElement{
-
-    constructor(){
-        super()
-
-        this.rendered = false;
-        this.template = TrdsModalTemplate.content.cloneNode(true);
-
-    }
-
-    connectedCallback(){
-
-        if(!this.rendered) this.render();
-
-        if(this.hasAttribute('showonfirsthit') && sessionStorage.getItem('popup') != 'true'){
-            this.show();
-            sessionStorage.setItem('popup', 'true');
-        }
-        
-    }
-
-    render = () => {
-
-        this.template.querySelector('trds-modal_body').append(...this.children);
-        this.template.querySelector('trds-modal_header trds-heading').textContent = this.getAttribute('title');
-
-        this.append(this.template);
-
-        this.rendered = true;
-
-    }
-
-    show = () => {
-
-        let currentModal = document.querySelector('trds-modal.show');
-        if(currentModal) currentModal.close();
-        
-        this.classList.add('show');
-    }
-
-    close = () => this.classList.remove('show');
-    
-}
-
-customElements.define('trds-modal', TrdsModal);
+`);

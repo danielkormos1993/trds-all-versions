@@ -6,13 +6,13 @@ import TrdsElement from '../trds-element.js';
 
 const TrdsHeaderTemplate = document.createElement('template');
 TrdsHeaderTemplate.innerHTML = `
-    <trds-container>
+    <container>
         <a is="trds-link" class="block logo-link" href="/">
             <trds-image alt="Logo"></trds-image>
         </a>
         <trds-carousel>
         </trds-carousel>
-    </trds-container>
+    </container>
 `;
 
 class TrdsHeader extends TrdsElement{
@@ -26,8 +26,7 @@ class TrdsHeader extends TrdsElement{
 
     connectedCallback(){
 
-        if(!this.rendered) this.render();
-
+        super.connectedCallback();
         document.body.style.paddingTop = 'var(--header-height)';
 
     }
@@ -38,15 +37,13 @@ class TrdsHeader extends TrdsElement{
 
     }
 
-    render = () => {
+    render(){
 
         this.template.querySelector('.logo-link trds-image').setAttribute('src', this.getAttribute('logo-src'));
 
         this.template.querySelector('trds-carousel').append(...this.children);
 
         this.append(this.template);
-
-        this.rendered = true;
 
     }
 

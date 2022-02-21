@@ -1,11 +1,72 @@
-// usage: trds-timeline
-// add trds-timeline__step element for a step which MUST HAVE A NUMBER attribute which displayed as count in timeline
-// it automatically set timeline to row oriented if all elements can fit 
-
 import '../elements/trds-icon.js';
+import TrdsElement from '../trds-element.js';
 
-const TrdsTimelineStyle = document.createElement('style');
-TrdsTimelineStyle.textContent = `
+const TrdsTimelineTemplate = document.createElement('template');
+TrdsTimelineTemplate.innerHTML = `
+    <trds-timeline_finish-flag>
+        <trds-icon icon="solid/flag-checkered"></trds-icon>
+    </trds-timeline_finish-flag>
+`;
+
+class TrdsTimeline extends TrdsElement{
+    
+    constructor(){ 
+        super()
+
+        this.template = TrdsTimelineTemplate.content.cloneNode(true);
+
+    }
+
+    render(){
+
+        [...this.children].forEach(child => {
+
+            this.template.insertBefore(child, this.template.querySelector('trds-timeline_finish-flag'));
+
+        });
+
+        this.append(this.template);
+
+        this.TimelineSteps =  this.querySelectorAll('trds-timeline_step');
+
+        this.TimelineSteps.forEach(elem => {
+            if(!elem.hasAttribute('number'))
+                return console.error("Number attribute must be added to trds-timeline_step component.");
+            if(elem.getAttribute('number').length > 4)
+                return console.error("Number attribute should not exceed 4 digits.");
+
+            elem.setAttribute( 'digit-number', elem.getAttribute('number').length);
+        });
+
+        this.setTimeline();
+
+    }
+
+    connectedCallback(){
+
+        super.connectedCallback();
+
+        window.addEventListener('resize', this.setTimeline);
+
+    }
+
+    disconnectedCallback(){
+
+        window.removeEventListener('resize', this.setTimeline);
+
+    }
+
+    setTimeline = () => {
+
+        (this.parentElement.getBoundingClientRect().width / 400) >= this.TimelineSteps.length ? this.classList.add('row-oriented') : this.classList.remove('row-oriented');
+
+    }
+
+}
+
+customElements.define('trds-timeline', TrdsTimeline);
+
+TrdsElement.addStyle(`
 
     trds-timeline{
         display: grid;
@@ -104,73 +165,4 @@ TrdsTimelineStyle.textContent = `
         left: auto;
     }
 
-`;
-document.head.appendChild(TrdsTimelineStyle);
-
-const TrdsTimelineTemplate = document.createElement('template');
-TrdsTimelineTemplate.innerHTML = `
-    <trds-timeline_finish-flag>
-        <trds-icon icon="solid/flag-checkered"></trds-icon>
-    </trds-timeline_finish-flag>
-`;
-
-export default class TrdsTimeline extends HTMLElement{
-    
-    constructor(){ 
-        super()
-
-        this.rendered = false;
-        this.template = TrdsTimelineTemplate.content.cloneNode(true);
-
-    }
-
-    render = () => {
-
-        [...this.children].forEach(child => {
-
-            this.template.insertBefore(child, this.template.querySelector('trds-timeline_finish-flag'));
-
-        });
-
-        this.append(this.template);
-
-        this.TimelineSteps =  this.querySelectorAll('trds-timeline_step');
-
-        this.TimelineSteps.forEach(elem => {
-            if(!elem.hasAttribute('number'))
-                return console.error("Number attribute must be added to trds-timeline_step component.");
-            if(elem.getAttribute('number').length > 4)
-                return console.error("Number attribute should not exceed 4 digits.");
-
-            elem.setAttribute( 'digit-number', elem.getAttribute('number').length);
-        });
-
-        this.setTimeline();
-
-        this.rendered = true;
-
-    }
-
-    connectedCallback(){
-
-        if(!this.rendered) this.render();
-
-        window.addEventListener('resize', this.setTimeline);
-
-    }
-
-    disconnectedCallback(){
-
-        window.removeEventListener('resize', this.setTimeline);
-
-    }
-
-    setTimeline = () => {
-
-        (this.parentElement.getBoundingClientRect().width / 400) >= this.TimelineSteps.length ? this.classList.add('row-oriented') : this.classList.remove('row-oriented');
-
-    }
-
-}
-
-customElements.define('trds-timeline', TrdsTimeline);
+`);

@@ -1,7 +1,64 @@
 import '../elements/trds-icon.js';
+import TrdsElement from '../trds-element.js';
 
-const TrdsToastStyle = document.createElement('style');
-TrdsToastStyle.textContent = `
+const TrdsToastTemplate = document.createElement('template');
+TrdsToastTemplate.innerHTML = `
+    <trds-toast_content>
+    </trds-toast_content>
+    <trds-toast_close-icon-container>
+        <trds-icon icon="solid/times" onclick="this.closest('trds-toast').remove()"></trds-icon>
+    </trds-toast_close-icon-container>
+`;
+
+class TrdsToast extends TrdsElement{
+
+    constructor(){ 
+        super()
+
+        this.template = TrdsToastTemplate.content.cloneNode(true);
+
+    }
+
+    connectedCallback(){
+
+        super.connectedCallback();
+
+        setTimeout(() => {
+            this.remove();
+        }, 10000);
+
+    }
+
+    render(){
+
+        this.template.querySelector('trds-toast_content').append(...this.childNodes);
+
+        this.append(this.template);
+
+    }
+
+    show = (options) => {
+
+        if(options && options.hasOwnProperty('after'))
+            options.after.parentNode.insertBefore(this, options.after.nextSibling);
+        else if(options && options.hasOwnProperty('before'))
+            options.before.parentNode.insertBefore(this, options.before);
+        else{
+            
+            if(document.body.querySelectorAll('trds-toasts-container trds-toast').length === 0)
+                document.body.appendChild(document.createElement('trds-toasts-container'));
+            
+            document.body.querySelector('trds-toasts-container').appendChild(this);
+
+        } 
+
+    }
+
+}
+
+customElements.define('trds-toast', TrdsToast);
+
+TrdsElement.addStyle(`
 
     trds-toasts-container{
         display: grid;
@@ -48,65 +105,4 @@ TrdsToastStyle.textContent = `
         display: block;
     }
 
-`;
-document.head.appendChild(TrdsToastStyle);
-
-const TrdsToastTemplate = document.createElement('template');
-TrdsToastTemplate.innerHTML = `
-    <trds-toast_content>
-    </trds-toast_content>
-    <trds-toast_close-icon-container>
-        <trds-icon icon="solid/times" onclick="this.closest('trds-toast').remove()"></trds-icon>
-    </trds-toast_close-icon-container>
-`;
-
-export default class TrdsToast extends HTMLElement{
-
-    constructor(){ 
-        super()
-
-        this.rendered = false;
-        this.template = TrdsToastTemplate.content.cloneNode(true);
-
-    }
-
-    connectedCallback(){
-
-        if(!this.rendered) this.render();
-
-        setTimeout(() => {
-            this.remove();
-        }, 10000);
-
-    }
-
-    render = () => {
-
-        this.template.querySelector('trds-toast_content').append(...this.childNodes);
-
-        this.append(this.template);
-
-        this.rendered = true;
-
-    }
-
-    show = (options) => {
-
-        if(options && options.hasOwnProperty('after'))
-            options.after.parentNode.insertBefore(this, options.after.nextSibling);
-        else if(options && options.hasOwnProperty('before'))
-            options.before.parentNode.insertBefore(this, options.before);
-        else{
-            
-            if(document.body.querySelectorAll('trds-toasts-container trds-toast').length === 0)
-                document.body.appendChild(document.createElement('trds-toasts-container'));
-            
-            document.body.querySelector('trds-toasts-container').appendChild(this);
-
-        } 
-
-    }
-
-}
-
-customElements.define('trds-toast', TrdsToast);
+`);
