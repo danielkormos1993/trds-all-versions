@@ -1,3 +1,8 @@
+// usage: trds-card
+// add trds-card_media for media element
+// add trds-card_body for card body
+// add trds-card_footer for card footer (this will pushed to the bottom of the card when there is a grid for example)
+
 import TrdsElement from "../trds-element.js";
 
 TrdsElement.addStyle(`

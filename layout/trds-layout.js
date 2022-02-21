@@ -1,3 +1,7 @@
+// usage
+// for page content, use the <main> element
+// for sections, use the <trds-section> element
+
 import TrdsElement from "../trds-element.js";
 import './trds-section.js';
 

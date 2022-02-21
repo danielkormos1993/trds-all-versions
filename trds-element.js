@@ -69,4 +69,6 @@ TrdsElement.addStyle(`
 
     }
 
-`)
+`);
+
+window.addEventListener('load', () => document.body.style.visibility = 'visible');

@@ -1,3 +1,5 @@
+// class helpers for sizing typhography elements and trds-icon
+
 import TrdsElement from "../trds-element.js";
 
 TrdsElement.addStyle(`

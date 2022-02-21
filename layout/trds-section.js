@@ -1,3 +1,9 @@
+// usage: trds-section
+// add bg-image class for background-image and declare bg-image-src style property
+// add lazy class for lazy loading bg-image
+// modify bg-image-overlay with an rgb color declaration
+// feel free to modify background related css properties on trds-section element if needed
+
 import TrdsElement from '../trds-element.js';
 import './container.js';
 
@@ -10,6 +16,11 @@ const TrdsSectionIntersectionHandler = new IntersectionObserver(function(entries
     });
 }, {rootMargin: "0px 0px 200px 0px"});
 
+const TrdsSectionTemplate = document.createElement('template');
+TrdsSectionTemplate.innerHTML = `
+    <container></container>
+`;
+
 class TrdsSection extends TrdsElement{
 
     constructor(){
@@ -18,10 +29,10 @@ class TrdsSection extends TrdsElement{
 
     render(){
 
-        const container = document.createElement('container');
-        container.append(...this.children);
+        const template = TrdsSectionTemplate.content.cloneNode(true);
+        template.append(...this.children);
 
-        this.appendChild(container);
+        this.appendChild(template);
 
         if(this.classList.contains('lazy'))
             TrdsSectionIntersectionHandler.observe(this);
@@ -47,7 +58,7 @@ TrdsElement.addStyle(`
 
     trds-section.bg-image{
         --bg-image-overlay: var(--color--primary-bg);
-        background: var(--bg-image-url) var(--bg-image-overlay);
+        background: var(--bg-image-src) var(--bg-image-overlay);
         background-position: center center;
         background-size: cover;
         background-blend-mode: overlay;

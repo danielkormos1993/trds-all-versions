@@ -1,3 +1,8 @@
+// usage: trds-grid
+// add class boxes-layout for closer items to each other
+// add class auto-width-layout for auto width elements
+// modify gap style property on grid if needed 
+
 import TrdsElement from "../trds-element.js";
 
 TrdsElement.addStyle(`
