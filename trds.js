@@ -498,8 +498,8 @@ class TrdsIcon extends TrdsElement{
 
         this.IconStyle.textContent = `
             :host{
-                -webkit-mask-image: url("/assets/icons/${iconName}.svg");
-                mask-image: url("/assets/icons/${iconName}.svg");
+                -webkit-mask-image: url("/trds-elements/assets/icons/${iconName}.svg");
+                mask-image: url("/trds-elements/assets/icons/${iconName}.svg");
             }
         `;
 

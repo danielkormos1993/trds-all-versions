@@ -5,11 +5,13 @@
   "main": "index.js",
   "scripts": {
     "start": "serve",
-    "build": "rollup index.js --file trds.js"
+    "build": "rollup index.js --file trds.js",
+    "deploy": "npm run build && git push origin master"
   },
   "author": "Daniel Kormos",
   "license": "ISC",
   "devDependencies": {
+    "rollup": "^2.68.0",
     "serve": "^13.0.2"
   }
 }
