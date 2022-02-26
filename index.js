@@ -1,3 +1,4 @@
+import './typhography/trds-text.js';
 import './typhography/trds-paragraph.js';
 import './typhography/trds-title.js';
 import './typhography/class-size.js';

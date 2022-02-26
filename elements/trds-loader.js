@@ -5,38 +5,6 @@ import TrdsElement from '../trds-element.js';
 import './trds-icon.js';
 import { FindClosestBgColor } from '../libs/colorHelpers.js';
 
-class TrdsLoader extends TrdsElement{
-
-    constructor(){
-        super()
-    }
-
-    render(){
-
-        this.innerHTML = '<trds-icon icon="solid/spinner"></trds-icon>';
-
-    }
-
-    enable = () => {
-
-        this.parentElement.style.position = 'relative';
-        this.style.backgroundColor = FindClosestBgColor(this);
-        this.classList.add('active');
-        this.dispatchEvent( new Event('enabled'));
-
-    }
-
-    disable = () => {
-
-        this.classList.remove('active');
-        this.dispatchEvent( new Event('disabled'));
-
-    }
-
-}
-
-customElements.define('trds-loader', TrdsLoader);
-
 TrdsElement.addStyle(`
 
     trds-loader{
@@ -68,3 +36,35 @@ TrdsElement.addStyle(`
     }
 
 `);
+
+class TrdsLoader extends TrdsElement{
+
+    constructor(){
+        super()
+    }
+
+    render(){
+
+        this.innerHTML = '<trds-icon icon="solid/spinner"></trds-icon>';
+
+    }
+
+    enable = () => {
+
+        this.parentElement.style.position = 'relative';
+        this.style.backgroundColor = FindClosestBgColor(this);
+        this.classList.add('active');
+        this.dispatchEvent( new Event('enabled'));
+
+    }
+
+    disable = () => {
+
+        this.classList.remove('active');
+        this.dispatchEvent( new Event('disabled'));
+
+    }
+
+}
+
+customElements.define('trds-loader', TrdsLoader);

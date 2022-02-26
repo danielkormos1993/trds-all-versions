@@ -1,46 +1,6 @@
 import '../elements/trds-image.js';
 import TrdsElement from '../trds-element.js';
 
-class TrdsShowcase extends TrdsElement{
-
-    constructor(){
-        super()
-    }
-
-    connectedCallback(){
-
-        super.connectedCallback();
-        this.addEventListener('click', this.toggleAfterImg);
-
-    }
-
-    disconnectedCallback(){
-
-        this.removeEventListener('click', this.toggleAfterImg);
-
-    }
-
-    render(){
-
-        this.innerHTML = `
-            <trds-showcase_before>
-                <trds-image alt="Javítás előtti kép" lazy src="${this.getAttribute('before-image-url')}"></trds-image>
-            </trds-showcase_before>
-            <trds-showcase_after>
-                <trds-image alt="Javítás utáni kép" lazy src="${this.getAttribute('after-image-url')}"></trds-image>
-            </trds-showcase_after>
-        `;
-
-    }
-
-    toggleAfterImg = () => {
-        this.classList.contains('active') ? this.classList.remove('active') : this.classList.add('active');
-    }
-
-}
-
-customElements.define('trds-showcase', TrdsShowcase);
-
 TrdsElement.addStyle(`
     trds-showcase{
         display: block;
@@ -90,3 +50,43 @@ TrdsElement.addStyle(`
         object-fit: cover;
     }
 `);
+
+class TrdsShowcase extends TrdsElement{
+
+    constructor(){
+        super()
+    }
+
+    connectedCallback(){
+
+        super.connectedCallback();
+        this.addEventListener('click', this.toggleAfterImg);
+
+    }
+
+    disconnectedCallback(){
+
+        this.removeEventListener('click', this.toggleAfterImg);
+
+    }
+
+    render(){
+
+        this.innerHTML = `
+            <trds-showcase_before>
+                <trds-image alt="Javítás előtti kép" lazy src="${this.getAttribute('before-image-url')}"></trds-image>
+            </trds-showcase_before>
+            <trds-showcase_after>
+                <trds-image alt="Javítás utáni kép" lazy src="${this.getAttribute('after-image-url')}"></trds-image>
+            </trds-showcase_after>
+        `;
+
+    }
+
+    toggleAfterImg = () => {
+        this.classList.contains('active') ? this.classList.remove('active') : this.classList.add('active');
+    }
+
+}
+
+customElements.define('trds-showcase', TrdsShowcase);

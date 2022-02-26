@@ -4,6 +4,54 @@
 import { FindClosestBgColor, RgbToRgba } from "../libs/colorHelpers.js";
 import TrdsElement from "../trds-element.js";
 
+TrdsElement.addStyle(`
+
+    trds-carousel{
+        display: block;
+        position: relative;
+        overflow: hidden;
+        max-width: 100%;
+    }
+
+    trds-carousel .blur{
+        display:block;
+        position: absolute;
+        pointer-events: none;
+        transition: opacity 300ms ease 0s;
+        top: 0;
+        left: 0;
+        background: linear-gradient(to right, var(--blur-color), 50%, var(--blur-color-0));
+        background: -webkit-linear-gradient(left, var(--blur-color), var(--blur-color-0));
+        width: 25%;
+        height: 100%;
+        z-index: 1;
+        opacity: 0;
+    }
+
+    trds-carousel right-blur.blur{
+        left: auto;
+        right: 0;
+        background: linear-gradient(to left, var(--blur-color), 50%, var(--blur-color-0));
+        background: -webkit-linear-gradient(right, var(--blur-color), var(--blur-color-0));
+    }
+
+    trds-carousel .blur.active{
+        opacity: 1;
+    }
+
+    trds-carousel .slot{
+        overflow: auto;
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+        white-space: nowrap;
+    }
+
+    trds-carousel .slot::-webkit-scrollbar {
+        display: none;
+    }
+
+`);
+
 const TrdsCarouselTemplate = document.createElement('template');
 TrdsCarouselTemplate.innerHTML = `
     <div class="slot"></div>
@@ -106,51 +154,3 @@ class TrdsCarousel extends TrdsElement{
 }
 
 customElements.define('trds-carousel', TrdsCarousel);
-
-TrdsElement.addStyle(`
-
-    trds-carousel{
-        display: block;
-        position: relative;
-        overflow: hidden;
-        max-width: 100%;
-    }
-
-    trds-carousel .blur{
-        display:block;
-        position: absolute;
-        pointer-events: none;
-        transition: opacity 300ms ease 0s;
-        top: 0;
-        left: 0;
-        background: linear-gradient(to right, var(--blur-color), 50%, var(--blur-color-0));
-        background: -webkit-linear-gradient(left, var(--blur-color), var(--blur-color-0));
-        width: 25%;
-        height: 100%;
-        z-index: 1;
-        opacity: 0;
-    }
-
-    trds-carousel right-blur.blur{
-        left: auto;
-        right: 0;
-        background: linear-gradient(to left, var(--blur-color), 50%, var(--blur-color-0));
-        background: -webkit-linear-gradient(right, var(--blur-color), var(--blur-color-0));
-    }
-
-    trds-carousel .blur.active{
-        opacity: 1;
-    }
-
-    trds-carousel .slot{
-        overflow: auto;
-        -ms-overflow-style: none;  /* IE and Edge */
-        scrollbar-width: none;  /* Firefox */
-        white-space: nowrap;
-    }
-
-    trds-carousel .slot::-webkit-scrollbar {
-        display: none;
-    }
-
-`);

@@ -73,6 +73,16 @@ TrdsElement.addStyle(`
 
 window.addEventListener('load', () => document.body.style.visibility = 'visible');
 
+// usage: span
+
+TrdsElement.addStyle(`
+
+    span{
+        max-width: var(--element--max-width);
+    }
+
+`);
+
 // usage: p
 
 TrdsElement.addStyle(`
@@ -117,6 +127,33 @@ TrdsElement.addStyle(`
 
 // usage: <trds-title level={1-6} ...
 
+TrdsElement.addStyle(`
+
+    trds-title{
+        display: block;
+        font-weight: bold;
+        max-width: var(--element--max-width);
+    }
+
+    .trds-title_tag{
+        margin: 0;
+        font-weight: inherit;
+        font-size: inherit;
+    }
+
+    trds-title[level="4"] .trds-title_tag{
+        text-decoration: underline;
+    }
+
+    trds-title.variant--1 .trds-title_tag{
+        text-transform: uppercase;
+        letter-spacing: .2rem;
+        font-size: var(--size--m);
+        line-height: var(--size--m--line-height);
+    }
+
+`);
+
 const levelToClassMap = {
 
     1: 'size--xxl',
@@ -151,33 +188,6 @@ class TrdsTitle extends TrdsElement{
 
 customElements.define('trds-title', TrdsTitle);
 
-TrdsElement.addStyle(`
-
-    trds-title{
-        display: block;
-        font-weight: bold;
-        max-width: var(--element--max-width);
-    }
-
-    .trds-title_tag{
-        margin: 0;
-        font-weight: inherit;
-        font-size: inherit;
-    }
-
-    trds-title[level="4"] .trds-title_tag{
-        text-decoration: underline;
-    }
-
-    trds-title.variant--1 .trds-title_tag{
-        text-transform: uppercase;
-        letter-spacing: .2rem;
-        font-size: var(--size--m);
-        line-height: var(--size--m--line-height);
-    }
-
-`);
-
 // container element for layout
 
 TrdsElement.addStyle(`
@@ -195,44 +205,6 @@ TrdsElement.addStyle(`
 `);
 
 // usage: trds-section
-
-const TrdsSectionIntersectionHandler = new IntersectionObserver(function(entries){
-    entries.forEach(function(entry) {
-        if(entry.isIntersecting){
-            entry.target.loadBgImage();
-            TrdsSectionIntersectionHandler.unobserve(entry.target);
-        }
-    });
-}, {rootMargin: "0px 0px 200px 0px"});
-
-const TrdsSectionTemplate = document.createElement('template');
-TrdsSectionTemplate.innerHTML = `
-    <container></container>
-`;
-
-class TrdsSection extends TrdsElement{
-
-    constructor(){
-        super();
-    }
-
-    render(){
-
-        const template = TrdsSectionTemplate.content.cloneNode(true);
-        template.append(...this.children);
-
-        this.appendChild(template);
-
-        if(this.classList.contains('lazy'))
-            TrdsSectionIntersectionHandler.observe(this);
-
-    }
-
-    loadBgImage = () => this.classList.remove('lazy');
-
-}
-
-customElements.define('trds-section', TrdsSection);
 
 TrdsElement.addStyle(`
 
@@ -258,6 +230,46 @@ TrdsElement.addStyle(`
     }
 
 `);
+
+const TrdsSectionIntersectionHandler = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry) {
+        if(entry.isIntersecting){
+            entry.target.loadBgImage();
+            TrdsSectionIntersectionHandler.unobserve(entry.target);
+        }
+    });
+}, {rootMargin: "0px 0px 200px 0px"});
+
+const TrdsSectionTemplate = document.createElement('template');
+TrdsSectionTemplate.innerHTML = `
+    <container></container>
+`;
+
+class TrdsSection extends TrdsElement{
+
+    constructor(){
+        super();
+
+        this.template = TrdsSectionTemplate.content.cloneNode(true);
+
+    }
+
+    render(){
+
+        this.template.querySelector('container').append(...this.children);
+   
+        this.appendChild(this.template);
+
+        if(this.classList.contains('lazy'))
+            TrdsSectionIntersectionHandler.observe(this);
+
+    }
+
+    loadBgImage = () => this.classList.remove('lazy');
+
+}
+
+customElements.define('trds-section', TrdsSection);
 
 // usage
 
@@ -398,6 +410,16 @@ TrdsElement.addStyle(`
 
 // usage: video is trds-video
 
+TrdsElement.addStyle(`
+    video[is="trds-video"]{
+        display: block;
+        max-width: var(--element--max-width);
+        width: 100%;
+        height: auto;
+        object-fit: contain;           
+    }
+`);
+
 const TrdsVideoSrcIntersectionHandler = new IntersectionObserver(function(entries){
     entries.forEach(function(entry) {
         if(entry.isIntersecting){
@@ -453,17 +475,28 @@ class TrdsVideo extends HTMLVideoElement{
 
 customElements.define('trds-video', TrdsVideo, {extends: 'video'});
 
-TrdsElement.addStyle(`
-    video[is="trds-video"]{
-        display: block;
-        max-width: var(--element--max-width);
-        width: 100%;
-        height: auto;
-        object-fit: contain;           
-    }
-`);
-
 // usage: trds-icon [icon(required)="solid/cog", lazy(optional)]
+
+TrdsElement.addStyle(`
+
+    trds-icon{
+        display: block;
+        width: 1em;
+        height: 1em;
+        background: currentColor;
+        -webkit-mask-size: contain;
+        mask-size: contain;
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+        -webkit-mask-position: center center;
+        mask-position: center center;
+    }
+
+    trds-icon[onclick]{
+        cursor:pointer;
+    }
+
+`);
 
 const TrdsIconIntersectionHandler = new IntersectionObserver(function(entries){
     entries.forEach(function(entry) {
@@ -509,27 +542,6 @@ class TrdsIcon extends TrdsElement{
 
 customElements.define('trds-icon', TrdsIcon);
 
-TrdsElement.addStyle(`
-
-    trds-icon{
-        display: block;
-        width: 1em;
-        height: 1em;
-        background: currentColor;
-        -webkit-mask-size: contain;
-        mask-size: contain;
-        -webkit-mask-repeat: no-repeat;
-        mask-repeat: no-repeat;
-        -webkit-mask-position: center center;
-        mask-position: center center;
-    }
-
-    trds-icon[onclick]{
-        cursor:pointer;
-    }
-
-`);
-
 const FindClosestBgColor = element => {
     let currentElement = element.parentElement;
     while(currentElement !== null) {
@@ -550,38 +562,6 @@ const RgbToRgba = (rgb, a) => {
 };
 
 // usage: add trds-loader element to almost any element(except elements with position property)
-
-class TrdsLoader extends TrdsElement{
-
-    constructor(){
-        super();
-    }
-
-    render(){
-
-        this.innerHTML = '<trds-icon icon="solid/spinner"></trds-icon>';
-
-    }
-
-    enable = () => {
-
-        this.parentElement.style.position = 'relative';
-        this.style.backgroundColor = FindClosestBgColor(this);
-        this.classList.add('active');
-        this.dispatchEvent( new Event('enabled'));
-
-    }
-
-    disable = () => {
-
-        this.classList.remove('active');
-        this.dispatchEvent( new Event('disabled'));
-
-    }
-
-}
-
-customElements.define('trds-loader', TrdsLoader);
 
 TrdsElement.addStyle(`
 
@@ -615,7 +595,71 @@ TrdsElement.addStyle(`
 
 `);
 
+class TrdsLoader extends TrdsElement{
+
+    constructor(){
+        super();
+    }
+
+    render(){
+
+        this.innerHTML = '<trds-icon icon="solid/spinner"></trds-icon>';
+
+    }
+
+    enable = () => {
+
+        this.parentElement.style.position = 'relative';
+        this.style.backgroundColor = FindClosestBgColor(this);
+        this.classList.add('active');
+        this.dispatchEvent( new Event('enabled'));
+
+    }
+
+    disable = () => {
+
+        this.classList.remove('active');
+        this.dispatchEvent( new Event('disabled'));
+
+    }
+
+}
+
+customElements.define('trds-loader', TrdsLoader);
+
 // usage: trds-image[src(required), lazy(optional), alt(required), aspect-ratio="w h"(optional)]
+
+TrdsElement.addStyle(`
+
+    trds-image{
+        display: block;
+        width: 100%;
+        max-width: var(--element--max-width);
+        position: relative;
+        background-color: var(--color--secondary-bg);
+        object-fit: contain;
+        object-position: center center;
+        --image-padding-bottom: 56.25%;
+    }
+
+    trds-image aspect-ratio-box{
+        padding-bottom: var(--image-padding-bottom);
+        display: block;
+        box-sizing: border-box;
+    }
+
+    trds-image img{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: inherit;
+        object-position: inherit;
+    }
+
+`);
 
 const TrdsImageIntersectionHandler = new IntersectionObserver(function(entries){
     entries.forEach(function(entry) {
@@ -675,38 +719,33 @@ class TrdsImage extends TrdsElement{
 
 customElements.define('trds-image', TrdsImage);
 
+// usage: <trds-link class="block"> for block link
+
 TrdsElement.addStyle(`
 
-    trds-image{
-        display: block;
-        max-width: var(--element--max-width);
-        position: relative;
-        background-color: var(--color--secondary-bg);
-        object-fit: contain;
-        object-position: center center;
-        --image-padding-bottom: 56.25%;
+    a[is="trds-link"]{
+        transition: filter 0.25s ease-in-out;
+        color: inherit;
+        cursor: pointer;
     }
 
-    trds-image aspect-ratio-box{
-        padding-bottom: var(--image-padding-bottom);
-        display: block;
-        box-sizing: border-box;
+    a[is="trds-link"]:hover,
+    a[is="trds-link"]:active,
+    a[is="trds-link"]:focus{
+        filter: brightness(125%);
     }
 
-    trds-image img{
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
+    a[is="trds-link"].text{
+        text-decoration: underline;
+    }
+
+    a[is="trds-link"].block{
         display: block;
-        object-fit: inherit;
-        object-position: inherit;
+        max-width: max-content;
+        text-decoration: none;
     }
 
 `);
-
-// usage: <trds-link class="block"> for block link
 
 class TrdsLink extends HTMLAnchorElement{
 
@@ -737,33 +776,6 @@ class TrdsLink extends HTMLAnchorElement{
 }
 
 customElements.define('trds-link', TrdsLink, {extends: 'a'});
-
-
-TrdsElement.addStyle(`
-
-    a[is="trds-link"]{
-        transition: filter 0.25s ease-in-out;
-        color: inherit;
-        cursor: pointer;
-    }
-
-    a[is="trds-link"]:hover,
-    a[is="trds-link"]:active,
-    a[is="trds-link"]:focus{
-        filter: brightness(125%);
-    }
-
-    a[is="trds-link"].text{
-        text-decoration: underline;
-    }
-
-    a[is="trds-link"].block{
-        display: block;
-        max-width: max-content;
-        text-decoration: none;
-    }
-
-`);
 
 // usage: trds-counter > textNode with the starting number
 // attribute "to" required -> it will count from the starting number to this number
@@ -835,6 +847,79 @@ class TrdsCounter extends HTMLElement{
 customElements.define('trds-counter', TrdsCounter);
 
 // usage: button is=trds-button
+
+TrdsElement.addStyle(`
+
+    .trds-button{
+        all: unset;
+        display: flex;
+        box-sizing: border-box;
+        padding: var(--space--s) var(--space--m);
+        border-radius: 5px;
+        overflow: hidden;
+        max-width: max-content;
+        min-width: max-content;
+        --base-bg-color: var(--color--primary);
+        background-color: var(--color--primary);
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: var(--size--xs);
+        transition: filter 0.25s ease-in-out, transform 0.25s ease-in-out;
+        align-items: center;
+        justify-content: center;
+        gap: var(--space--s);
+        cursor: pointer;
+        position: relative;
+    }
+
+    .trds-button:hover,
+    .trds-button:focus{
+        filter: brightness(125%);
+    }
+
+    .trds-button:active{
+        transform: scale(0.95);
+    }
+
+    .trds-button.disabled{
+        filter: brightness(0.75);
+        pointer-events: none;
+    }
+    
+    .trds-button.rounded{
+        border-radius: 50px;
+    }
+
+    .trds-button.block{
+        max-width: var(--element--max-width);
+    }
+
+    .trds-button.icon-on-right trds-icon{
+        order: 2;
+    }
+
+    .trds-button.call{
+        --base-bg-color: var(--color--success);
+        background-color: var(--color--success);
+        border-radius: 50px;
+    }
+
+    .trds-button.outline{
+        box-shadow: inset 0 0 0 2px currentColor;
+        background-color: transparent;
+    }
+
+    .trds-button.outline:hover,
+    .trds-button.outline:focus{
+        box-shadow: none;
+        background-color: var(--base-bg-color);
+    }
+
+    .trds-button trds-icon{
+        flex-shrink: 0;
+    }
+
+`);
 
 const renderButton = button => {
 
@@ -930,80 +1015,55 @@ class TrdsButtonLink extends TrdsLink{
 
 customElements.define('trds-button--link', TrdsButtonLink, {extends: 'a'});
 
+// usage: trds-carousel
+
 TrdsElement.addStyle(`
 
-    .trds-button{
-        all: unset;
-        display: flex;
-        box-sizing: border-box;
-        padding: var(--space--s) var(--space--m);
-        border-radius: 5px;
-        overflow: hidden;
-        max-width: max-content;
-        min-width: max-content;
-        --base-bg-color: var(--color--primary);
-        background-color: var(--color--primary);
-        font-weight: bold;
-        text-transform: uppercase;
-        font-size: var(--size--xs);
-        transition: filter 0.25s ease-in-out, transform 0.25s ease-in-out;
-        align-items: center;
-        justify-content: center;
-        gap: var(--space--s);
-        cursor: pointer;
+    trds-carousel{
+        display: block;
         position: relative;
+        overflow: hidden;
+        max-width: 100%;
     }
 
-    .trds-button:hover,
-    .trds-button:focus{
-        filter: brightness(125%);
-    }
-
-    .trds-button:active{
-        transform: scale(0.95);
-    }
-
-    .trds-button.disabled{
-        filter: brightness(0.75);
+    trds-carousel .blur{
+        display:block;
+        position: absolute;
         pointer-events: none;
-    }
-    
-    .trds-button.rounded{
-        border-radius: 50px;
-    }
-
-    .trds-button.block{
-        max-width: var(--element--max-width);
-    }
-
-    .trds-button.icon-on-right trds-icon{
-        order: 2;
+        transition: opacity 300ms ease 0s;
+        top: 0;
+        left: 0;
+        background: linear-gradient(to right, var(--blur-color), 50%, var(--blur-color-0));
+        background: -webkit-linear-gradient(left, var(--blur-color), var(--blur-color-0));
+        width: 25%;
+        height: 100%;
+        z-index: 1;
+        opacity: 0;
     }
 
-    .trds-button.call{
-        --base-bg-color: var(--color--success);
-        background-color: var(--color--success);
-        border-radius: 50px;
+    trds-carousel right-blur.blur{
+        left: auto;
+        right: 0;
+        background: linear-gradient(to left, var(--blur-color), 50%, var(--blur-color-0));
+        background: -webkit-linear-gradient(right, var(--blur-color), var(--blur-color-0));
     }
 
-    .trds-button.outline{
-        box-shadow: inset 0 0 0 2px currentColor;
-        background-color: transparent;
+    trds-carousel .blur.active{
+        opacity: 1;
     }
 
-    .trds-button.outline:hover,
-    .trds-button.outline:focus{
-        box-shadow: none;
-        background-color: var(--base-bg-color);
+    trds-carousel .slot{
+        overflow: auto;
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+        white-space: nowrap;
     }
 
-    .trds-button trds-icon{
-        flex-shrink: 0;
+    trds-carousel .slot::-webkit-scrollbar {
+        display: none;
     }
 
 `);
-
-// usage: trds-carousel
 
 const TrdsCarouselTemplate = document.createElement('template');
 TrdsCarouselTemplate.innerHTML = `
@@ -1108,54 +1168,6 @@ class TrdsCarousel extends TrdsElement{
 
 customElements.define('trds-carousel', TrdsCarousel);
 
-TrdsElement.addStyle(`
-
-    trds-carousel{
-        display: block;
-        position: relative;
-        overflow: hidden;
-        max-width: 100%;
-    }
-
-    trds-carousel .blur{
-        display:block;
-        position: absolute;
-        pointer-events: none;
-        transition: opacity 300ms ease 0s;
-        top: 0;
-        left: 0;
-        background: linear-gradient(to right, var(--blur-color), 50%, var(--blur-color-0));
-        background: -webkit-linear-gradient(left, var(--blur-color), var(--blur-color-0));
-        width: 25%;
-        height: 100%;
-        z-index: 1;
-        opacity: 0;
-    }
-
-    trds-carousel right-blur.blur{
-        left: auto;
-        right: 0;
-        background: linear-gradient(to left, var(--blur-color), 50%, var(--blur-color-0));
-        background: -webkit-linear-gradient(right, var(--blur-color), var(--blur-color-0));
-    }
-
-    trds-carousel .blur.active{
-        opacity: 1;
-    }
-
-    trds-carousel .slot{
-        overflow: auto;
-        -ms-overflow-style: none;  /* IE and Edge */
-        scrollbar-width: none;  /* Firefox */
-        white-space: nowrap;
-    }
-
-    trds-carousel .slot::-webkit-scrollbar {
-        display: none;
-    }
-
-`);
-
 const setCookie = (cookieKey, cookieValue, expirationDays) => {
 
     let expiryDate = '';
@@ -1195,6 +1207,31 @@ const getCookie = (cookieKey) => {
 };
 
 // usage: trds-cookiebar[cookie-name(required), cookie-value(required)]
+
+TrdsElement.addStyle(`
+
+    trds-cookiebar{
+        display: block;
+        box-sizing: border-box;
+        padding: var(--space--xl) 0;
+        position: fixed;
+        width: 100%;
+        bottom: -100%;
+        left: 0;
+        background-color: var(--color--primary);
+        z-index: 100;
+    }
+
+    trds-cookiebar.show{
+        animation: TrdsCookieBarAnimation 1s forwards ease-in-out;
+        animation-delay: 3s;
+    }
+
+    @keyframes TrdsCookieBarAnimation{
+        100%{bottom:0}
+    }
+
+`);
 
 class TrdsCookiebar extends TrdsElement{
 
@@ -1241,25 +1278,11 @@ customElements.define('trds-cookiebar', TrdsCookiebar);
 
 TrdsElement.addStyle(`
 
-    trds-cookiebar{
+    trds-footer{
         display: block;
-        box-sizing: border-box;
+        background-color: var(--color--secondary-bg);
         padding: var(--space--xl) 0;
-        position: fixed;
-        width: 100%;
-        bottom: -100%;
-        left: 0;
-        background-color: var(--color--primary);
-        z-index: 100;
-    }
-
-    trds-cookiebar.show{
-        animation: TrdsCookieBarAnimation 1s forwards ease-in-out;
-        animation-delay: 3s;
-    }
-
-    @keyframes TrdsCookieBarAnimation{
-        100%{bottom:0}
+        box-sizing: border-box;
     }
 
 `);
@@ -1291,11 +1314,53 @@ customElements.define('trds-footer', TrdsFooter);
 
 TrdsElement.addStyle(`
 
-    trds-footer{
-        display: block;
+    :root{
+        --header-height: 5rem;
+    }
+
+    trds-header{
         background-color: var(--color--secondary-bg);
-        padding: var(--space--xl) 0;
+        height: var(--header-height);
+        display: flex;
+        width: 100%;
+        position: fixed;
+        top: 0;
+        z-index: 100;
+        overflow: hidden;
+    }
+
+    trds-header container{
+        display: flex;
+        justify-content: space-between;
+        padding-right: 0;
+    }
+
+    trds-header .logo-link{
+        margin-right: var(--space--l);
+        flex-shrink: 1;
+        flex-basis: 6.5rem;
+        min-width: 3.5rem;
+        display: flex !important;
+        align-items: center;
+        max-width: none !important;
+        align-self: center;
+    }
+
+    trds-header .slot{
+        display: flex;
+        height: 100%;
+        gap: var(--space--m);
+        align-items: center;
+        padding-right: var(--space--m);
         box-sizing: border-box;
+    }
+
+    @media all and (min-width:1360px){
+
+        trds-header .slot{
+            gap:var(--space--l);
+        }
+
     }
 
 `);
@@ -1335,6 +1400,8 @@ class TrdsHeader extends TrdsElement{
 
     render(){
 
+        if(!this.hasAttribute('logo-src')) console.error('trds-header must have logo-src attribute.');
+
         this.template.querySelector('.logo-link trds-image').setAttribute('src', this.getAttribute('logo-src'));
 
         this.template.querySelector('trds-carousel').append(...this.children);
@@ -1346,114 +1413,6 @@ class TrdsHeader extends TrdsElement{
 }
 
 customElements.define('trds-header', TrdsHeader);
-
-TrdsElement.addStyle(`
-
-    :root{
-        --header-height: 5rem;
-    }
-
-    trds-header{
-        background-color: var(--color--secondary-bg);
-        height: var(--header-height);
-        display: flex;
-        width: 100%;
-        position: fixed;
-        top: 0;
-        z-index: 100;
-        overflow: hidden;
-    }
-
-    trds-header trds-container{
-        display: flex;
-        justify-content: space-between;
-        padding-right: 0;
-    }
-
-    trds-header .logo-link{
-        margin-right: var(--space--l);
-        flex-shrink: 1;
-        flex-basis: 6.5rem;
-        min-width: 3.5rem;
-        display: flex !important;
-        align-items: center;
-        max-width: none !important;
-        align-self: center;
-    }
-
-    trds-header .slot{
-        display: flex;
-        height: 100%;
-        gap: var(--space--m);
-        align-items: center;
-        padding-right: var(--space--m);
-        box-sizing: border-box;
-    }
-
-    @media all and (min-width:1360px){
-
-        trds-header .slot{
-            gap:var(--space--l);
-        }
-
-    }
-
-`);
-
-const TrdsModalTemplate = document.createElement('template');
-TrdsModalTemplate.innerHTML = `
-    <trds-modal_container>
-        <trds-modal_header>
-            <trds-heading level="2"></trds-heading>
-            <trds-icon icon="solid/times" onclick="this.closest('trds-modal').close()"></trds-icon>
-        </trds-modal_header>
-        <trds-modal_body>
-        </trds-modal_body>
-    </trds-modal_container>
-`;
-
-class TrdsModal extends TrdsElement{
-
-    constructor(){
-        super();
-
-        this.template = TrdsModalTemplate.content.cloneNode(true);
-
-    }
-
-    connectedCallback(){
-
-        super.connectedCallback();
-
-        if(this.hasAttribute('showonfirsthit') && sessionStorage.getItem('popup') != 'true'){
-            this.show();
-            sessionStorage.setItem('popup', 'true');
-        }
-        
-    }
-
-    render(){
-
-        this.template.querySelector('trds-modal_body').append(...this.children);
-        this.template.querySelector('trds-modal_header trds-title').textContent = this.getAttribute('title');
-
-        this.append(this.template);
-
-    }
-
-    show = () => {
-
-        let currentModal = document.querySelector('trds-modal.show');
-        if(currentModal) currentModal.close();
-        
-        this.classList.add('show');
-    }
-
-    close = () => this.classList.remove('show');
-    
-}
-
-customElements.define('trds-modal', TrdsModal);
 
 TrdsElement.addStyle(`
 
@@ -1517,45 +1476,60 @@ TrdsElement.addStyle(`
 
 `);
 
-class TrdsShowcase extends TrdsElement{
+const TrdsModalTemplate = document.createElement('template');
+TrdsModalTemplate.innerHTML = `
+    <trds-modal_container>
+        <trds-modal_header>
+            <trds-heading level="2"></trds-heading>
+            <trds-icon icon="solid/times" onclick="this.closest('trds-modal').close()"></trds-icon>
+        </trds-modal_header>
+        <trds-modal_body>
+        </trds-modal_body>
+    </trds-modal_container>
+`;
+
+class TrdsModal extends TrdsElement{
 
     constructor(){
         super();
+
+        this.template = TrdsModalTemplate.content.cloneNode(true);
+
     }
 
     connectedCallback(){
 
         super.connectedCallback();
-        this.addEventListener('click', this.toggleAfterImg);
 
-    }
-
-    disconnectedCallback(){
-
-        this.removeEventListener('click', this.toggleAfterImg);
-
+        if(this.hasAttribute('showonfirsthit') && sessionStorage.getItem('popup') != 'true'){
+            this.show();
+            sessionStorage.setItem('popup', 'true');
+        }
+        
     }
 
     render(){
 
-        this.innerHTML = `
-            <trds-showcase_before>
-                <trds-image alt="Javítás előtti kép" lazy src="${this.getAttribute('before-image-url')}"></trds-image>
-            </trds-showcase_before>
-            <trds-showcase_after>
-                <trds-image alt="Javítás utáni kép" lazy src="${this.getAttribute('after-image-url')}"></trds-image>
-            </trds-showcase_after>
-        `;
+        this.template.querySelector('trds-modal_body').append(...this.children);
+        this.template.querySelector('trds-modal_header trds-title').textContent = this.getAttribute('title');
+
+        this.append(this.template);
 
     }
 
-    toggleAfterImg = () => {
-        this.classList.contains('active') ? this.classList.remove('active') : this.classList.add('active');
+    show = () => {
+
+        let currentModal = document.querySelector('trds-modal.show');
+        if(currentModal) currentModal.close();
+        
+        this.classList.add('show');
     }
 
+    close = () => this.classList.remove('show');
+    
 }
 
-customElements.define('trds-showcase', TrdsShowcase);
+customElements.define('trds-modal', TrdsModal);
 
 TrdsElement.addStyle(`
     trds-showcase{
@@ -1607,70 +1581,45 @@ TrdsElement.addStyle(`
     }
 `);
 
-const TrdsTimelineTemplate = document.createElement('template');
-TrdsTimelineTemplate.innerHTML = `
-    <trds-timeline_finish-flag>
-        <trds-icon icon="solid/flag-checkered"></trds-icon>
-    </trds-timeline_finish-flag>
-`;
+class TrdsShowcase extends TrdsElement{
 
-class TrdsTimeline extends TrdsElement{
-    
-    constructor(){ 
+    constructor(){
         super();
-
-        this.template = TrdsTimelineTemplate.content.cloneNode(true);
-
-    }
-
-    render(){
-
-        [...this.children].forEach(child => {
-
-            this.template.insertBefore(child, this.template.querySelector('trds-timeline_finish-flag'));
-
-        });
-
-        this.append(this.template);
-
-        this.TimelineSteps =  this.querySelectorAll('trds-timeline_step');
-
-        this.TimelineSteps.forEach(elem => {
-            if(!elem.hasAttribute('number'))
-                return console.error("Number attribute must be added to trds-timeline_step component.");
-            if(elem.getAttribute('number').length > 4)
-                return console.error("Number attribute should not exceed 4 digits.");
-
-            elem.setAttribute( 'digit-number', elem.getAttribute('number').length);
-        });
-
-        this.setTimeline();
-
     }
 
     connectedCallback(){
 
         super.connectedCallback();
-
-        window.addEventListener('resize', this.setTimeline);
+        this.addEventListener('click', this.toggleAfterImg);
 
     }
 
     disconnectedCallback(){
 
-        window.removeEventListener('resize', this.setTimeline);
+        this.removeEventListener('click', this.toggleAfterImg);
 
     }
 
-    setTimeline = () => {
+    render(){
 
-        (this.parentElement.getBoundingClientRect().width / 400) >= this.TimelineSteps.length ? this.classList.add('row-oriented') : this.classList.remove('row-oriented');
+        this.innerHTML = `
+            <trds-showcase_before>
+                <trds-image alt="Javítás előtti kép" lazy src="${this.getAttribute('before-image-url')}"></trds-image>
+            </trds-showcase_before>
+            <trds-showcase_after>
+                <trds-image alt="Javítás utáni kép" lazy src="${this.getAttribute('after-image-url')}"></trds-image>
+            </trds-showcase_after>
+        `;
 
+    }
+
+    toggleAfterImg = () => {
+        this.classList.contains('active') ? this.classList.remove('active') : this.classList.add('active');
     }
 
 }
 
-customElements.define('trds-timeline', TrdsTimeline);
+customElements.define('trds-showcase', TrdsShowcase);
 
 TrdsElement.addStyle(`
 
@@ -1773,6 +1722,120 @@ TrdsElement.addStyle(`
 
 `);
 
+const TrdsTimelineTemplate = document.createElement('template');
+TrdsTimelineTemplate.innerHTML = `
+    <trds-timeline_finish-flag>
+        <trds-icon icon="solid/flag-checkered"></trds-icon>
+    </trds-timeline_finish-flag>
+`;
+
+class TrdsTimeline extends TrdsElement{
+    
+    constructor(){ 
+        super();
+
+        this.template = TrdsTimelineTemplate.content.cloneNode(true);
+
+    }
+
+    render(){
+
+        [...this.children].forEach(child => {
+
+            this.template.insertBefore(child, this.template.querySelector('trds-timeline_finish-flag'));
+
+        });
+
+        this.append(this.template);
+
+        this.TimelineSteps =  this.querySelectorAll('trds-timeline_step');
+
+        this.TimelineSteps.forEach(elem => {
+            if(!elem.hasAttribute('number'))
+                return console.error("Number attribute must be added to trds-timeline_step component.");
+            if(elem.getAttribute('number').length > 4)
+                return console.error("Number attribute should not exceed 4 digits.");
+
+            elem.setAttribute( 'digit-number', elem.getAttribute('number').length);
+        });
+
+        this.setTimeline();
+
+    }
+
+    connectedCallback(){
+
+        super.connectedCallback();
+
+        window.addEventListener('resize', this.setTimeline);
+
+    }
+
+    disconnectedCallback(){
+
+        window.removeEventListener('resize', this.setTimeline);
+
+    }
+
+    setTimeline = () => {
+
+        (this.parentElement.getBoundingClientRect().width / 400) >= this.TimelineSteps.length ? this.classList.add('row-oriented') : this.classList.remove('row-oriented');
+
+    }
+
+}
+
+customElements.define('trds-timeline', TrdsTimeline);
+
+TrdsElement.addStyle(`
+
+    trds-toasts-container{
+        display: grid;
+        width: 90%;
+        max-width: var(--element--max-width);
+        gap: var(--space--m);
+        position: fixed;
+        z-index: 100;
+        bottom: var(--space--m);
+        left: 5%;
+    }
+
+    trds-toast{
+        display: flex;
+        align-items: center;
+        width: 100%;
+        box-sizing: border-box;
+        max-width: var(--element--max-width);
+        padding: var(--space--m);
+        background-color: var(--color--secondary-bg);
+        animation: TrdsToastAnimation .5s;
+        gap: var(--space--m);
+    }
+
+    @keyframes TrdsToastAnimation{
+        from { transform: translateY(100vh) }
+        to { transform: translateY(0) }
+    }
+
+    trds-toast.danger{
+        background-color: var(--color--primary);
+    }
+
+    trds-toast.success{
+        background-color: var(--color--success);
+    }
+
+    trds-toast_content{
+        display: block;
+        flex: 1;
+    }
+
+    trds-toast_close-icon-container{
+        display: block;
+    }
+
+`);
+
 const TrdsToastTemplate = document.createElement('template');
 TrdsToastTemplate.innerHTML = `
     <trds-toast_content>
@@ -1829,52 +1892,3 @@ class TrdsToast extends TrdsElement{
 }
 
 customElements.define('trds-toast', TrdsToast);
-
-TrdsElement.addStyle(`
-
-    trds-toasts-container{
-        display: grid;
-        width: 90%;
-        max-width: var(--element--max-width);
-        gap: var(--space--m);
-        position: fixed;
-        z-index: 100;
-        bottom: var(--space--m);
-        left: 5%;
-    }
-
-    trds-toast{
-        display: flex;
-        align-items: center;
-        width: 100%;
-        box-sizing: border-box;
-        max-width: var(--element--max-width);
-        padding: var(--space--m);
-        background-color: var(--color--secondary-bg);
-        animation: TrdsToastAnimation .5s;
-        gap: var(--space--m);
-    }
-
-    @keyframes TrdsToastAnimation{
-        from { transform: translateY(100vh) }
-        to { transform: translateY(0) }
-    }
-
-    trds-toast.danger{
-        background-color: var(--color--primary);
-    }
-
-    trds-toast.success{
-        background-color: var(--color--success);
-    }
-
-    trds-toast_content{
-        display: block;
-        flex: 1;
-    }
-
-    trds-toast_close-icon-container{
-        display: block;
-    }
-
-`);

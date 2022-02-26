@@ -5,6 +5,38 @@
 import TrdsElement from '../trds-element.js';
 import './trds-loader.js';
 
+TrdsElement.addStyle(`
+
+    trds-image{
+        display: block;
+        width: 100%;
+        max-width: var(--element--max-width);
+        position: relative;
+        background-color: var(--color--secondary-bg);
+        object-fit: contain;
+        object-position: center center;
+        --image-padding-bottom: 56.25%;
+    }
+
+    trds-image aspect-ratio-box{
+        padding-bottom: var(--image-padding-bottom);
+        display: block;
+        box-sizing: border-box;
+    }
+
+    trds-image img{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: inherit;
+        object-position: inherit;
+    }
+
+`);
+
 const TrdsImageIntersectionHandler = new IntersectionObserver(function(entries){
     entries.forEach(function(entry) {
         if(entry.isIntersecting){
@@ -62,34 +94,3 @@ class TrdsImage extends TrdsElement{
 }
 
 customElements.define('trds-image', TrdsImage);
-
-TrdsElement.addStyle(`
-
-    trds-image{
-        display: block;
-        max-width: var(--element--max-width);
-        position: relative;
-        background-color: var(--color--secondary-bg);
-        object-fit: contain;
-        object-position: center center;
-        --image-padding-bottom: 56.25%;
-    }
-
-    trds-image aspect-ratio-box{
-        padding-bottom: var(--image-padding-bottom);
-        display: block;
-        box-sizing: border-box;
-    }
-
-    trds-image img{
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        display: block;
-        object-fit: inherit;
-        object-position: inherit;
-    }
-
-`);

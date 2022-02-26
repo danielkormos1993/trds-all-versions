@@ -2,6 +2,27 @@
 
 import TrdsElement from '../trds-element.js';
 
+TrdsElement.addStyle(`
+
+    trds-icon{
+        display: block;
+        width: 1em;
+        height: 1em;
+        background: currentColor;
+        -webkit-mask-size: contain;
+        mask-size: contain;
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+        -webkit-mask-position: center center;
+        mask-position: center center;
+    }
+
+    trds-icon[onclick]{
+        cursor:pointer;
+    }
+
+`);
+
 const TrdsIconIntersectionHandler = new IntersectionObserver(function(entries){
     entries.forEach(function(entry) {
         if(entry.isIntersecting){
@@ -45,24 +66,3 @@ class TrdsIcon extends TrdsElement{
 }
 
 customElements.define('trds-icon', TrdsIcon);
-
-TrdsElement.addStyle(`
-
-    trds-icon{
-        display: block;
-        width: 1em;
-        height: 1em;
-        background: currentColor;
-        -webkit-mask-size: contain;
-        mask-size: contain;
-        -webkit-mask-repeat: no-repeat;
-        mask-repeat: no-repeat;
-        -webkit-mask-position: center center;
-        mask-position: center center;
-    }
-
-    trds-icon[onclick]{
-        cursor:pointer;
-    }
-
-`);

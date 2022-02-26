@@ -1,6 +1,55 @@
 import '../elements/trds-icon.js';
 import TrdsElement from '../trds-element.js';
 
+TrdsElement.addStyle(`
+
+    trds-toasts-container{
+        display: grid;
+        width: 90%;
+        max-width: var(--element--max-width);
+        gap: var(--space--m);
+        position: fixed;
+        z-index: 100;
+        bottom: var(--space--m);
+        left: 5%;
+    }
+
+    trds-toast{
+        display: flex;
+        align-items: center;
+        width: 100%;
+        box-sizing: border-box;
+        max-width: var(--element--max-width);
+        padding: var(--space--m);
+        background-color: var(--color--secondary-bg);
+        animation: TrdsToastAnimation .5s;
+        gap: var(--space--m);
+    }
+
+    @keyframes TrdsToastAnimation{
+        from { transform: translateY(100vh) }
+        to { transform: translateY(0) }
+    }
+
+    trds-toast.danger{
+        background-color: var(--color--primary);
+    }
+
+    trds-toast.success{
+        background-color: var(--color--success);
+    }
+
+    trds-toast_content{
+        display: block;
+        flex: 1;
+    }
+
+    trds-toast_close-icon-container{
+        display: block;
+    }
+
+`);
+
 const TrdsToastTemplate = document.createElement('template');
 TrdsToastTemplate.innerHTML = `
     <trds-toast_content>
@@ -57,52 +106,3 @@ class TrdsToast extends TrdsElement{
 }
 
 customElements.define('trds-toast', TrdsToast);
-
-TrdsElement.addStyle(`
-
-    trds-toasts-container{
-        display: grid;
-        width: 90%;
-        max-width: var(--element--max-width);
-        gap: var(--space--m);
-        position: fixed;
-        z-index: 100;
-        bottom: var(--space--m);
-        left: 5%;
-    }
-
-    trds-toast{
-        display: flex;
-        align-items: center;
-        width: 100%;
-        box-sizing: border-box;
-        max-width: var(--element--max-width);
-        padding: var(--space--m);
-        background-color: var(--color--secondary-bg);
-        animation: TrdsToastAnimation .5s;
-        gap: var(--space--m);
-    }
-
-    @keyframes TrdsToastAnimation{
-        from { transform: translateY(100vh) }
-        to { transform: translateY(0) }
-    }
-
-    trds-toast.danger{
-        background-color: var(--color--primary);
-    }
-
-    trds-toast.success{
-        background-color: var(--color--success);
-    }
-
-    trds-toast_content{
-        display: block;
-        flex: 1;
-    }
-
-    trds-toast_close-icon-container{
-        display: block;
-    }
-
-`);
