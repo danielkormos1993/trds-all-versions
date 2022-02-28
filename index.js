@@ -1,3 +1,4 @@
+import './typhography/trds-text.js';
 import './typhography/trds-paragraph.js';
 import './typhography/trds-title.js';
 import './typhography/class-size.js';
@@ -24,3 +25,4 @@ import './components/trds-modal.js';
 import './components/trds-showcase.js';
 import './components/trds-timeline.js';
 import './components/trds-toast.js';
+import './components/trds-workmedia.js';

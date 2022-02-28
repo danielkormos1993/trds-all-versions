@@ -5,6 +5,32 @@
 import '../libs/wc-polyfill.js';
 import TrdsElement from '../trds-element.js';
 
+TrdsElement.addStyle(`
+
+    a[is="trds-link"]{
+        transition: filter 0.25s ease-in-out;
+        color: inherit;
+        cursor: pointer;
+    }
+
+    a[is="trds-link"]:hover,
+    a[is="trds-link"]:active,
+    a[is="trds-link"]:focus{
+        filter: brightness(125%);
+    }
+
+    a[is="trds-link"].text{
+        text-decoration: underline;
+    }
+
+    a[is="trds-link"].block{
+        display: block;
+        max-width: max-content;
+        text-decoration: none;
+    }
+
+`);
+
 export default class TrdsLink extends HTMLAnchorElement{
 
     constructor(){
@@ -34,30 +60,3 @@ export default class TrdsLink extends HTMLAnchorElement{
 }
 
 customElements.define('trds-link', TrdsLink, {extends: 'a'});
-
-
-TrdsElement.addStyle(`
-
-    a[is="trds-link"]{
-        transition: filter 0.25s ease-in-out;
-        color: inherit;
-        cursor: pointer;
-    }
-
-    a[is="trds-link"]:hover,
-    a[is="trds-link"]:active,
-    a[is="trds-link"]:focus{
-        filter: brightness(125%);
-    }
-
-    a[is="trds-link"].text{
-        text-decoration: underline;
-    }
-
-    a[is="trds-link"].block{
-        display: block;
-        max-width: max-content;
-        text-decoration: none;
-    }
-
-`);

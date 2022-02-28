@@ -5,6 +5,16 @@
 import '../libs/wc-polyfill.js';
 import TrdsElement from '../trds-element.js';
 
+TrdsElement.addStyle(`
+    video[is="trds-video"]{
+        display: block;
+        max-width: var(--element--max-width);
+        width: 100%;
+        height: auto;
+        object-fit: contain;           
+    }
+`);
+
 const TrdsVideoSrcIntersectionHandler = new IntersectionObserver(function(entries){
     entries.forEach(function(entry) {
         if(entry.isIntersecting){
@@ -59,13 +69,3 @@ class TrdsVideo extends HTMLVideoElement{
 }
 
 customElements.define('trds-video', TrdsVideo, {extends: 'video'});
-
-TrdsElement.addStyle(`
-    video[is="trds-video"]{
-        display: block;
-        max-width: var(--element--max-width);
-        width: 100%;
-        height: auto;
-        object-fit: contain;           
-    }
-`);
