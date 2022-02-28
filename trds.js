@@ -1892,7 +1892,6 @@ class TrdsToast extends TrdsElement{
 }
 
 customElements.define('trds-toast', TrdsToast);
-<<<<<<< HEAD
 
 // usage: trds-workmedia [ALL REQUIRED, before-media-type(image or video), before-media-src, after-media-type(image or video), after-media-src, category(string), tags(stringy array lol)]
 
@@ -2101,5 +2100,3 @@ class TrdsWorkmedia extends TrdsElement{
 }
 
 customElements.define('trds-workmedia', TrdsWorkmedia);
-=======
->>>>>>> 10ce72c2a75a3ac1bde07e7a2304bbafc185b293

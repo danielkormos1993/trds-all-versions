@@ -59,11 +59,7 @@ TrdsToastTemplate.innerHTML = `
     </trds-toast_close-icon-container>
 `;
 
-<<<<<<< HEAD
 export default class TrdsToast extends TrdsElement{
-=======
-class TrdsToast extends TrdsElement{
->>>>>>> 10ce72c2a75a3ac1bde07e7a2304bbafc185b293
 
     constructor(){ 
         super()
@@ -107,7 +103,6 @@ class TrdsToast extends TrdsElement{
 
     }
 
-<<<<<<< HEAD
     static launchToast(type, content){
 
         const toast = document.createElement('trds-toast');
@@ -118,8 +113,6 @@ class TrdsToast extends TrdsElement{
 
     }
 
-=======
->>>>>>> 10ce72c2a75a3ac1bde07e7a2304bbafc185b293
 }
 
 customElements.define('trds-toast', TrdsToast);
