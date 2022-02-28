@@ -1889,6 +1889,16 @@ class TrdsToast extends TrdsElement{
 
     }
 
+    static launchToast(type, content){
+
+        const toast = document.createElement('trds-toast');
+        toast.classList.add(type);
+        toast.innerHTML = content;
+    
+        toast.show();
+
+    }
+
 }
 
 customElements.define('trds-toast', TrdsToast);
