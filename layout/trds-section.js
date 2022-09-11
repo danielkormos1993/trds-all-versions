@@ -1,13 +1,5 @@
 ﻿import './trds-container.js';
-
-const TrdsSectionIntersectionHandler = new IntersectionObserver(function(entries){
-    entries.forEach(function(entry) {
-        if(entry.isIntersecting){
-            entry.target.loadBgImage();
-            TrdsSectionIntersectionHandler.unobserve(entry.target);
-        }
-    });
-}, {rootMargin: "0px 0px 200px 0px"});
+import IntersectionObserver from '../IntersectionObserver.js';
 
 export default class Section extends HTMLElement{
 
@@ -53,11 +45,11 @@ export default class Section extends HTMLElement{
     connectedCallback(){
 
         if(this.classList.contains('lazy'))
-            TrdsSectionIntersectionHandler.observe(this);
+            IntersectionObserver.observe(this);
 
     }
 
-    loadBgImage = () => this.classList.remove('lazy');
+    load = () => this.classList.remove('lazy');
 
 }
 
