@@ -1,4 +1,6 @@
-﻿import IntersectionObserver from "../IntersectionObserver.js";
+﻿// TODO: icon[onclick] focus
+
+import TrdsIntersectionObserver from "../IntersectionObserver.js";
 
 export default class Icon extends HTMLElement{
 
@@ -36,7 +38,7 @@ export default class Icon extends HTMLElement{
                 }
 
                 :host(:focus){
-                    filter:blur(.2em);
+                    outline: 5px auto -webkit-focus-ring-color;
                 }
 
             </style>
@@ -47,10 +49,11 @@ export default class Icon extends HTMLElement{
 
     connectedCallback(){
 
-        if(this.hasAttribute('onclick')) this.setAttribute('tabindex', 0);
+        if(this.hasAttribute('onclick') && !this.hasAttribute('tabindex')) 
+            this.setAttribute('tabindex', 0);
 
         if(this.classList.contains('lazy'))
-            IntersectionObserver.observe(this);
+            TrdsIntersectionObserver.observe(this);
 
     }
 

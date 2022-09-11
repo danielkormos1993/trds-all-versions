@@ -2,7 +2,7 @@
     entries.forEach(function(entry) {
         if(entry.isIntersecting){
             entry.target.load();
-            TrdsSectionIntersectionHandler.unobserve(entry.target);
+            TrdsIntersectionObserver.unobserve(entry.target);
         }
     });
 }, {rootMargin: "0px 0px 200px 0px"});

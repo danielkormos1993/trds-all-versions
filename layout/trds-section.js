@@ -1,5 +1,5 @@
 ﻿import './trds-container.js';
-import IntersectionObserver from '../IntersectionObserver.js';
+import TrdsIntersectionObserver from '../IntersectionObserver.js';
 
 export default class Section extends HTMLElement{
 
@@ -45,7 +45,7 @@ export default class Section extends HTMLElement{
     connectedCallback(){
 
         if(this.classList.contains('lazy'))
-            IntersectionObserver.observe(this);
+            TrdsIntersectionObserver.observe(this);
 
     }
 
