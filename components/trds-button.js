@@ -10,7 +10,7 @@ TrdsButtonStyle.textContent = `
         all: unset;
         display: flex;
         box-sizing: border-box;
-        padding: var(--space--s) var(--space--m);
+        padding: .75em 1.5em;
         border-radius: 5px;
         overflow: hidden;
         max-width: max-content;
@@ -30,20 +30,9 @@ TrdsButtonStyle.textContent = `
         text-decoration: none;
     }
 
-    .trds-button.plain{
-        padding: 0;
-        border-radius: 0;
-        background-color: transparent;
-        font-size: var(--size--m);
-    }
-
     .trds-button:hover,
     .trds-button:focus{
         filter: brightness(125%);
-    }
-
-    .trds-button:focus{
-        outline: 2px solid var(--color--primary);
     }
 
     .trds-button:active{
@@ -53,6 +42,17 @@ TrdsButtonStyle.textContent = `
     .trds-button.disabled{
         filter: brightness(0.75);
         pointer-events: none;
+    }
+
+    .trds-button.plain{
+        padding: 0;
+        border-radius: 0;
+        background-color: transparent;
+        font-size: var(--size--s);
+    }
+
+    .trds-button.plain:focus-visible{
+        border-bottom: 2px solid var(--color--primary);
     }
 
     .trds-button.rounded{
