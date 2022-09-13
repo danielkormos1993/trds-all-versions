@@ -57,7 +57,7 @@ export default class Loader extends HTMLElement{
                     border-radius: 50%;
                     width: 1em;
                     height: 1em;
-                    border: .25em solid grey;
+                    border: .25em solid rgba(128, 128, 128, .5);
                     border-top-color: currentColor;
                     animation: spin 1s infinite linear;
                 }

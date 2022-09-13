@@ -1,16 +1,10 @@
-// usage: button is=trds-button
-// or a is=trds-button--link for anchor button
-// attributes: [text, icon]
-// button has a built in loader, which can be enabled by enable()
-// class variants: disabled, rounded, block, icon-on-right, outline
+﻿import '../libs/wc-polyfill.js';
+import '../elements/trds-icon.js';
+import '../elements/trds-loader.js';
 
-import '../../hcapp/public/trds-elements/libs/wc-polyfill.js'
-import '../../hcapp/public/trds-elements/elements/trds-icon.js';
-import '../../hcapp/public/trds-elements/elements/trds-loader.js';
-import TrdsLink from '../../hcapp/public/trds-elements/elements/trds-link.js';
-import TrdsElement from '../../hcapp/public/trds-elements/trds-element.js';
-
-TrdsElement.addStyle(`
+const TrdsButtonStyle = document.createElement('style');
+TrdsButtonStyle.id = 'trds-button';
+TrdsButtonStyle.textContent = `
 
     .trds-button{
         all: unset;
@@ -32,11 +26,24 @@ TrdsElement.addStyle(`
         gap: var(--space--s);
         cursor: pointer;
         position: relative;
+        color: inherit;
+        text-decoration: none;
+    }
+
+    .trds-button.plain{
+        padding: 0;
+        border-radius: 0;
+        background-color: transparent;
+        font-size: var(--size--m);
     }
 
     .trds-button:hover,
     .trds-button:focus{
         filter: brightness(125%);
+    }
+
+    .trds-button:focus{
+        outline: 2px solid var(--color--primary);
     }
 
     .trds-button:active{
@@ -47,23 +54,17 @@ TrdsElement.addStyle(`
         filter: brightness(0.75);
         pointer-events: none;
     }
-    
+
     .trds-button.rounded{
         border-radius: 50px;
     }
 
     .trds-button.block{
-        max-width: var(--element--max-width);
+        max-width: 100%;
     }
 
     .trds-button.icon-on-right trds-icon{
         order: 2;
-    }
-
-    .trds-button.call{
-        --base-bg-color: var(--color--success);
-        background-color: var(--color--success);
-        border-radius: 50px;
     }
 
     .trds-button.outline{
@@ -81,14 +82,15 @@ TrdsElement.addStyle(`
         flex-shrink: 0;
     }
 
-`);
+`;
+document.head.appendChild(TrdsButtonStyle);
 
 const renderButton = button => {
 
     button.innerHTML = `
 
         ${button.hasAttribute('icon') ?
-            `<trds-icon icon="${button.getAttribute('icon')}"></trds-icon>`
+            `<trds-icon style="--icon-src: url('${button.getAttribute('icon')}')"></trds-icon>`
             :
             ''
         }
@@ -103,76 +105,46 @@ const renderButton = button => {
 
 }
 
-export class TrdsButton extends HTMLButtonElement{
-
-    constructor(){
-        super()
-
-        this.rendered = false;
-
-    }
-
-    render = () => {
-
-        this.classList.add('trds-button');
-
-        renderButton(this);
-
-        const ButtonLoader = this.appendChild(document.createElement('trds-loader'));
-        ButtonLoader.addEventListener('enabled', () => this.classList.add('disabled'));
-        ButtonLoader.addEventListener('disabled', () => this.classList.remove('disabled'));
-
-        this.rendered = true;
-
-    }
-
-    connectedCallback(){
-
-        if(!this.rendered) this.render();
-
-    }
-
-}
-
-customElements.define('trds-button', TrdsButton, {extends: 'button'});
-
-export class TrdsButtonLink extends TrdsLink{
+export class Button extends HTMLButtonElement{
 
     constructor(){
         super();
 
-        this.rendered = false;
-
-    }
-
-    render(){
-
         this.classList.add('trds-button');
-
-        if(this.classList.contains('call')){
-
-            if(!this.hasAttribute('number')) return console.error('Number attribute to call button must be given.');
-
-            this.setAttribute('href', `tel:${this.getAttribute('number')}`);
-            this.setAttribute('icon', 'solid/phone');
-            this.setAttribute('text', this.getAttribute('number'));
-
-        }
-
-        super.render();
-
         renderButton(this);
 
-        this.rendered = true;
+        this.loader = this.appendChild(document.createElement('trds-loader'));
 
     }
 
-    connectedCallback(){
+    static get observedAttributes(){ 
+        return ['loading']; 
+    }
 
-        if(!this.rendered) this.render();
-
+    attributeChangedCallback(){
+        if(this.hasAttribute('loading')){
+            this.loader.setAttribute('active', '');
+            this.classList.add('disabled');
+        } else {
+            this.loader.removeAttribute('active');
+            this.classList.remove('disabled');
+        }
     }
 
 }
 
-customElements.define('trds-button--link', TrdsButtonLink, {extends: 'a'});
+customElements.define('trds-button', Button, {extends: 'button'});
+
+export class ButtonLink extends HTMLAnchorElement{
+
+    constructor(){
+        super();
+
+        this.classList.add('trds-button');
+        renderButton(this);
+
+    }
+    
+}
+
+customElements.define('trds-button-link', ButtonLink, {extends: 'a'});
