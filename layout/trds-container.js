@@ -1,4 +1,4 @@
-﻿export default class Container extends HTMLElement{
+﻿customElements.define('trds-container', class extends HTMLElement{
 
     constructor(){
         super();
@@ -27,6 +27,4 @@
 
     }
 
-}
-
-customElements.define('trds-container', Container);
+});

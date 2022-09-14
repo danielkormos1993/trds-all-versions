@@ -105,7 +105,7 @@ const renderButton = button => {
 
 }
 
-export class Button extends HTMLButtonElement{
+customElements.define('trds-button', class extends HTMLButtonElement{
 
     constructor(){
         super();
@@ -131,11 +131,9 @@ export class Button extends HTMLButtonElement{
         }
     }
 
-}
+}, {extends: 'button'});
 
-customElements.define('trds-button', Button, {extends: 'button'});
-
-export class ButtonLink extends HTMLAnchorElement{
+customElements.define('trds-button-link', class extends HTMLAnchorElement{
 
     constructor(){
         super();
@@ -145,6 +143,4 @@ export class ButtonLink extends HTMLAnchorElement{
 
     }
     
-}
-
-customElements.define('trds-button-link', ButtonLink, {extends: 'a'});
+}, {extends: 'a'});

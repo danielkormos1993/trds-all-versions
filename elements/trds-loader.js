@@ -19,7 +19,7 @@ TrdsLoaderStyle.textContent = `
 `;
 document.head.appendChild(TrdsLoaderStyle);
 
-export default class Loader extends HTMLElement{
+customElements.define('trds-loader', class extends HTMLElement{
 
     constructor(){
         super();
@@ -82,6 +82,4 @@ export default class Loader extends HTMLElement{
         }
     }
 
-}
-
-customElements.define('trds-loader', Loader);
+});

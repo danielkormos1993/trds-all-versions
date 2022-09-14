@@ -1,6 +1,6 @@
 ﻿import TrdsIntersectionObserver from "../IntersectionObserver.js";
 
-export default class Icon extends HTMLElement{
+customElements.define('trds-icon', class extends HTMLElement{
 
     constructor(){
         super();
@@ -46,6 +46,4 @@ export default class Icon extends HTMLElement{
 
     load = () => this.classList.remove('lazy');
 
-}
-
-customElements.define('trds-icon', Icon);
+});
