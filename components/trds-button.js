@@ -1,4 +1,6 @@
-﻿import '../libs/wc-polyfill.js';
+﻿import '../typhography.js';
+import '../layout.js';
+import '../libs/wc-polyfill.js';
 import '../elements/trds-icon.js';
 import '../elements/trds-loader.js';
 
