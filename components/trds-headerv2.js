@@ -8,6 +8,50 @@ customElements.define('trds-header', class extends HTMLElement{
 
         this.attachShadow({mode: 'open'});
         this.shadowRoot.innerHTML = `
+
+            <style>
+
+                :host{
+                    background-color: var(--color--secondary-bg);
+                    height: 5rem;
+                    width: 100%;
+                    overflow: hidden;
+                }
+
+                :host([opened]){
+                    height: auto;
+                    overflow: visible;
+                }
+
+                trds-container{
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    flex-wrap: wrap;
+                }
+
+                top-bar{
+                    height: 5rem;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    flex-shrink: 0;
+                }
+
+                ::slotted([slot="logo"]){
+                    width: 7rem;
+                }
+
+                nav{
+                    display: flex;
+                    flex-direction: column;
+                    width: 100%;
+                    align-items: start;
+                    padding: var(--space--l) 0;
+                    gap: var(--space--l);
+                }
+
+            </style>
         
             <trds-container>
                 <top-bar>
@@ -22,13 +66,21 @@ customElements.define('trds-header', class extends HTMLElement{
         `;
 
         this.Slot = this.shadowRoot.querySelector('nav slot');
+        this.Hamburger = this.shadowRoot.querySelector('trds-hamburger');
 
-        this.addEventListener('click', this.closeMenuOnOutsideClick);
-        this.shadowRoot.querySelector('trds-hamburger').addEventListener('click', this.toggleMenu);
+        this.Hamburger.addEventListener('click', this.toggleMenu);
         this.Slot.assignedNodes().forEach(navElement => {
             navElement.addEventListener('focus', this.openMenu);
         });
 
+    }
+
+    connectedCallback(){
+        document.addEventListener('click', this.closeMenuOnOutsideClick);
+    }
+
+    disconnectedCallback(){
+        document.removeEventListener('click', this.closeMenuOnOutsideClick);
     }
 
     toggleMenu = () => {

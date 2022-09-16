@@ -68,6 +68,8 @@ customElements.define('trds-loader', class extends HTMLElement{
 
         `;
 
+        this.Parent = this.parentElement || this.getRootNode().host;
+
     }
 
     static get observedAttributes(){ 
@@ -76,9 +78,9 @@ customElements.define('trds-loader', class extends HTMLElement{
 
     attributeChangedCallback(){
         if(this.hasAttribute('active')){
-            this.parentElement.classList.add('loader-parent');
+            this.Parent.classList.add('loader-parent');
         } else {
-            this.parentElement.classList.remove('loader-parent');
+            this.Parent.classList.remove('loader-parent');
         }
     }
 
