@@ -15,8 +15,8 @@ TrdsButtonStyle.textContent = `
         padding: .75em 1.5em;
         border-radius: 5px;
         overflow: hidden;
-        max-width: max-content;
-        min-width: max-content;
+        width: max-content;
+        max-width: var(--element--max-width);
         --base-bg-color: var(--color--primary);
         background-color: var(--color--primary);
         font-weight: bold;
@@ -51,6 +51,7 @@ TrdsButtonStyle.textContent = `
         border-radius: 0;
         background-color: transparent;
         font-size: var(--size--s);
+        color: var(--color--secondary-text);
     }
 
     .trds-button.plain:focus-visible{
@@ -62,7 +63,7 @@ TrdsButtonStyle.textContent = `
     }
 
     .trds-button.block{
-        max-width: 100%;
+        width: 100%;
     }
 
     .trds-button.icon-on-right trds-icon{

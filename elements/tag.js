@@ -1,4 +1,7 @@
-﻿const TrdsTagStyle = document.createElement('style');
+﻿import '../typhography.js';
+import '../layout.js';
+
+const TrdsTagStyle = document.createElement('style');
 TrdsTagStyle.id = 'tag';
 TrdsTagStyle.textContent = `
 

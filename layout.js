@@ -15,6 +15,8 @@ TrdsLayoutStyle.textContent = `
         --space--xl: 40px;
         --space--xxl: 80px;
 
+        --element--max-width: 800px;
+
     }
 
     body{

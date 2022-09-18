@@ -1,14 +1,19 @@
-﻿import './trds-container.js';
+﻿import '../layout.js';
+import './trds-container.js';
 import TrdsIntersectionObserver from '../IntersectionObserver.js';
+
+import launchToast from '../components/trds-toast.js';
+
+launchToast('error', 'Hát ez szar');
+launchToast('success', 'Hát ez faszar');
 
 customElements.define('trds-section', class extends HTMLElement{
 
     constructor(){
         super();
 
-        this.attachShadow({mode: 'open'});
-
-        this.shadowRoot.innerHTML = `
+        this.attachShadow({mode: 'open'}).innerHTML = `
+        
             <style>
 
                 :host{

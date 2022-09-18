@@ -1,4 +1,5 @@
-﻿import './trds-loader.js';
+﻿import '../layout.js';
+import './trds-loader.js';
 import TrdsIntersectionObserver from '../IntersectionObserver.js';
 
 customElements.define('trds-image', class extends HTMLElement{
@@ -15,7 +16,7 @@ customElements.define('trds-image', class extends HTMLElement{
                 :host{
                     display: block;
                     width: 100%;
-                    max-width: 40em;
+                    max-width: var(--element--max-width);
                     position: relative;
                     background-color: var(--color--secondary-bg);
                     object-fit: contain;

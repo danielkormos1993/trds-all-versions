@@ -1,4 +1,6 @@
-﻿const TrdsFormStyle = document.createElement('style');
+﻿import '../layout.js';
+
+const TrdsFormStyle = document.createElement('style');
 TrdsFormStyle.id = 'tag';
 TrdsFormStyle.textContent = `
 
@@ -6,7 +8,7 @@ TrdsFormStyle.textContent = `
     select,
     textarea{
         display: block;
-        max-width: 40em;
+        max-width: var(--element--max-width);
         width: 100%;
         background-color: var(--color--secondary-bg);
         color: inherit;

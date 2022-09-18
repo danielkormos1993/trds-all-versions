@@ -1,4 +1,5 @@
 ﻿import '../libs/wc-polyfill.js';
+import '../layout.js';
 import TrdsIntersectionObserver from '../IntersectionObserver.js';
 
 const TrdsVideoStyle = document.createElement('style');
@@ -7,7 +8,7 @@ TrdsVideoStyle.textContent = `
 
     video[is="trds-video"]{
         display: block;
-        max-width: 40em;
+        max-width: var(--element--max-width);
         width: 100%;
         height: auto;
         object-fit: contain;           

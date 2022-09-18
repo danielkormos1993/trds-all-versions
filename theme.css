@@ -29,6 +29,8 @@
     --color--warning: rgb(231, 113, 27);
     --color--error: rgb(204, 46, 40);
 
+    --color--overlay: rgba(0, 0, 0, .72);
+
     background-color: var(--color--primary-bg);
     color: var(--color--primary-text); 
     

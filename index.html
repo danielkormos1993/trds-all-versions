@@ -6,29 +6,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="theme.css">
-    <script src="typhography.js"></script>
+    <script src="typhography.js" type="module"></script>
     <script src="layout.js" type="module"></script>
     <script src="elements/trds-icon.js" type="module"></script>
     <script src="elements/trds-loader.js" type="module"></script>
     <script src="elements/link.js" type="module"></script>
     <script src="components/trds-button.js" type="module"></script>
-    <script src="components/trds-headerv2.js" type="module"></script>
+    <script src="components/trds-header.js" type="module"></script>
+    <script src="components/trds-modal.js" type="module"></script>
+    <script src="components/trds-toast.js" type="module"></script>
     <script src="elements/trds-image.js" type="module"></script>
 </head>
 <body>
-    <trds-header>
+    <trds-modal>
+        <h1>modal 1</h1>
+    </trds-modal>
 
-        <a href="/" slot="logo">
-            <trds-image src="/temporary/logo.png"></trds-image>
-        </a>
+    <trds-modal>
+        <h1>modal 2</h1>
+    </trds-modal>
+    <trds-header breakpoint="1000px">
 
-        <a>Anyád</a>
+        <span slot="logo">
+            <b>TRDS</b>
+        </span>
+
+        <a is="trds-button-link" href="/" class="plain" text="Hail repair"></a>
+        <a is="trds-button-link" href="/" class="plain" text="Dent removal"></a>
+        <a is="trds-button-link" href="/" class="plain" text="About"></a>
+        <a is="trds-button-link" href="/" class="plain" text="Contact us"></a>
 
     </trds-header>
     <main>
         <trds-section class="bg-image" style="--bg-image-src: url('https://picsum.photos/seed/picsum/200/300')">
             <stack>
                 <h1>This is the big title</h1>
+                
                 <grid class="auto-width-layout">
                     <button 
                         is="trds-button"
@@ -52,7 +65,8 @@
                 </grid>
                 <a is="trds-link" href="/anzad" class="text">LOL</a>
                 <p>This is a paragraph Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos id vitae non, blanditiis voluptate atque tempore a voluptas ratione laudantium veniam iure quam modi nobis qui! Neque odio repudiandae quia!</p>
-                <trds-icon onclick style="--icon-src: url('/assets/icons/solid/cog.svg')" />
+                <trds-icon onclick style="--icon-src: url('/assets/icons/solid/cog.svg')"></trds-icon>
+                <trds-toast class="error">Anyad picsaja</trds-toast>
             </stack>
         </trds-section>
         <trds-section class="bg-image" style="--bg-image-src: url('https://picsum.photos/seed/picsum/200/300')">
@@ -61,10 +75,12 @@
                 <h1>This is the big title</h1>
                 <p>This is a paragraph Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos id vitae non, blanditiis voluptate atque tempore a voluptas ratione laudantium veniam iure quam modi nobis qui! Neque odio repudiandae quia!</p>
                 <trds-icon onclick style="--icon-src: url('/assets/icons/solid/cog.svg')" />
+                
             </stack>
         </trds-section>
         <trds-section class="bg-image" style="--bg-image-src: url('https://picsum.photos/seed/picsum/200/300')">
             <stack>
+                
                 <h1>This is the big title</h1>
                 <p>This is a paragraph Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos id vitae non, blanditiis voluptate atque tempore a voluptas ratione laudantium veniam iure quam modi nobis qui! Neque odio repudiandae quia!</p>
                 <trds-icon onclick style="--icon-src: url('/assets/icons/solid/cog.svg')" />
