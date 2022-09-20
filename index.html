@@ -20,101 +20,36 @@
 
     <script src="components/trds-button.js" type="module"></script>
     <script src="components/trds-header.js" type="module"></script>
+    <script src="components/trds-footer.js" type="module"></script>
     <script src="components/trds-modal.js" type="module"></script>
     <script src="components/trds-toast.js" type="module"></script>
     <script src="elements/trds-image.js" type="module"></script>
 
 </head>
 <body>
-    <trds-modal>
-        <h1>modal 1</h1>
-    </trds-modal>
-
-    <trds-modal>
-        <h1>modal 2</h1>
-    </trds-modal>
+ 
     <trds-header breakpoint="1000px">
 
         <span slot="logo">
-            <b>TRDS</b>
+            <b style="font-size: var(--size--xl)">TRDS</b>
         </span>
 
-        <a is="trds-button-link" href="/" class="plain" text="Hail repair"></a>
-        <a is="trds-button-link" href="/" class="plain" text="Dent removal"></a>
-        <a is="trds-button-link" href="/" class="plain" text="About"></a>
-        <a is="trds-button-link" href="/" class="plain" text="Contact us"></a>
+        <a is="trds-button-link" href="#getstarted" class="plain" text="Get started"></a>
 
     </trds-header>
+
     <main>
-        <trds-section class="bg-image" style="--bg-image-src: url('https://picsum.photos/seed/picsum/200/300')">
-            <stack>
-                <h1>This is the big title</h1>
-                
-                <grid class="auto-width-layout">
-                    <button 
-                        is="trds-button"
-                        text="normal button"
-                    ></button>
-                    <a 
-                        is="trds-button-link"
-                        text="normal button"
-                        href=""lol
-                    ></a>
-                    <button 
-                        is="trds-button"
-                        icon="/assets/icons/solid/cog.svg"
-                        class="plain"
-                    ></button>
-                    <button 
-                        is="trds-button"
-                        text="Update"
-                        class="plain"
-                    ></button>
-                </grid>
-                <a is="trds-link" href="/anzad" class="text">LOL</a>
-                <p>This is a paragraph Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos id vitae non, blanditiis voluptate atque tempore a voluptas ratione laudantium veniam iure quam modi nobis qui! Neque odio repudiandae quia!</p>
-                <trds-icon onclick style="--icon-src: url('/assets/icons/solid/cog.svg')"></trds-icon>
-                <trds-toast class="error">Anyad picsaja</trds-toast>
-            </stack>
-        </trds-section>
-        <trds-section class="bg-image" style="--bg-image-src: url('https://picsum.photos/seed/picsum/200/300')">
-            <trds-loader active></trds-loader>
+        <trds-section>
             <stack style="gap: var(--space--l)">
-                <h1>This is the big title</h1>
-                <p>This is a paragraph Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos id vitae non, blanditiis voluptate atque tempore a voluptas ratione laudantium veniam iure quam modi nobis qui! Neque odio repudiandae quia!</p>
-                <trds-icon onclick style="--icon-src: url('/assets/icons/solid/cog.svg')" />
-                
-            </stack>
-        </trds-section>
-        <trds-section class="bg-image" style="--bg-image-src: url('https://picsum.photos/seed/picsum/200/300')">
-            <stack>
-                
-                <h1>This is the big title</h1>
-                <p>This is a paragraph Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos id vitae non, blanditiis voluptate atque tempore a voluptas ratione laudantium veniam iure quam modi nobis qui! Neque odio repudiandae quia!</p>
-                <trds-icon onclick style="--icon-src: url('/assets/icons/solid/cog.svg')" />
-            </stack>
-        </trds-section>
-        <trds-section class="bg-image" style="--bg-image-src: url('https://picsum.photos/seed/picsum/200/300')">
-            <stack>
-                <h1>This is the big title</h1>
-                <p>This is a paragraph Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos id vitae non, blanditiis voluptate atque tempore a voluptas ratione laudantium veniam iure quam modi nobis qui! Neque odio repudiandae quia!</p>
-                <trds-icon onclick style="--icon-src: url('/assets/icons/solid/cog.svg')" />
-            </stack>
-        </trds-section>
-        <trds-section class="bg-image" style="--bg-image-src: url('https://picsum.photos/seed/picsum/200/300')">
-            <stack>
-                <h1>This is the big title</h1>
-                <p>This is a paragraph Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos id vitae non, blanditiis voluptate atque tempore a voluptas ratione laudantium veniam iure quam modi nobis qui! Neque odio repudiandae quia!</p>
-                <trds-icon onclick style="--icon-src: url('/assets/icons/solid/cog.svg')" />
-            </stack>
-        </trds-section>
-        <trds-section class="bg-image" style="--bg-image-src: url('https://picsum.photos/seed/picsum/200/300')">
-            <stack>
-                <h1>This is the big title</h1>
-                <p>This is a paragraph Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos id vitae non, blanditiis voluptate atque tempore a voluptas ratione laudantium veniam iure quam modi nobis qui! Neque odio repudiandae quia!</p>
-                <trds-icon onclick class="lazy" style="--icon-src: url('/assets/icons/solid/arrow-right.svg')" />
+                <h1><span style="color: var(--color--primary)">Top Repair</span> Design System</h1>
+                <p class="size--l">TRDS is a vanilla javascript component library and design system made for our company's online presence. Compatible with React.</p>
             </stack>
         </trds-section>
     </main>
+
+    <trds-footer style="text-align: center">
+        <span style="color: var(--color--secondary-text); font-weight: bold;">2022 © TRDS</span>
+    </trds-footer>
+
 </body>
 </html>
