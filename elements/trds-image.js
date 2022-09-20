@@ -1,6 +1,6 @@
-﻿import '../layout.js';
+﻿import '../layout/layout-vars.js';
 import './trds-loader.js';
-import TrdsIntersectionObserver from '../IntersectionObserver.js';
+import TrdsIntersectionObserver from '../libs/IntersectionObserver.js';
 
 customElements.define('trds-image', class extends HTMLElement{
 

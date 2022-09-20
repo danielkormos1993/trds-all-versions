@@ -1,43 +1,16 @@
 ﻿// elements to use: h1,h2...h6, p, span
 // classes available: .variant--1, .size--{xs...xxl}
 
-const TrdsTyphographyStyle = document.createElement('style');
-TrdsTyphographyStyle.id = 'trds-typhography';
-TrdsTyphographyStyle.textContent = `
+import '../layout/layout-vars.js';
+import './typhography-vars.js';
 
-    :root{
-
-        font-size: clamp(16px, 15.065px + 0.259vw, 20px);
-        line-height: 1.5;
-        -webkit-text-size-adjust: none;
-
-        --size--xs: .75rem;
-        --size--xs--line-height: 1.55;
-
-        --size--s: .9rem;
-        --size--s--line-height: 1.52;
-
-        --size--m: 1rem;
-        --size--m--line-height: 1.5;
-
-        --size--l: 1.2rem;
-        --size--l--line-height: 1.42;
-
-        --size--xl: 2rem;
-        --size--xl--line-height: 1.3;
-
-        --size--xxl: clamp(2rem, 1.7662rem + 1.0390vw, 3rem);
-        --size--xxl--line-height: 1.25;
-
-    }
-
-    span{
-        display: block;
-    }
+const TyphographyStyle = document.createElement('style');
+TyphographyStyle.id = 'typhography';
+TyphographyStyle.textContent = `
 
     h1, h2, h3, h4, h5, h6, p{
         margin: 0;
-        max-width: 40em;
+        max-width: var(--element--max-width);
     }
 
     .variant--1{
@@ -78,4 +51,4 @@ TrdsTyphographyStyle.textContent = `
     }
 
 `;
-document.head.appendChild(TrdsTyphographyStyle);
+document.head.appendChild(TyphographyStyle);

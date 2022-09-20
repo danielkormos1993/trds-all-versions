@@ -1,4 +1,4 @@
-﻿import TrdsIntersectionObserver from "../IntersectionObserver.js";
+﻿import TrdsIntersectionObserver from "../libs/IntersectionObserver.js";
 
 customElements.define('trds-icon', class extends HTMLElement{
 

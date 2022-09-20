@@ -1,8 +1,8 @@
-﻿import '../layout.js';
+﻿import '../layout/layout-vars.js';
 
-const TrdsFormStyle = document.createElement('style');
-TrdsFormStyle.id = 'tag';
-TrdsFormStyle.textContent = `
+const FormStyle = document.createElement('style');
+FormStyle.id = 'form';
+FormStyle.textContent = `
 
     input,
     select,
@@ -31,4 +31,4 @@ TrdsFormStyle.textContent = `
     }
 
 `;
-document.head.appendChild(TrdsFormStyle);
+document.head.appendChild(FormStyle);

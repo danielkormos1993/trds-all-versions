@@ -1,11 +1,6 @@
-﻿import '../layout.js';
+﻿import './layout-vars.js';
 import './trds-container.js';
-import TrdsIntersectionObserver from '../IntersectionObserver.js';
-
-import launchToast from '../components/trds-toast.js';
-
-launchToast('error', 'Hát ez szar');
-launchToast('success', 'Hát ez faszar');
+import TrdsIntersectionObserver from '../libs/IntersectionObserver.js';
 
 customElements.define('trds-section', class extends HTMLElement{
 

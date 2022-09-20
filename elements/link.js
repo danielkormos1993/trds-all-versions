@@ -1,6 +1,6 @@
-﻿const TrdsLinkStyle = document.createElement('style');
-TrdsLinkStyle.id = 'link';
-TrdsLinkStyle.textContent = `
+﻿const LinkStyle = document.createElement('style');
+LinkStyle.id = 'link';
+LinkStyle.textContent = `
 
     a{
         transition: filter 0.25s ease-in-out;
@@ -22,4 +22,4 @@ TrdsLinkStyle.textContent = `
     }
 
 `;
-document.head.appendChild(TrdsLinkStyle);
+document.head.appendChild(LinkStyle);

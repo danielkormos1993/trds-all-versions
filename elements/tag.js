@@ -1,9 +1,9 @@
-﻿import '../typhography.js';
-import '../layout.js';
+﻿import '../typhography/typhography-vars.js';
+import '../layout/layout-vars.js';
 
-const TrdsTagStyle = document.createElement('style');
-TrdsTagStyle.id = 'tag';
-TrdsTagStyle.textContent = `
+const TagStyle = document.createElement('style');
+TagStyle.id = 'tag';
+TagStyle.textContent = `
 
     tag{
         background-color: var(--color--accent);
@@ -11,10 +11,6 @@ TrdsTagStyle.textContent = `
         box-sizing: border-box;
         padding: var(--space--xs) var(--space--s);
         font-size: var(--size--xs);
-        width: max-content;
-        display: inline-flex;
-        gap: var(--space--xs);
-        align-items: center;
         font-weight: bold;
     }
 
@@ -24,4 +20,4 @@ TrdsTagStyle.textContent = `
     }
 
 `;
-document.head.appendChild(TrdsTagStyle);
+document.head.appendChild(TagStyle);

@@ -1,6 +1,6 @@
 ﻿import '../libs/wc-polyfill.js';
-import '../layout.js';
-import TrdsIntersectionObserver from '../IntersectionObserver.js';
+import '../layout/layout-vars.js';
+import TrdsIntersectionObserver from '../libs/IntersectionObserver.js';
 
 const TrdsVideoStyle = document.createElement('style');
 TrdsVideoStyle.id = 'trds-video';

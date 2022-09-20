@@ -1,4 +1,4 @@
-﻿import '../layout.js';
+﻿import '../layout/layout-vars.js';
 import '../layout/trds-container.js';
 import '../elements/trds-hamburger.js';
 

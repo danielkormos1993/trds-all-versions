@@ -1,4 +1,4 @@
-﻿import '../layout.js';
+﻿import '../layout/layout-vars.js';
 import '../elements/trds-icon.js';
 
 customElements.define('trds-modal', class extends HTMLElement{
@@ -92,6 +92,12 @@ customElements.define('trds-modal', class extends HTMLElement{
         this.shadowRoot.querySelector('modal_header trds-icon').addEventListener('click', () => {
             this.removeAttribute('opened');
         });
+
+        this.addEventListener('click', () => {
+            this.removeAttribute('opened');
+        });
+
+        this.shadowRoot.querySelector('modal_container').addEventListener('click', e => e.stopPropagation());
 
     }
 

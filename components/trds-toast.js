@@ -1,4 +1,4 @@
-﻿import '../layout.js';
+﻿import '../layout/layout-vars.js';
 import '../elements/trds-icon.js';
 
 const TrdsToastsStyle = document.createElement('style');

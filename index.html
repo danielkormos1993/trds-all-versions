@@ -6,16 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="theme.css">
-    <script src="typhography.js" type="module"></script>
-    <script src="layout.js" type="module"></script>
+
+    <script>
+        window.addEventListener('load', () => document.body.style.visibility = 'visible');
+    </script>
+
+    <script src="typhography/typhography.js" type="module"></script>
+    <script src="layout/layout.js" type="module"></script>
+
     <script src="elements/trds-icon.js" type="module"></script>
     <script src="elements/trds-loader.js" type="module"></script>
     <script src="elements/link.js" type="module"></script>
+
     <script src="components/trds-button.js" type="module"></script>
     <script src="components/trds-header.js" type="module"></script>
     <script src="components/trds-modal.js" type="module"></script>
     <script src="components/trds-toast.js" type="module"></script>
     <script src="elements/trds-image.js" type="module"></script>
+
 </head>
 <body>
     <trds-modal>

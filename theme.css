@@ -35,3 +35,8 @@
     color: var(--color--primary-text); 
     
 }
+
+/* this will fight with cls score, leave it */
+body{
+    visibility: hidden;
+}

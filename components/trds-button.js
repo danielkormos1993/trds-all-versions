@@ -1,5 +1,5 @@
-﻿import '../typhography.js';
-import '../layout.js';
+﻿import '../typhography/typhography-vars.js';
+import '../layout/layout-vars.js';
 import '../libs/wc-polyfill.js';
 import '../elements/trds-icon.js';
 import '../elements/trds-loader.js';

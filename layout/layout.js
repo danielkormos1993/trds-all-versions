@@ -1,23 +1,10 @@
 ﻿// elements to use: main, trds-section, stack, grid, card, container
+import './layout-vars.js';
+import './trds-section.js';
 
-import './layout/trds-section.js';
-
-const TrdsLayoutStyle = document.createElement('style');
-TrdsLayoutStyle.id = 'trds-layout';
-TrdsLayoutStyle.textContent = `
-
-    :root{
-
-        --space--xs: 5px;
-        --space--s: 10px;
-        --space--m: 20px;
-        --space--l: 30px;
-        --space--xl: 40px;
-        --space--xxl: 80px;
-
-        --element--max-width: 800px;
-
-    }
+const LayoutStyle = document.createElement('style');
+LayoutStyle.id = 'layout';
+LayoutStyle.textContent = `
 
     body{
         display: flex;
@@ -86,4 +73,4 @@ TrdsLayoutStyle.textContent = `
     }
 
 `;
-document.head.appendChild(TrdsLayoutStyle);
+document.head.appendChild(LayoutStyle);
