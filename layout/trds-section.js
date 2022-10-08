@@ -1,4 +1,4 @@
-﻿import $layout from './$layout.js' assert { type: "css" };
+﻿import './$layout.js';
 import './trds-container.js';
 import TrdsIntersectionObserver from '../libs/IntersectionObserver.js';
 
@@ -39,8 +39,6 @@ customElements.define('trds-section', class extends HTMLElement{
             </trds-container>
 
         `;
-
-        document.adoptedStyleSheets = [...document.adoptedStyleSheets, $layout];
 
     }
 
