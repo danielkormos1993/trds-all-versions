@@ -1,4 +1,4 @@
-﻿import './layout-vars.js';
+﻿import $layout from './$layout.js' assert { type: "css" };
 import './trds-container.js';
 import TrdsIntersectionObserver from '../libs/IntersectionObserver.js';
 
@@ -20,7 +20,7 @@ customElements.define('trds-section', class extends HTMLElement{
                     flex: 1;
                 }
 
-                :host(.bg-image){
+                :host([bg-image]){
                     --bg-image-overlay: var(--color--primary-bg);
                     background: var(--bg-image-src) var(--bg-image-overlay);
                     background-position: center center;
@@ -28,7 +28,7 @@ customElements.define('trds-section', class extends HTMLElement{
                     background-blend-mode: overlay;
                 }
 
-                :host(.lazy){
+                :host([lazy]){
                     background: var(--bg-image-overlay);
                 }
 
@@ -40,15 +40,17 @@ customElements.define('trds-section', class extends HTMLElement{
 
         `;
 
+        document.adoptedStyleSheets = [...document.adoptedStyleSheets, $layout];
+
     }
 
     connectedCallback(){
 
-        if(this.classList.contains('lazy'))
+        if(this.hasAttribute('lazy'))
             TrdsIntersectionObserver.observe(this);
 
     }
 
-    load = () => this.classList.remove('lazy');
+    isIntersecting = () => this.removeAttribute('lazy');
 
 });

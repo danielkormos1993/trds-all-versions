@@ -1,7 +1,7 @@
 ﻿const TrdsIntersectionObserver = new IntersectionObserver(entries => {
     entries.forEach(entry => {
         if(entry.isIntersecting){
-            entry.target.load();
+            entry.target.isIntersecting();
             TrdsIntersectionObserver.unobserve(entry.target);
         }
     });

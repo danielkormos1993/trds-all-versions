@@ -1,4 +1,4 @@
-﻿// usage: trds-hamburger
+﻿// usage: trds-hamburger [active]
 // change color with color style attribute
 
 customElements.define('trds-hamburger', class extends HTMLElement{
@@ -7,7 +7,9 @@ customElements.define('trds-hamburger', class extends HTMLElement{
         super();
 
         this.attachShadow({mode: 'open'}).innerHTML = `
+
             <style>
+
                 :host{
                     display: flex;
                     flex-direction: column;
@@ -16,6 +18,7 @@ customElements.define('trds-hamburger', class extends HTMLElement{
                     height: 17px;
                     cursor: pointer;
                 }
+
                 div{
                     display: block;
                     height: 3px;
@@ -34,10 +37,13 @@ customElements.define('trds-hamburger', class extends HTMLElement{
                 :host([active]) div:nth-of-type(3){
                     transform: rotate(-45deg) translate(6px,-4px);
                 }
+
             </style>
+            
             <div></div>
             <div></div>
             <div></div>
+
         `
     }
 

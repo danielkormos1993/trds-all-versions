@@ -1,6 +1,6 @@
-﻿const TyphographyVarsStyle = document.createElement('style');
-TyphographyVarsStyle.id = 'typhography-vars';
-TyphographyVarsStyle.textContent = `
+﻿const $typhography = new CSSStyleSheet();
+
+$typhography.replaceSync(`
 
     :root{
 
@@ -18,15 +18,16 @@ TyphographyVarsStyle.textContent = `
         --size--m--line-height: 1.5;
 
         --size--l: 1.2rem;
-        --size--l--line-height: 1.42;
+        --size--l--line-height: 1.4;
 
         --size--xl: 2rem;
         --size--xl--line-height: 1.3;
 
         --size--xxl: clamp(2rem, 1.7662rem + 1.0390vw, 3rem);
-        --size--xxl--line-height: 1.25;
+        --size--xxl--line-height: 1.2;
 
     }
 
-`;
-document.head.appendChild(TyphographyVarsStyle);
+`);
+
+document.adoptedStyleSheets = [...document.adoptedStyleSheets, $typhography];

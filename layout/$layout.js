@@ -1,6 +1,6 @@
-﻿const LayoutVarsStyle = document.createElement('style');
-LayoutVarsStyle.id = 'layout-vars';
-LayoutVarsStyle.textContent = `
+﻿const $layout = new CSSStyleSheet();
+
+$layout.replaceSync(`
 
     :root{
 
@@ -14,5 +14,7 @@ LayoutVarsStyle.textContent = `
         --element--max-width: 800px;
 
     }
-`;
-document.head.appendChild(LayoutVarsStyle);
+
+`);
+
+document.adoptedStyleSheets = [...document.adoptedStyleSheets, $layout];

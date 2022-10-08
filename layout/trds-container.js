@@ -3,9 +3,7 @@
     constructor(){
         super();
 
-        this.attachShadow({mode: 'open'});
-
-        this.shadowRoot.innerHTML = `
+        this.attachShadow({mode: 'open'}).innerHTML = `
 
             <style>
 
@@ -13,7 +11,7 @@
                     display: block;
                     width: 100%;
                     max-width: 1700px;
-                    padding: 0 5%;
+                    padding: 20px 5%;
                     box-sizing: border-box;
                     margin-left: auto;
                     margin-right: auto;
