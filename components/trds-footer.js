@@ -1,4 +1,4 @@
-﻿import '../layout/layout-vars.js';
+﻿import '../layout/$layout.js';
 import '../layout/trds-container.js';
 
 customElements.define('trds-footer', class extends HTMLElement{
@@ -6,9 +6,7 @@ customElements.define('trds-footer', class extends HTMLElement{
     constructor(){
         super();
 
-        this.attachShadow({mode: 'open'});
-
-        this.shadowRoot.innerHTML = `
+        this.attachShadow({mode: 'open'}).innerHTML = `
             <style>
 
                 :host{

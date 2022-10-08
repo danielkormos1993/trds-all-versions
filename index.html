@@ -7,13 +7,7 @@
 
     <link rel="stylesheet" href="theme.css">
 
-    <script src="typhography/typhography.js" type="module"></script>
-    <script src="layout/layout.js" type="module"></script>
-
-    <script src="components/trds-button.js" type="module"></script>
-
-    <script src="components/trds-header.js" type="module"></script>
-    <script src="components/trds-footer.js" type="module"></script>
+    <script src="trds.js" type="module"></script>
 
 </head>
 <body>
@@ -31,29 +25,35 @@
     <main>
 
         <trds-section style="background-color: var(--color--secondary-bg);">
-            <stack style="gap: var(--space--l)">
+            <trds-stack style="gap: var(--space--l)">
                 <h1><span style="color: var(--color--primary)">Top Repair</span><br>Design System</h1>
                 <p class="size--l">TRDS is a vanilla javascript component library and design system made for our company's online presence. Compatible with React.</p>
-                <trds-button href="/" text="anyad" id="fasz"></trds-button>
-            </stack>
+            </trds-stack>
+        </trds-section>
+
+        <trds-section style="background-color:white; color:black">
+            <trds-stack>
+                <h2 class="variant--1">Theming</h2>
+                <p>The library has got a theme.css file where you can set the fonts and colors for theming using css variables. Use this css file with a link tag in head. Keep in mind you have to provide the fonts path in this file.</p>
+            </trds-stack>
         </trds-section>
 
         <trds-section>
-            <stack>
-                <h2 class="variant--1">Theming</h2>
-                <p>The library has got a theme.css file where you can set the fonts and colors for theming using css variables. Use this css file with a link tag in head. Keep in mind you have to provide the fonts path in this file.</p>
-            </stack>
-        </trds-section>
-
-        <trds-section style="margin-top: -80px">
-            <stack>
-                <h2 class="variant--1">Typhography</h2>
-                <p>Elements to use: span, p, h1...h6<br>Classes to use: size-{xs...xxl}, variant--1</p>
-                <h3 class="variant--1">Typhography examples</h3>
-                <grid>
-                    
-                </grid>
-            </stack>
+            <trds-grid>
+                <trds-stack>
+                    <h2 class="variant--1">Typhography</h2>
+                    <p>Elements to use: span, p, h1...h6<br>Classes to use: size-{xs...xxl}, variant--1</p>
+                </trds-stack>
+                <trds-stack style="gap: var(--space--s)">
+                    <h1 class="variant--1">.Variant--1 Heading</h1>
+                    <h1>H1 Heading</h1>
+                    <h2>H2 Heading</h2>
+                    <h3>H3 Heading</h3>
+                    <h4>H4 Heading</h4>
+                    <h5>H5 Heading</h5>
+                    <h6>H6 Heading</h6>
+                </trds-stack>
+            </trds-grid>
         </trds-section>
 
     </main>

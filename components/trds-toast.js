@@ -1,9 +1,8 @@
-﻿import '../layout/layout-vars.js';
+﻿import '../layout/$layout.js';
 import '../elements/trds-icon.js';
 
-const TrdsToastsStyle = document.createElement('style');
-TrdsToastsStyle.id = 'trds-toasts';
-TrdsToastsStyle.textContent = `
+const TrdsToastsStyle = new CSSStyleSheet();
+TrdsToastsStyle.replaceSync(`
 
     trds-toasts{
         display: grid;
@@ -16,8 +15,9 @@ TrdsToastsStyle.textContent = `
         left: 5%;
     }
 
-`;
-document.head.appendChild(TrdsToastsStyle);
+`);
+
+document.adoptedStyleSheets = [...document.adoptedStyleSheets, TrdsToastsStyle];
 
 class Toast extends HTMLElement{
     constructor(){
@@ -90,14 +90,19 @@ class Toast extends HTMLElement{
 
     static launchToast(type, content){
 
-        const toast = `<trds-toast class="${type}">${content}</trds-toast>`;
+
+
+        const toast = document.createElement('trds-toast');
+        toast.classList.add(type);
+        toast.textContent = content;
+
         let toasts = document.querySelector('trds-toasts');
 
         if(!toasts)
             toasts = document.createElement('trds-toasts');
             document.body.appendChild(toasts);
 
-        toasts.innerHTML += toast;
+        toasts.appendChild(toast);
 
     }
 

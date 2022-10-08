@@ -1,12 +1,10 @@
-﻿import '../typhography/typhography-vars.js';
-import '../layout/layout-vars.js';
-import '../libs/wc-polyfill.js';
-import '../elements/trds-icon.js';
-import '../elements/trds-loader.js';
+﻿import '../../layout/$layout.js';
+import '../../typhography/$typhography.js';
+import '../../elements/trds-icon.js';
+import TrdsLoaderStyle from '../../elements/loader/trds-loader.module.js';
 
-const TrdsButtonStyle = document.createElement('style');
-TrdsButtonStyle.id = 'trds-button';
-TrdsButtonStyle.textContent = `
+const TrdsButtonStyle = new CSSStyleSheet();
+TrdsButtonStyle.replaceSync(`
 
     .trds-button{
         all: unset;
@@ -85,8 +83,7 @@ TrdsButtonStyle.textContent = `
         flex-shrink: 0;
     }
 
-`;
-document.head.appendChild(TrdsButtonStyle);
+`);
 
 const renderButton = button => {
 
@@ -113,11 +110,13 @@ customElements.define('trds-button', class extends HTMLButtonElement{
     constructor(){
         super();
 
-        this.classList.add('trds-button');
-        renderButton(this);
-
         this.loader = this.appendChild(document.createElement('trds-loader'));
 
+    }
+
+    connectedCallback(){
+        this.classList.add('trds-button');
+        renderButton(this);
     }
 
     static get observedAttributes(){ 
@@ -140,10 +139,13 @@ customElements.define('trds-button-link', class extends HTMLAnchorElement{
 
     constructor(){
         super();
+    }
 
+    connectedCallback(){
         this.classList.add('trds-button');
         renderButton(this);
-
     }
     
 }, {extends: 'a'});
+
+export { TrdsButtonStyle, TrdsLoaderStyle };

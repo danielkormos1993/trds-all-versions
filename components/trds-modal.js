@@ -1,5 +1,6 @@
-﻿import '../layout/layout-vars.js';
+﻿import '../layout/$layout.js';
 import '../elements/trds-icon.js';
+import typhography from '../typhography/typhography.module.js';
 
 customElements.define('trds-modal', class extends HTMLElement{
 
@@ -71,7 +72,7 @@ customElements.define('trds-modal', class extends HTMLElement{
                     flex-shrink: 0;
                 }
 
-                modal_header ::slotted([slot="title"]){
+                modal_header h2{
                     margin-right: var(--space--m);
                 }
 
@@ -79,7 +80,7 @@ customElements.define('trds-modal', class extends HTMLElement{
         
             <modal_container>
                 <modal_header>
-                    <slot name="title">Default title</slot>
+                    <h2>Default title</h2>
                     <trds-icon tabindex="0" title="Close modal"></trds-icon>
                 </modal_header>
                 <modal_body>
@@ -88,6 +89,8 @@ customElements.define('trds-modal', class extends HTMLElement{
             </modal_container>
 
         `;
+
+        this.shadowRoot.adoptedStyleSheets = [typhography];
 
         this.shadowRoot.querySelector('modal_header trds-icon').addEventListener('click', () => {
             this.removeAttribute('opened');
@@ -99,6 +102,10 @@ customElements.define('trds-modal', class extends HTMLElement{
 
         this.shadowRoot.querySelector('modal_container').addEventListener('click', e => e.stopPropagation());
 
+    }
+
+    connectedCallback(){
+        this.shadowRoot.querySelector('modal_header h2').innerHTML = this.getAttribute('title');
     }
 
     static get observedAttributes(){

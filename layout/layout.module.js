@@ -26,7 +26,7 @@ layout.replaceSync(`
     trds-grid{
         display: flex;
         flex-wrap: wrap;
-        gap: var(--space--xxl);
+        gap: var(--space--xl);
     }
 
     trds-grid.boxes-layout{
