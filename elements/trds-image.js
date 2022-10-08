@@ -1,5 +1,5 @@
-﻿import '../layout/layout-vars.js';
-import './trds-loader.js';
+﻿import '../layout/$layout.js';
+import TrdsLoaderStyle from './loader/trds-loader.module.js';
 import TrdsIntersectionObserver from '../libs/IntersectionObserver.js';
 
 customElements.define('trds-image', class extends HTMLElement{
@@ -7,9 +7,7 @@ customElements.define('trds-image', class extends HTMLElement{
     constructor(){
         super();
 
-        this.attachShadow({mode: 'open'});
-
-        this.shadowRoot.innerHTML = `
+        this.attachShadow({mode: 'open'}).innerHTML = `
 
             <style>
 
@@ -45,36 +43,40 @@ customElements.define('trds-image', class extends HTMLElement{
 
             <trds-loader active></trds-loader>
             <aspect-ratio-box></aspect-ratio-box>
-            <img alt="${this.getAttribute('alt')}">
+            <img>
 
         `;
 
-        if(this.hasAttribute('aspect-ratio')){
+        this.shadowRoot.adoptedStyleSheets = [TrdsLoaderStyle];
+        this.Image = this.shadowRoot.querySelector('img');
 
-            const aspectRatio = this.getAttribute('aspect-ratio').split(':');
-
-            const calculatedPaddingBottom = `${(parseInt(aspectRatio[1])/parseInt(aspectRatio[0]))*100}%`;
-
-            this.style.setProperty('--image-padding-bottom', calculatedPaddingBottom);
-
-        }
-
-        if(this.hasAttribute('lazy')) TrdsIntersectionObserver.observe(this);
-        else this.load();
-
-    }
-
-    load = () => {
-
-        const ImageTag = this.shadowRoot.querySelector('img');
-
-        ImageTag.src = this.getAttribute('src');
-
-        ImageTag.addEventListener('load', () => {
+        this.Image.addEventListener('load', () => {
             requestAnimationFrame(() => {requestAnimationFrame(() => { 
                 this.shadowRoot.querySelector('trds-loader').removeAttribute('active'); 
             })});
         });
+
+    }
+
+    connectedCallback(){
+
+        this.Image.setAttribute('alt', this.getAttribute('alt'));
+
+        if(this.hasAttribute('aspect-ratio')){
+            const aspectRatio = this.getAttribute('aspect-ratio').split(':');
+            const calculatedPaddingBottom = `${(parseInt(aspectRatio[1])/parseInt(aspectRatio[0]))*100}%`;
+            this.style.setProperty('--image-padding-bottom', calculatedPaddingBottom);
+        }
+
+        if(this.hasAttribute('lazy')) TrdsIntersectionObserver.observe(this);
+        else this.isIntersecting();
+
+    }
+
+    isIntersecting = () => {
+
+        this.Image.src = this.getAttribute('src');
+        this.removeAttribute('lazy');
 
     }
 

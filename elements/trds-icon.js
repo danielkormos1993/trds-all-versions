@@ -5,9 +5,7 @@ customElements.define('trds-icon', class extends HTMLElement{
     constructor(){
         super();
 
-        this.attachShadow({mode: 'open'});
-
-        this.shadowRoot.innerHTML = `
+        this.attachShadow({mode: 'open'}).innerHTML = `
 
             <style>
 
@@ -44,6 +42,6 @@ customElements.define('trds-icon', class extends HTMLElement{
 
     }
 
-    load = () => this.classList.remove('lazy');
+    isIntersecting = () => this.classList.remove('lazy');
 
 });

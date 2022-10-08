@@ -1,8 +1,7 @@
-﻿import '../layout/layout-vars.js';
+﻿import '../../layout/$layout.js';
 
-const FormStyle = document.createElement('style');
-FormStyle.id = 'form';
-FormStyle.textContent = `
+const TrdsFormStyle = new CSSStyleSheet();
+TrdsFormStyle.replaceSync(`
 
     input,
     select,
@@ -24,11 +23,12 @@ FormStyle.textContent = `
         font-weight: bold;
         border-bottom: 2px solid var(--color--primary);
     }
-    
+
     input[type=checkbox]{
         width: var(--space--m);
         height: var(--space--m);
     }
 
-`;
-document.head.appendChild(FormStyle);
+`);
+
+export default TrdsFormStyle;

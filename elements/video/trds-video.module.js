@@ -1,10 +1,8 @@
-﻿import '../libs/wc-polyfill.js';
-import '../layout/layout-vars.js';
-import TrdsIntersectionObserver from '../libs/IntersectionObserver.js';
+﻿import '../../layout/$layout.js';
+import TrdsIntersectionObserver from '../../libs/IntersectionObserver.js';
 
-const TrdsVideoStyle = document.createElement('style');
-TrdsVideoStyle.id = 'trds-video';
-TrdsVideoStyle.textContent = `
+const TrdsVideoStyle = new CSSStyleSheet();
+TrdsVideoStyle.replaceSync(`
 
     video[is="trds-video"]{
         display: block;
@@ -14,8 +12,7 @@ TrdsVideoStyle.textContent = `
         object-fit: contain;           
     }
 
-`;
-document.head.appendChild(TrdsVideoStyle);
+`);
 
 customElements.define('trds-video', class extends HTMLVideoElement{
     
@@ -27,14 +24,14 @@ customElements.define('trds-video', class extends HTMLVideoElement{
 
         if(this.hasAttribute('lazy-src')){
             
-            this.load = () => this.src = this.getAttribute('lazy-src');
+            this.isIntersecting = () => this.src = this.getAttribute('lazy-src');
             TrdsIntersectionObserver.observe(this)
 
         }
 
         else if(this.hasAttribute('lazy-poster')){
 
-            this.load = () => this.poster = this.getAttribute('lazy-poster');
+            this.isIntersecting = () => this.poster = this.getAttribute('lazy-poster');
             TrdsIntersectionObserver.observe(this);
 
         }
@@ -42,3 +39,5 @@ customElements.define('trds-video', class extends HTMLVideoElement{
     }
 
 }, {extends: 'video'});
+
+export default TrdsVideoStyle;

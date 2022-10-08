@@ -1,0 +1,9 @@
+﻿import './trds-icon.js';
+import './trds-hamburger.js';
+import './trds-image.js';
+import './trds-counter.js';
+import './tag/tag.js';
+import './form/form.js';
+import './link/link.js';
+import './loader/trds-loader.js';
+import './video/trds-video.js';

@@ -1,6 +1,5 @@
-﻿const LinkStyle = document.createElement('style');
-LinkStyle.id = 'link';
-LinkStyle.textContent = `
+﻿const TrdsLinkStyle = new CSSStyleSheet();
+TrdsLinkStyle.replaceSync(`
 
     a{
         transition: filter 0.25s ease-in-out;
@@ -21,5 +20,6 @@ LinkStyle.textContent = `
         filter: brightness(125%);
     }
 
-`;
-document.head.appendChild(LinkStyle);
+`);
+
+export default TrdsLinkStyle;

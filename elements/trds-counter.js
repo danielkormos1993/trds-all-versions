@@ -21,7 +21,7 @@ customElements.define('trds-counter', class extends HTMLElement{
 
     }
 
-    load(){
+    isIntersecting(){
 
         let startTimestamp = null;
 
