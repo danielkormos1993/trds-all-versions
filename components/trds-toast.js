@@ -40,8 +40,14 @@ class Toast extends HTMLElement{
                 }
 
                 @keyframes TrdsToastAnimation{
-                    from { transform: translateY(100vh) }
-                    to { transform: translateY(0) }
+                    from { 
+                        margin-top: 100vh;
+                        transform: translateY(100vh)
+                    }
+                    to {
+                        margin-top: 0;
+                        transform: translateY(0)
+                    }
                 }
 
                 :host(.error){
@@ -87,8 +93,6 @@ class Toast extends HTMLElement{
     }
 
     static launchToast(content, type){
-
-
 
         const toast = document.createElement('trds-toast');
         if(type) toast.classList.add(type);

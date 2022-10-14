@@ -73,11 +73,11 @@ customElements.define('trds-modal', class extends HTMLElement{
                 }
 
                 modal_header h2{
-                    margin-right: var(--space--m);
                     text-transform: uppercase;
                     letter-spacing: .2em;
-                    font-size: var(--size--m);
-                    line-height: var(--size--m--line-height);
+                    font-size: var(--size--s);
+                    line-height: var(--size--s--line-height);
+                    margin: 0 var(--space--m) 0 0;
                 }
 
             </style>
@@ -118,7 +118,7 @@ customElements.define('trds-modal', class extends HTMLElement{
 
         if(this.hasAttribute('opened')){
 
-            if(window.currentModal && window.currentModal.hasAttribute('opened') && window.currentModal != this) window.currentModal.removeAttribute('opened');
+            if(window.currentModal && window.currentModal.hasAttribute('opened') && window.currentModal !== this) window.currentModal.removeAttribute('opened');
 
             window.currentModal = this;
 

@@ -107,10 +107,6 @@ const renderButton = button => {
 
 customElements.define('trds-button', class extends HTMLButtonElement{
 
-    constructor(){
-        super();
-    }
-
     connectedCallback(){
         this.classList.add('trds-button');
         renderButton(this);
@@ -134,10 +130,6 @@ customElements.define('trds-button', class extends HTMLButtonElement{
 }, {extends: 'button'});
 
 customElements.define('trds-button-link', class extends HTMLAnchorElement{
-
-    constructor(){
-        super();
-    }
 
     connectedCallback(){
         this.classList.add('trds-button');

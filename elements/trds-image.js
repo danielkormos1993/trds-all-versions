@@ -36,8 +36,7 @@ createStyle(`
 
 customElements.define('trds-image', class extends HTMLElement{
 
-    constructor(){
-        super();
+    connectedCallback(){
 
         this.innerHTML = `
 
@@ -54,10 +53,6 @@ customElements.define('trds-image', class extends HTMLElement{
                 this.querySelector('trds-loader').removeAttribute('active'); 
             })});
         });
-
-    }
-
-    connectedCallback(){
 
         this.Image.setAttribute('alt', this.getAttribute('alt'));
 
