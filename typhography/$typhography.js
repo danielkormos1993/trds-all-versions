@@ -1,6 +1,6 @@
-﻿const $typhography = new CSSStyleSheet();
+﻿import createStyle from '../libs/createStyle.js';
 
-$typhography.replaceSync(`
+createStyle(`
 
     :root{
 
@@ -29,5 +29,3 @@ $typhography.replaceSync(`
     }
 
 `);
-
-document.adoptedStyleSheets = [...document.adoptedStyleSheets, $typhography];

@@ -1,5 +1,6 @@
-﻿const TrdsLoaderStyle = new CSSStyleSheet();
-TrdsLoaderStyle.replaceSync(`
+﻿import createStyle from "../libs/createStyle.js";
+
+createStyle(`
 
     *:has(> trds-loader[active]){
         position: relative;
@@ -49,5 +50,3 @@ TrdsLoaderStyle.replaceSync(`
     }
 
 `);
-
-export default TrdsLoaderStyle;

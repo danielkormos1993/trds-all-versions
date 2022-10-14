@@ -1,7 +1,7 @@
-﻿import '../../layout/$layout.js';
+﻿import createStyle from "../libs/createStyle.js";
+import '../layout/$layout.js'
 
-const TrdsFormStyle = new CSSStyleSheet();
-TrdsFormStyle.replaceSync(`
+createStyle(`
 
     input,
     select,
@@ -30,5 +30,3 @@ TrdsFormStyle.replaceSync(`
     }
 
 `);
-
-export default TrdsFormStyle;

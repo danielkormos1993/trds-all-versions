@@ -1,6 +1,6 @@
-﻿const $layout = new CSSStyleSheet();
+﻿import createStyle from "../libs/createStyle.js";
 
-$layout.replaceSync(`
+createStyle(`
 
     :root{
 
@@ -9,12 +9,10 @@ $layout.replaceSync(`
         --space--m: 20px;
         --space--l: 30px;
         --space--xl: 40px;
-        --space--xxl: 80px;
+        --space--xxl: 90px;
 
         --element--max-width: 800px;
 
     }
 
 `);
-
-document.adoptedStyleSheets = [...document.adoptedStyleSheets, $layout];

@@ -10,8 +10,8 @@
     font-family: 'Montserrat';
     font-style: normal;
     font-display: block;
-    src: local('Montserrat Bold'), local('Montserrat-Bold'), url('assets/fonts/montserrat700.woff2') format('woff2');
-    font-weight: 700;
+    src: local('Montserrat ExtraBold'), local('Montserrat-ExtraBold'), url('assets/fonts/montserrat800.woff2') format('woff2');
+    font-weight: 800;
 }
 
 :root{

@@ -1,8 +1,8 @@
-﻿import '../../layout/$layout.js';
-import TrdsIntersectionObserver from '../../libs/IntersectionObserver.js';
+﻿import '../layout/$layout.js';
+import TrdsIntersectionObserver from '../libs/IntersectionObserver.js';
+import createStyle from '../libs/createStyle.js';
 
-const TrdsVideoStyle = new CSSStyleSheet();
-TrdsVideoStyle.replaceSync(`
+createStyle(`
 
     video[is="trds-video"]{
         display: block;
@@ -39,5 +39,3 @@ customElements.define('trds-video', class extends HTMLVideoElement{
     }
 
 }, {extends: 'video'});
-
-export default TrdsVideoStyle;

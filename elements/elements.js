@@ -2,8 +2,8 @@
 import './trds-hamburger.js';
 import './trds-image.js';
 import './trds-counter.js';
-import './tag/tag.js';
-import './form/form.js';
-import './link/link.js';
-import './loader/trds-loader.js';
-import './video/trds-video.js';
+import './tag.js';
+import './form.js';
+import './link.js';
+import './trds-loader.js';
+import './trds-video.js';

@@ -30,10 +30,6 @@ customElements.define('trds-header', class extends HTMLElement{
 
         this.Hamburger.addEventListener('click', this.toggleMenu);
 
-        this.Slot.assignedNodes().forEach(navElement => {
-            navElement.addEventListener('focus', this.openMenu);
-        });
-
     }
 
     connectedCallback(){
@@ -97,6 +93,10 @@ customElements.define('trds-header', class extends HTMLElement{
             }
 
         `;
+
+        this.Slot.assignedNodes().forEach(navElement => {
+            navElement.addEventListener('focus', this.openMenu);
+        });
 
     }
 

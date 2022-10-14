@@ -1,5 +1,6 @@
-﻿const TrdsLinkStyle = new CSSStyleSheet();
-TrdsLinkStyle.replaceSync(`
+﻿import createStyle from "../libs/createStyle.js";
+
+createStyle(`
 
     a{
         transition: filter 0.25s ease-in-out;
@@ -21,5 +22,3 @@ TrdsLinkStyle.replaceSync(`
     }
 
 `);
-
-export default TrdsLinkStyle;

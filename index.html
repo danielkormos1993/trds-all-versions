@@ -24,36 +24,54 @@
 
     <main>
 
-        <trds-section style="background-color: var(--color--secondary-bg);">
+        <trds-section>
             <trds-stack style="gap: var(--space--l)">
                 <h1><span style="color: var(--color--primary)">Top Repair</span><br>Design System</h1>
                 <p class="size--l">TRDS is a vanilla javascript component library and design system made for our company's online presence. Compatible with React.</p>
             </trds-stack>
         </trds-section>
 
-        <trds-section style="background-color:white; color:black">
-            <trds-stack>
+        <trds-section style="background-color:white; color:black;">
+            <trds-stack style="text-align: right; place-content: end;">
                 <h2 class="variant--1">Theming</h2>
                 <p>The library has got a theme.css file where you can set the fonts and colors for theming using css variables. Use this css file with a link tag in head. Keep in mind you have to provide the fonts path in this file.</p>
             </trds-stack>
         </trds-section>
 
         <trds-section>
-            <trds-grid>
-                <trds-stack>
-                    <h2 class="variant--1">Typhography</h2>
-                    <p>Elements to use: span, p, h1...h6<br>Classes to use: size-{xs...xxl}, variant--1</p>
-                </trds-stack>
-                <trds-stack style="gap: var(--space--s)">
-                    <h1 class="variant--1">.Variant--1 Heading</h1>
-                    <h1>H1 Heading</h1>
-                    <h2>H2 Heading</h2>
-                    <h3>H3 Heading</h3>
-                    <h4>H4 Heading</h4>
-                    <h5>H5 Heading</h5>
-                    <h6>H6 Heading</h6>
-                </trds-stack>
-            </trds-grid>
+            <trds-stack>
+                <h2 class="variant--1">Typhography</h2>
+                <trds-grid>
+                    <p>Elements to use: span, b, p, h1...h6<br>Classes to use: size-{xs...xxl}, variant--1</p>
+                    <trds-stack style="gap: var(--space--s)">
+                        <h1 class="variant--1">.Variant--1 Heading</h1>
+                        <h1>H1 Heading</h1>
+                        <h2>H2 Heading</h2>
+                        <h3>H3 Heading</h3>
+                        <h4>H4 Heading</h4>
+                        <h5>H5 Heading</h5>
+                        <h6>H6 Heading</h6>
+                    </trds-stack>
+                </trds-grid>
+            </trds-stack>
+        </trds-section>
+
+        <trds-section>
+            <trds-stack>
+                <h2 class="variant--1">Layout</h2>
+                <trds-grid>
+                    <p>Elements to use: main > trds-section > trds-stack, trds-grid, trds-card</p>
+                    <trds-stack style="gap: var(--space--s)">
+                        <h1 class="variant--1">.Variant--1 Heading</h1>
+                        <h1>H1 Heading</h1>
+                        <h2>H2 Heading</h2>
+                        <h3>H3 Heading</h3>
+                        <h4>H4 Heading</h4>
+                        <h5>H5 Heading</h5>
+                        <h6>H6 Heading</h6>
+                    </trds-stack>
+                </trds-grid>
+            </trds-stack>
         </trds-section>
 
     </main>

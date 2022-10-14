@@ -1,45 +1,45 @@
 ﻿import '../layout/$layout.js';
-import TrdsLoaderStyle from './loader/trds-loader.module.js';
+import './trds-loader.js';
 import TrdsIntersectionObserver from '../libs/IntersectionObserver.js';
+import createStyle from '../libs/createStyle.js';
+
+createStyle(`
+
+    trds-image{
+        display: block;
+        width: 100%;
+        max-width: var(--element--max-width);
+        position: relative;
+        object-fit: contain;
+        object-position: center center;
+        --image-padding-bottom: 56.25%;
+    }
+
+    trds-image aspect-ratio-box{
+        padding-bottom: var(--image-padding-bottom);
+        display: block;
+        box-sizing: border-box;
+    }
+
+    trds-image img{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: inherit;
+        object-position: inherit;
+    }
+
+`)
 
 customElements.define('trds-image', class extends HTMLElement{
 
     constructor(){
         super();
 
-        this.attachShadow({mode: 'open'}).innerHTML = `
-
-            <style>
-
-                :host{
-                    display: block;
-                    width: 100%;
-                    max-width: var(--element--max-width);
-                    position: relative;
-                    background-color: var(--color--secondary-bg);
-                    object-fit: contain;
-                    object-position: center center;
-                    --image-padding-bottom: 56.25%;
-                }
-            
-                aspect-ratio-box{
-                    padding-bottom: var(--image-padding-bottom);
-                    display: block;
-                    box-sizing: border-box;
-                }
-            
-                img{
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    width: 100%;
-                    height: 100%;
-                    display: block;
-                    object-fit: inherit;
-                    object-position: inherit;
-                }
-
-            </style>
+        this.innerHTML = `
 
             <trds-loader active></trds-loader>
             <aspect-ratio-box></aspect-ratio-box>
@@ -47,12 +47,11 @@ customElements.define('trds-image', class extends HTMLElement{
 
         `;
 
-        this.shadowRoot.adoptedStyleSheets = [TrdsLoaderStyle];
-        this.Image = this.shadowRoot.querySelector('img');
+        this.Image = this.querySelector('img');
 
         this.Image.addEventListener('load', () => {
             requestAnimationFrame(() => {requestAnimationFrame(() => { 
-                this.shadowRoot.querySelector('trds-loader').removeAttribute('active'); 
+                this.querySelector('trds-loader').removeAttribute('active'); 
             })});
         });
 

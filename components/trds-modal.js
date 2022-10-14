@@ -1,6 +1,6 @@
 ﻿import '../layout/$layout.js';
 import '../elements/trds-icon.js';
-import typhography from '../typhography/typhography.module.js';
+import '../typhography/$typhography.js';
 
 customElements.define('trds-modal', class extends HTMLElement{
 
@@ -74,6 +74,10 @@ customElements.define('trds-modal', class extends HTMLElement{
 
                 modal_header h2{
                     margin-right: var(--space--m);
+                    text-transform: uppercase;
+                    letter-spacing: .2em;
+                    font-size: var(--size--m);
+                    line-height: var(--size--m--line-height);
                 }
 
             </style>
@@ -89,8 +93,6 @@ customElements.define('trds-modal', class extends HTMLElement{
             </modal_container>
 
         `;
-
-        this.shadowRoot.adoptedStyleSheets = [typhography];
 
         this.shadowRoot.querySelector('modal_header trds-icon').addEventListener('click', () => {
             this.removeAttribute('opened');

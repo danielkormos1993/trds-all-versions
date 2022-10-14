@@ -1,10 +1,10 @@
-﻿import '../../layout/$layout.js';
-import '../../typhography/$typhography.js';
-import '../../elements/trds-icon.js';
-import TrdsLoaderStyle from '../../elements/loader/trds-loader.module.js';
+﻿import '../layout/$layout.js';
+import '../typhography/$typhography.js';
+import '../elements/trds-icon.js';
+import '../elements/trds-loader.js';
+import createStyle from '../libs/createStyle.js';
 
-const TrdsButtonStyle = new CSSStyleSheet();
-TrdsButtonStyle.replaceSync(`
+createStyle(`
 
     .trds-button{
         all: unset;
@@ -109,14 +109,12 @@ customElements.define('trds-button', class extends HTMLButtonElement{
 
     constructor(){
         super();
-
-        this.loader = this.appendChild(document.createElement('trds-loader'));
-
     }
 
     connectedCallback(){
         this.classList.add('trds-button');
         renderButton(this);
+        this.loader = this.appendChild(document.createElement('trds-loader'));
     }
 
     static get observedAttributes(){ 
@@ -147,5 +145,3 @@ customElements.define('trds-button-link', class extends HTMLAnchorElement{
     }
     
 }, {extends: 'a'});
-
-export { TrdsButtonStyle, TrdsLoaderStyle };

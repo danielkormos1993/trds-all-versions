@@ -1,7 +1,7 @@
 ﻿import './$layout.js';
+import createStyle from "../libs/createStyle.js";
 
-const layout = new CSSStyleSheet();
-layout.replaceSync(`
+createStyle(`
 
     body{
         display: flex;
@@ -9,6 +9,12 @@ layout.replaceSync(`
         min-height: 100vh;
         margin: 0;
         padding: 0;
+    }
+
+    #root{
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
     }
 
     main{
@@ -26,15 +32,18 @@ layout.replaceSync(`
     trds-grid{
         display: flex;
         flex-wrap: wrap;
-        gap: var(--space--xl);
+        gap: var(--space--xxl);
+        row-gap: var(--space--xl);
     }
 
     trds-grid.boxes-layout{
         gap: var(--space--m);
+        row-gap: unset;
     }
 
     trds-grid.auto-width-layout{
         gap: var(--space--s);
+        row-gap: unset;
         align-items: center;
     }
 
@@ -70,5 +79,3 @@ layout.replaceSync(`
     }
 
 `);
-
-export default layout;
