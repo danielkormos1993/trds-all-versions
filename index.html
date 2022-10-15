@@ -22,39 +22,23 @@
 
     </trds-header>
 
-    <trds-modal title="egy modal">
-        <trds-stack>
-        <p>egz modal</p>
-        <p>egz modal</p>
-        <p>egz modal</p><p>egz modal</p>
-        <p>egz modal</p>
-        <p>egz modal</p>
-        <p>egz modal</p>
-        <p>egz modal</p>
-        <p>egz modal</p>
-        <p>egz modal</p>
-        <p>egz modal</p>
-        <p>egz modal</p>
-        <p>egz modal</p>
-        <p>egz modal</p><p>egz modal</p>
-        <p>egz modal</p>
-        <p>egz modal</p>
-        <p>egz modal</p>
-        <p>egz modal</p>
-        <p>egz modal</p>
-        <p>egz modal</p>
-        <p>egz modal</p>
-        <p>egz modal</p>
-        <p>egz modal</p>
-
-    </trds-stack>
-    </trds-modal>
 
     <main>
 
+        <script type="module">
+            import launchToast from './components/trds-toast.js';
+
+            function addToast(){
+                launchToast('baymeg')
+            }
+
+            document.getElementById('butt').addEventListener('click', addToast);
+
+        </script>
+
         <trds-section>
             <trds-stack style="gap: var(--space--l)">
-                <button is="trds-button" text="open modal" onclick="document.querySelector('trds-modal').setAttribute('opened', '')"></button>
+                <button is="trds-button" text="open modal" id="butt"></button>
                 <h1><span style="color: var(--color--primary)">Top Repair</span><br>Design System</h1>
                 <p class="size--l">TRDS is a vanilla javascript component library and design system made for our company's online presence. Compatible with React.</p>
             </trds-stack>

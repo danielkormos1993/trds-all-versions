@@ -41,12 +41,10 @@ class Toast extends HTMLElement{
 
                 @keyframes TrdsToastAnimation{
                     from { 
-                        margin-top: 100vh;
-                        transform: translateY(100vh)
+                        transform: translateY(100vh);
                     }
                     to {
-                        margin-top: 0;
-                        transform: translateY(0)
+                        transform: translateY(0);
                     }
                 }
 
@@ -99,9 +97,10 @@ class Toast extends HTMLElement{
 
         let toasts = document.querySelector('trds-toasts');
 
-        if(!toasts)
+        if(!toasts){
             toasts = document.createElement('trds-toasts');
             document.body.appendChild(toasts);
+        }
 
         toasts.appendChild(toast);
 
