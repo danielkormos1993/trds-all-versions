@@ -1,6 +1,7 @@
 ﻿import '../layout/$layout.js';
 import TrdsIntersectionObserver from '../libs/IntersectionObserver.js';
 import createStyle from '../libs/createStyle.js';
+import '../libs/wcPolyfill.js';
 
 createStyle(`
 

@@ -3,6 +3,7 @@ import '../typhography/$typhography.js';
 import '../elements/trds-icon.js';
 import '../elements/trds-loader.js';
 import createStyle from '../libs/createStyle.js';
+import '../libs/wcPolyfill.js';
 
 createStyle(`
 
