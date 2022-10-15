@@ -90,7 +90,7 @@ const renderButton = button => {
     button.innerHTML = `
 
         ${button.hasAttribute('icon') ?
-            `<trds-icon style="--icon-src: url('${button.getAttribute('icon')}')"></trds-icon>`
+            `<trds-icon icon="${button.getAttribute('icon')}"></trds-icon>`
             :
             ''
         }

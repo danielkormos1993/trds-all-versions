@@ -64,7 +64,6 @@ class Toast extends HTMLElement{
                 }
             
                 trds-icon{
-                    --icon-src: url('/assets/icons/solid/times.svg');
                     cursor: pointer;
                     flex-shrink: 0;
                 }
@@ -74,7 +73,7 @@ class Toast extends HTMLElement{
             <toast_content>
                 <slot></slot>
             </toast_content>
-            <trds-icon tabindex="0" title="Close toast"></trds-icon>
+            <trds-icon icon="x" tabindex="0" title="Close toast"></trds-icon>
 
         `;
 

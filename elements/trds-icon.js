@@ -20,8 +20,8 @@ customElements.define('trds-icon', class extends HTMLElement{
                     mask-repeat: no-repeat;
                     -webkit-mask-position: center center;
                     mask-position: center center;
-                    -webkit-mask-image: var(--icon-src);
-                    mask-image: var(--icon-src);
+                    -webkit-mask-image: var(--icon);
+                    mask-image: var(--icon);
                 }
 
                 :host(.lazy){
@@ -36,6 +36,11 @@ customElements.define('trds-icon', class extends HTMLElement{
     }
 
     connectedCallback(){
+
+        if(this.hasAttribute('icon')){
+            this.style.setProperty('--icon', `url("https://trds-icons.storage.googleapis.com/${this.getAttribute('icon')}.svg")`);
+            this.removeAttribute('icon');
+        }
 
         if(this.classList.contains('lazy'))
             TrdsIntersectionObserver.observe(this);

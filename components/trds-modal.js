@@ -67,7 +67,6 @@ customElements.define('trds-modal', class extends HTMLElement{
                 }
 
                 modal_header trds-icon{
-                    --icon-src: url('/assets/icons/solid/times.svg');
                     cursor: pointer;
                     flex-shrink: 0;
                 }
@@ -85,7 +84,7 @@ customElements.define('trds-modal', class extends HTMLElement{
             <modal_container>
                 <modal_header>
                     <h2>Default title</h2>
-                    <trds-icon tabindex="0" title="Close modal"></trds-icon>
+                    <trds-icon icon="x" tabindex="0" title="Close modal"></trds-icon>
                 </modal_header>
                 <modal_body>
                     <slot></slot>
