@@ -45,7 +45,6 @@ customElements.define('trds-modal', class extends HTMLElement{
                     width: 90%;
                     max-width: var(--element--max-width);
                     max-height: 100%;
-                    overflow: auto;
                 }
 
                 modal_header{
@@ -64,6 +63,7 @@ customElements.define('trds-modal', class extends HTMLElement{
                     background-color: var(--color--secondary-bg);
                     overflow: auto;
                     max-height: 90vh;
+                    overscroll-behavior: contain;
                 }
 
                 modal_header trds-icon{
@@ -74,8 +74,8 @@ customElements.define('trds-modal', class extends HTMLElement{
                 modal_header h2{
                     text-transform: uppercase;
                     letter-spacing: .2em;
-                    font-size: var(--size--s);
-                    line-height: var(--size--s--line-height);
+                    font-size: var(--size--xs);
+                    line-height: var(--size--xs--line-height);
                     margin: 0 var(--space--m) 0 0;
                 }
 
