@@ -17,8 +17,7 @@ createStyle(`
 
 customElements.define('trds-video', class extends HTMLVideoElement{
     
-    constructor(){ 
-        super();
+    connectedCallback(){
 
         if(this.hasAttribute('lazy-poster') || this.hasAttribute('poster'))
             this.setAttribute('preload', 'none');
@@ -36,7 +35,7 @@ customElements.define('trds-video', class extends HTMLVideoElement{
             TrdsIntersectionObserver.observe(this);
 
         }
-            
+
     }
 
 }, {extends: 'video'});
