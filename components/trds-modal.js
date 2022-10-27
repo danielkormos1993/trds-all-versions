@@ -117,11 +117,13 @@ customElements.define('trds-modal', class extends HTMLElement{
 
         if(this.hasAttribute('opened')){
 
+            this.dispatchEvent(new CustomEvent('onOpen'));
+
             if(window.currentModal && window.currentModal.hasAttribute('opened') && window.currentModal !== this) window.currentModal.removeAttribute('opened');
 
             window.currentModal = this;
 
-        }
+        } else this.dispatchEvent(new CustomEvent('onClose'));
 
     }
 
