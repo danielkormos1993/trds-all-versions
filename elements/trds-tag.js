@@ -4,7 +4,7 @@ import '../layout/$layout.js';
 
 createStyle(`
 
-    tag{
+    trds-tag{
         background-color: var(--color--accent);
         border-radius: 50px;
         box-sizing: border-box;
@@ -13,7 +13,7 @@ createStyle(`
         font-weight: bold;
     }
 
-    tag.outline{
+    trds-tag.outline{
         box-shadow: inset 0 0 0 2px currentColor;
         background-color: transparent;
     }

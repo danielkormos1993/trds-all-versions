@@ -38,12 +38,12 @@ createStyle(`
 
     trds-grid.boxes-layout{
         gap: var(--space--m);
-        row-gap: unset;
+        row-gap: var(--space--m);
     }
 
     trds-grid.auto-width-layout{
         gap: var(--space--s);
-        row-gap: unset;
+        row-gap: var(--space--s);
         align-items: center;
     }
 

@@ -24,6 +24,10 @@ createStyle(`
         border-bottom: 2px solid var(--color--primary);
     }
 
+    textarea{
+        min-height: 150px;
+    }
+
     input[type=checkbox]{
         width: var(--space--m);
         height: var(--space--m);

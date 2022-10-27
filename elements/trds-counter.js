@@ -2,10 +2,6 @@
 
 customElements.define('trds-counter', class extends HTMLElement{
 
-    constructor(){
-        super();
-    }
-
     connectedCallback(){
 
         this.startNumber = Number(this.textContent);
