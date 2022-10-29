@@ -7,9 +7,9 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = Icon;
 var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/objectWithoutProperties"));
 var _react = require("react");
-require("../libs/createStyle");
+var _createStyle = _interopRequireDefault(require("../libs/createStyle"));
 var _excluded = ["icon"];
-createStyle("\n\n    i{\n        display: block;\n        width: 1em;\n        height: 1em;\n        background: currentColor;\n        -webkit-mask-size: contain;\n        mask-size: contain;\n        -webkit-mask-repeat: no-repeat;\n        mask-repeat: no-repeat;\n        -webkit-mask-position: center center;\n        mask-position: center center;\n        -webkit-mask-image: var(--icon);\n        mask-image: var(--icon);\n    }\n\n");
+(0, _createStyle.default)("\n\n    i{\n        display: block;\n        width: 1em;\n        height: 1em;\n        background: currentColor;\n        -webkit-mask-size: contain;\n        mask-size: contain;\n        -webkit-mask-repeat: no-repeat;\n        mask-repeat: no-repeat;\n        -webkit-mask-position: center center;\n        mask-position: center center;\n        -webkit-mask-image: var(--icon);\n        mask-image: var(--icon);\n    }\n\n");
 function Icon(_ref) {
   var icon = _ref.icon,
     rest = (0, _objectWithoutProperties2.default)(_ref, _excluded);

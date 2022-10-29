@@ -8,9 +8,9 @@ exports.default = Image;
 var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/slicedToArray"));
 var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/objectWithoutProperties"));
 var _react = require("react");
-require("../libs/createStyle");
+var _createStyle = _interopRequireDefault(require("../libs/createStyle"));
 var _excluded = ["className", "src", "alt"];
-createStyle("\n\n    .image{\n        display: block;\n        width: 100%;\n        max-width: var(--element--max-width);\n        position: relative;\n        object-fit: contain;\n        object-position: center center;\n        --image-padding-bottom: 56.25%;\n    }\n\n    .image aspect-ratio-box{\n        padding-bottom: var(--image-padding-bottom);\n        display: block;\n        box-sizing: border-box;\n    }\n\n    .image img{\n        position: absolute;\n        top: 0;\n        left: 0;\n        width: 100%;\n        height: 100%;\n        display: block;\n        object-fit: inherit;\n        object-position: inherit;\n    }\n\n");
+(0, _createStyle.default)("\n\n    .image{\n        display: block;\n        width: 100%;\n        max-width: var(--element--max-width);\n        position: relative;\n        object-fit: contain;\n        object-position: center center;\n        --image-padding-bottom: 56.25%;\n    }\n\n    .image aspect-ratio-box{\n        padding-bottom: var(--image-padding-bottom);\n        display: block;\n        box-sizing: border-box;\n    }\n\n    .image img{\n        position: absolute;\n        top: 0;\n        left: 0;\n        width: 100%;\n        height: 100%;\n        display: block;\n        object-fit: inherit;\n        object-position: inherit;\n    }\n\n");
 function Image(_ref) {
   var className = _ref.className,
     src = _ref.src,
