@@ -1,0 +1,31 @@
+﻿import createStyle from "../libs/createStyle";
+
+createStyle(`
+
+:root{
+
+    font-size: clamp(16px, 15.065px + 0.259vw, 20px);
+    line-height: 1.5;
+    -webkit-text-size-adjust: none;
+
+    --size--xs: .75rem;
+    --size--xs--line-height: 1.55;
+
+    --size--s: .9rem;
+    --size--s--line-height: 1.52;
+
+    --size--m: 1rem;
+    --size--m--line-height: 1.5;
+
+    --size--l: 1.2rem;
+    --size--l--line-height: 1.4;
+
+    --size--xl: 2rem;
+    --size--xl--line-height: 1.3;
+
+    --size--xxl: clamp(2rem, 1.7662rem + 1.0390vw, 3rem);
+    --size--xxl--line-height: 1.2;
+
+}
+
+`)

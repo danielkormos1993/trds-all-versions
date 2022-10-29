@@ -1,0 +1,5 @@
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault").default;
+var _createStyle = _interopRequireDefault(require("../libs/createStyle"));
+(0, _createStyle.default)("\n\n*:has(> trds-loader[active]){\n    position: relative;\n    max-height: 100vh;\n    overflow: hidden;\n}\n\n*:has(> trds-loader[active]) *{\n    visibility: hidden;\n}\n\n*:has(>  trds-loader[active]) > trds-loader{\n    visibility: visible;\n}\n\ntrds-loader{\n    width: 100%;\n    height: 100%;\n    min-height: 1em;\n    max-height: 100vh;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    visibility: hidden;\n    position: absolute;\n    top: 0;\n    left: 0;\n}\n\n@keyframes spin {\n    0% {\n        transform: rotate(0deg);\n    }\n    100% {\n        transform: rotate(360deg);\n    }\n}\n\ntrds-loader:before{\n    content: \"\";\n    display: block;\n    border-radius: 50%;\n    width: 1em;\n    height: 1em;\n    border: .25em solid rgba(128, 128, 128, .5);\n    border-top-color: currentColor;\n    animation: spin 1s infinite linear;\n}\n\n");

@@ -1,0 +1,43 @@
+import createStyle from "./libs/createStyle";
+
+createStyle(`
+
+@font-face {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-display: block;
+    src: local('Montserrat Regular'), local('Montserrat-Regular'), url('/assets/fonts/montserrat400.woff2') format('woff2');
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-display: block;
+    src: local('Montserrat ExtraBold'), local('Montserrat-ExtraBold'), url('/assets/fonts/montserrat800.woff2') format('woff2');
+    font-weight: 800;
+}
+
+:root{
+
+    font-family: 'Montserrat';
+
+    --color--primary: rgb(33, 162, 206);
+    --color--accent: rgb(57, 144, 55);
+    --color--primary-bg: rgb(51, 51, 51);
+    --color--secondary-bg: rgb(18, 18, 18);
+    --color--primary-text: rgb(237, 242, 244);
+    --color--secondary-text: rgb(204, 204, 204);
+    --color--tertiary-text: rgb(133, 133, 133);
+    --color--success: rgb(59, 123, 43);
+    --color--warning: rgb(231, 113, 27);
+    --color--error: rgb(204, 46, 40);
+
+    --color--overlay: rgba(0, 0, 0, .72);
+
+    background-color: var(--color--primary-bg);
+    color: var(--color--primary-text); 
+    
+}
+
+`)
