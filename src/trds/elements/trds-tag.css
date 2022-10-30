@@ -1,8 +1,5 @@
-﻿import '../layout/$layout.js';
-import createStyle from '../libs/createStyle.js';
-import '../typhography/$typhography.js';
-
-createStyle(`
+﻿@import '../layout/$layout.css';
+@import '../typhography/$typhography.css';
 
 trds-tag{
     background-color: var(--color--accent);
@@ -17,5 +14,3 @@ trds-tag.outline{
     box-shadow: inset 0 0 0 2px currentColor;
     background-color: transparent;
 }
-
-`)

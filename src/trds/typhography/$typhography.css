@@ -1,8 +1,4 @@
-﻿import createStyle from "../libs/createStyle";
-
-createStyle(`
-
-:root{
+﻿:root{
 
     font-size: clamp(16px, 15.065px + 0.259vw, 20px);
     line-height: 1.5;
@@ -27,5 +23,3 @@ createStyle(`
     --size--xxl--line-height: 1.2;
 
 }
-
-`)

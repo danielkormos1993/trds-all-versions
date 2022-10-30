@@ -1,8 +1,5 @@
-﻿import '../layout/$layout.js';
-import createStyle from '../libs/createStyle';
-import './$typhography.js';
-
-createStyle(`
+﻿@import '../layout/$layout.css';
+@import './$typhography.css';
 
 h1, h2, h3, h4, h5, h6, p{
     margin: 0;
@@ -45,5 +42,3 @@ h6, .size--xs{
     font-size: var(--size--xs);
     line-height: var(--size--xs--line-height);
 }
-
-`)

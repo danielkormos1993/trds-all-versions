@@ -1,7 +1,4 @@
-﻿import '../layout/$layout.js';
-import createStyle from '../libs/createStyle.js';
-
-createStyle(`
+﻿@import '../layout/$layout.css';
 
 input,
 select,
@@ -32,5 +29,3 @@ input[type=checkbox]{
     width: var(--space--m);
     height: var(--space--m);
 }
-
-`)

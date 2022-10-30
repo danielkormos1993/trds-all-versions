@@ -1,5 +1,6 @@
 ﻿import createStyle from '../libs/createStyle.js';
 import Container from './Container.js';
+import './$layout.css';
 
 createStyle(`
 

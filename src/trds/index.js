@@ -1,6 +1,6 @@
-import './theme';
+import './theme.css';
 
-import './typhography';
+import './typhography/typhography.css';
 import { Section, Container } from './layout';
 import { Hamburger, Icon, Image } from './elements';
 import { Toast } from './components';

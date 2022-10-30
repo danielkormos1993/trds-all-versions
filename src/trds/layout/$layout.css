@@ -1,8 +1,4 @@
-﻿import createStyle from "../libs/createStyle";
-
-createStyle(`
-
-:root{
+﻿:root{
 
     --space--xs: 5px;
     --space--s: 10px;
@@ -14,5 +10,3 @@ createStyle(`
     --element--max-width: 800px;
 
 }
-
-`)
