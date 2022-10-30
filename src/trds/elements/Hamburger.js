@@ -2,7 +2,7 @@ import createStyle from '../libs/createStyle';
 
 createStyle(`
 
-    .hamburger{
+    trds-hamburger{
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -11,35 +11,35 @@ createStyle(`
         cursor: pointer;
     }
 
-    .hamburger div{
+    trds-hamburger div{
         display: block;
         height: 3px;
         background-color: currentColor;
         transition: transform .25s, opacity .25s;
     }
 
-    .hamburger.active div:nth-of-type(1){
+    trds-hamburger.active div:nth-of-type(1){
         transform: rotate(45deg) translate(6px,4px);
     }
 
-    .hamburger.active div:nth-of-type(2){
+    trds-hamburger.active div:nth-of-type(2){
         opacity: 0;
     }
 
-    .hamburger.active div:nth-of-type(3){
+    trds-hamburger.active div:nth-of-type(3){
         transform: rotate(-45deg) translate(6px,-4px);
     }
 
 `);
 
-export default function Hamburger({isActive, ...rest}){
+export default function Hamburger({active, ...rest}){
 
     return(
-        <div className={`hamburger ${isActive ? 'active' : ''}`} {...rest}>
+        <trds-hamburger {...rest} class={active ? 'active' : ''}>
             <div></div>
             <div></div>
             <div></div>
-        </div>
+        </trds-hamburger>
     )
 
 }

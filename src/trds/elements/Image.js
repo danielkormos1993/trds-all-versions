@@ -1,9 +1,16 @@
+// usage: Image[src, alt]
+// lazy by default
+// style: --image-padding-bottom % for aspect-ratio, object-fit for fitting
+
 import { useEffect, useRef } from 'react';
 import createStyle from '../libs/createStyle';
+import './trds-loader.css';
+import '../layout/$layout.css';
+import TrdsIntersectionObserver from '../libs/IntersectionObserver';
 
 createStyle(`
 
-    .image{
+    trds-image{
         display: block;
         width: 100%;
         max-width: var(--element--max-width);
@@ -13,13 +20,13 @@ createStyle(`
         --image-padding-bottom: 56.25%;
     }
 
-    .image aspect-ratio-box{
+    trds-image aspect-ratio-box{
         padding-bottom: var(--image-padding-bottom);
         display: block;
         box-sizing: border-box;
     }
 
-    .image img{
+    trds-image img{
         position: absolute;
         top: 0;
         left: 0;
@@ -35,24 +42,31 @@ createStyle(`
 export default function Image({className, src, alt, ...rest}){
 
     const ImageElement = useRef();
-    const [isLoaded,setIsLoaded] = useEffect(false);
+    const LoaderElement = useRef();
 
     useEffect(() => {
 
-        ImageElement.current.addEventListener('load', () => {
+        const $image = ImageElement.current;
+        const $loader = LoaderElement.current;
+
+        $image.addEventListener('load', () => {
             requestAnimationFrame(() => {requestAnimationFrame(() => { 
-                setIsLoaded(true);
+                $loader.removeAttribute('active');
             })});
         });
+
+        $image.intersecting = () => $image.src = src;
+
+        TrdsIntersectionObserver.observe($image);
         
-    }, [])
+    });
 
     return(
-        <div className={`image ${className}`} {...rest}>
-            <trds-loader {...isLoaded && {'active':''}}/>
+        <trds-image class={className} {...rest}>
+            <trds-loader active ref={LoaderElement}/>
             <aspect-ratio-box></aspect-ratio-box>
-            <img ref={ImageElement} src={src} alt={alt}></img>
-        </div>
+            <img ref={ImageElement} alt={alt} />
+        </trds-image>
     )
 
 }

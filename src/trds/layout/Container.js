@@ -2,7 +2,7 @@
 
 createStyle(`
 
-    .container{
+    trds-container{
         display: block;
         width: 100%;
         max-width: 1700px;
@@ -14,12 +14,12 @@ createStyle(`
 
 `);
 
-export default function Container({children, ...rest}){
+export default function Container({children, className, ...rest}){
 
     return(
-        <div className="container" {...rest}>
+        <trds-container class={className} {...rest}>
             {children}
-        </div>
+        </trds-container>
     )
 
 }

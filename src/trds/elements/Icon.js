@@ -1,5 +1,9 @@
+// usage: Icon[icon]
+// lazy by default
+
 import { useEffect, useRef } from 'react';
 import createStyle from '../libs/createStyle';
+import TrdsIntersectionObserver from '../libs/IntersectionObserver';
 
 createStyle(`
 
@@ -26,7 +30,13 @@ export default function Icon({icon, ...rest}){
 
     useEffect(() => {
 
-        IconElement.current.style.setProperty('--icon', `url("https://trds-icons.storage.googleapis.com/${icon}.svg")`);
+        const $icon = IconElement.current;
+
+        $icon.intersecting = () => {
+            $icon.style.setProperty('--icon', `url("https://trds-icons.storage.googleapis.com/${icon}.svg")`);
+        }
+
+        TrdsIntersectionObserver.observe($icon);
         
     }, [icon])
 
