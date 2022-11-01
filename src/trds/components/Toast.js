@@ -56,7 +56,6 @@ createStyle(`
 
     trds-toast i{
         cursor: pointer;
-        flex-shrink: 0;
     }
 
 `);

@@ -67,7 +67,6 @@ createStyle(`
 
     trds-modal_header i{
         cursor: pointer;
-        flex-shrink: 0;
     }
 
     trds-modal_header h2{

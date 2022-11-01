@@ -1,8 +1,9 @@
 import { useCallback, useContext, useEffect, useState } from 'react';
 import { Container, Hamburger, Image, Section, Icon } from './trds';
 import { toastContext } from './trds/components/Toast';
-
+import Button from './trds/components/Button';
 import { ModalContextProvider, Modal } from './trds/components/Modal';
+import Header from './trds/components/Header';
 
 function App() {
 
@@ -41,13 +42,22 @@ function App() {
 
   return (
     <ModalContextProvider>
+    <Header
+      breakpoint="1000px"
+      logo={<a href="/"><Image src="assets/image/logo.webp" alt="logo" /></a>}
+    >
+      <Button text="anzad" className="plain" />
+      <Button text="anzad" className="plain" />
+      <Button text="anzad" className="plain" />
+      <Button text="anzad" className="plain" />
+    </Header>
     <Section>
       <Hamburger isActive />
       <Container className="lol">
         <Image alt="wow" src="https://processing.org/static/44e21b6aa64cb77fa3b828c8c7ae86dc/d6138/PImage_copy_.png" />
         <Icon icon="x" />
 
-        <button onClick={() => setModalOpened(true)}>LOL OPNE</button>
+        <Button text="anyad" onClick={() => setModalOpened(true)} />
 
       </Container>
     </Section>

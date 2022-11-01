@@ -20,6 +20,7 @@ createStyle(`
         mask-position: center center;
         -webkit-mask-image: var(--icon);
         mask-image: var(--icon);
+        flex-shrink: 0;
     }
 
 `);
