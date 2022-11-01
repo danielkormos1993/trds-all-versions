@@ -1,6 +1,6 @@
 import { createContext, useCallback, useState } from 'react';
 import { createPortal } from 'react-dom';
-import Icon from '../elements/Icon';
+import Button from './Button';
 import createStyle from '../libs/createStyle';
 import generateId from '../libs/generateId';
 import '../layout/$layout.css';
@@ -90,7 +90,7 @@ export const ToastContextProvider = ({children}) => {
                     {toasts.map(toast => 
                         <trds-toast key={toast.id} class={toast.type}>
                             <span>{toast.content}</span>
-                            <Icon icon="x" onClick={() => removeToast(toast.id)} />
+                            <Button onClick={() => removeToast(toast.id)} icon="x" className="plain" />
                         </trds-toast>
                     )}
                 </trds-toasts>

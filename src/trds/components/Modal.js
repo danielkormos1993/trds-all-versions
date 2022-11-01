@@ -3,10 +3,10 @@
 import createStyle from '../libs/createStyle';
 import '../layout/$layout.css';
 import '../typhography/$typhography.css';
-import Icon from '../elements/Icon';
 import { createContext, useContext, useEffect, useMemo, useState } from 'react';
 import { createPortal } from 'react-dom';
 import generateId from '../libs/generateId';
+import Button from './Button';
 
 createStyle(`
 
@@ -65,10 +65,6 @@ createStyle(`
         overscroll-behavior: contain;
     }
 
-    trds-modal_header i{
-        cursor: pointer;
-    }
-
     trds-modal_header h2{
         text-transform: uppercase;
         letter-spacing: .2em;
@@ -107,7 +103,7 @@ export function Modal({title, isOpen, children, onClose}){
             <trds-modal_container onClick={e => e.stopPropagation()}>
                 <trds-modal_header>
                     <h2>{title}</h2>
-                    <Icon icon="x" onClick={onClose} />
+                    <Button onClick={onClose} icon="x" className="plain" />
                 </trds-modal_header>
                 <trds-modal_body>
                     {children}
